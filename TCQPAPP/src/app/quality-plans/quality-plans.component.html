@@ -1,0 +1,174 @@
+<!-- <h1 class="header" align="center">Quality Plans</h1> -->
+<table align="center">
+   <thead>
+       <tr>
+           <th>Quality Plan</th>
+           <th></th>
+           <th></th>
+           <th></th>
+           <th></th>
+           <th>Operation</th>
+       </tr>
+    </thead>
+       <tr *ngFor="let qp of qualityPlanService.qualityPlans">
+        <td align="center">{{qp.qualityPlanName}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <button mat-raised-button color="primary" (click)="onView(qp)">View</button>
+            </td>
+        <td>
+        <button mat-raised-button color="primary" (click)="onEdit(qp)">Edit</button>
+        </td>
+        <td>
+        <button mat-raised-button color="primary" (click)="onDelete(qp._id)">Delete</button>
+        </td>
+       </tr>
+   
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<form #updateQualityPlanForm="ngForm" (ngSubmit)="onSubmit(updateQualityPlanForm)">
+
+    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="qualityPlanService.selectedQualityPlan._id">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Characterization of Context
+                </mat-panel-title>
+               
+            </mat-expansion-panel-header>
+   
+
+    <div class="example-container">
+        
+                <mat-grid-list cols="4" rowHeight="100px">
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" type="text" name="testObject" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testObject" matInput
+                                placeholder="Test Object" >
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" type="text" name="testItem" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testItem" matInput
+                                placeholder="Test Item">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" type="text" name="testSuite" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testSuite" matInput
+                                placeholder="Test Suite">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Test Level"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testLevels" name="testLevels">
+                                <mat-option *ngFor="let testLevel of testLevelsArray" value="{{testLevel}}">
+                                    {{testLevel}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Test Case Type"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testCaseType" name="testCaseType">
+                                <mat-option *ngFor="let tct of testCaseTypeArray" value="{{tct}}">
+                                    {{tct}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Development Phase"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.developmentPhase"
+                                name="developmentPhase">
+                                <mat-option *ngFor="let dp of developmentPhaseArray" value="{{dp}}">
+                                    {{dp}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" type="text" name="sourceTestingFramework" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.sourceTestingFramework" matInput
+                                placeholder="Source Testing Framework">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" type="text" name="targetTestingFramework" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.targetTestingFramework" matInput
+                                placeholder="Target Testing Framework">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+           
+
+    </div>
+</mat-expansion-panel>
+</mat-accordion>
+    <br>
+<br>
+<div class="example-container-three">
+    <mat-form-field>
+        <input type="text" name="qualityPlanName" #name="ngModel"
+            [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityPlanName" matInput
+            placeholder="Quality Plan Name">
+    </mat-form-field>
+
+</div>
+
+<br>
+<br>
+    <div class="example-container-three">
+        <button [disabled] = "buttonDisable" mat-raised-button color="warn" type="button" (click)="reset(qualityPlanForm)">Reset</button>
+        <br>
+        <button [disabled] = "buttonDisable" mat-raised-button color="primary" type="submit">Save Plan</button>
+    </div>
+
+
+</form>

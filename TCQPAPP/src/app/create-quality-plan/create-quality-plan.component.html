@@ -1,0 +1,216 @@
+<form #qualityPlanForm="ngForm" (ngSubmit)="onSubmit(qualityPlanForm)">
+
+    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="qualityPlanService.selectedQualityPlan._id">
+
+    <!-- <h1 class="header" align="center">Characterization of Context</h1>
+    <h2 class="header" align="center">Please input the Context Factors</h2> -->
+
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Characterization of Context
+                </mat-panel-title>
+                <mat-panel-description>
+                    Please input the Context Factors
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="example-container">
+
+
+
+                <mat-grid-list cols="4" rowHeight="100px">
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input type="text" name="testObject" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testObject" matInput
+                                placeholder="Test Object">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input type="text" name="testItem" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testItem" matInput
+                                placeholder="Test Item">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input type="text" name="testSuite" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testSuite" matInput
+                                placeholder="Test Suite">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+
+                            <mat-select matInput placeholder="Test Level"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testLevels" name="testLevels">
+                                <mat-option *ngFor="let testLevel of testLevelsArray" value="{{testLevel}}">
+                                    {{testLevel}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+
+                            <mat-select matInput placeholder="Test Case Type"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.testCaseType" name="testCaseType">
+                                <mat-option *ngFor="let tct of testCaseTypeArray" value="{{tct}}">
+                                    {{tct}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+
+                            <mat-select matInput placeholder="Development Phase"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.developmentPhase"
+                                name="developmentPhase">
+                                <mat-option *ngFor="let dp of developmentPhaseArray" value="{{dp}}">
+                                    {{dp}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+
+
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input type="text" name="sourceTestingFramework" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.sourceTestingFramework" matInput
+                                placeholder="Source Testing Framework">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+
+                        <mat-form-field>
+                            <input type="text" name="targetTestingFramework" #name="ngModel"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.targetTestingFramework" matInput
+                                placeholder="Target Testing Framework">
+                        </mat-form-field>
+
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+
+
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Identification of Information Needs
+                </mat-panel-title>
+                <mat-panel-description>
+                    Define Goals and Frame Questions
+                </mat-panel-description>
+            </mat-expansion-panel-header> -->
+            <div class="example-container">
+
+                    <mat-grid-list cols="5" rowHeight="100px">
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput id="objectOfStudy" [(ngModel)]="qualityPlanService.selectedQualityPlan.goalDimensions.objectOfStudy" name="objectOfStudy" placeholder="Object of Study">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput id="purpose" [(ngModel)]="qualityPlanService.selectedQualityPlan.goalDimensions.purpose" name="purpose" placeholder="Purpose">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                
+
+
+            </div>
+
+
+
+
+            <div class="example-container-three">
+                <button mat-raised-button class="btn btn-default" type="button" (click)="addGoal()">Add Goal</button>
+            </div>
+
+
+         <!-- </mat-expansion-panel>
+    </mat-accordion> -->
+
+    <div class="example-container">
+        <mat-grid-list cols="5" rowHeight="100px" *ngFor="let goal of qualityPlanService.selectedQualityPlan.goalArray; let i = index">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].objectOfStudy" name="{{qualityPlanService.selectedQualityPlan.goalArray[i].objectOfStudy}}" placeholder="Object of Study">
+                   </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].purpose" name="{{qualityPlanService.selectedQualityPlan.goalArray[i].purpose}}" placeholder="Purpose">
+                   </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+</div> 
+
+
+
+    <br>
+    <br>
+    <div class="example-container-three">
+        <mat-form-field>
+            <input type="text" name="qualityPlanName" #name="ngModel"
+                [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityPlanName" matInput
+                placeholder="Quality Plan Name">
+        </mat-form-field>
+
+    </div>
+
+    
+
+
+    <br>
+    <br>
+    <div class="example-container-three">
+        <button mat-raised-button color="warn" type="button" (click)="check()">Check</button>
+<br>
+        <button mat-raised-button color="warn" type="button" (click)="reset(qualityPlanForm)">Reset</button>
+        <br>
+        <button mat-raised-button color="primary" type="submit">Save Plan</button>
+    </div>
+
+
+</form>

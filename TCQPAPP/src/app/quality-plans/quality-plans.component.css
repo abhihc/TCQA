@@ -1,0 +1,26 @@
+.header{
+    font-weight: bold;
+    font-weight: 600;
+    margin-left: 80px;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .example-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 70%;
+  }
+
+  .example-container-three {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container-three > * {
+    width: 20%;
+  }
