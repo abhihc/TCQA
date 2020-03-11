@@ -1,0 +1,16 @@
+{
+    "QualityCharacteristics": [
+        {
+            "qualityCharacteristic": "Test Effectivity",
+            "percentage": 75
+        },
+        {
+            "qualityCharacteristic": "Usability",
+            "percentage": 80
+        },
+        {
+            "qualityCharacteristic": "Performance Efficiency",
+            "percentage": 80
+        }
+    ]
+}

@@ -3,6 +3,13 @@ import { NgForm } from '@angular/forms';
 import { QualityPlanService } from '../common/quality-plan.service';
 import { QualityPlan } from '../common/quality-plan.model';
 
+
+interface qualityAspect {
+  qc: string;
+  qbc: string[];
+}
+
+
 @Component({
   selector: 'app-quality-plans',
   templateUrl: './quality-plans.component.html',
@@ -11,16 +18,30 @@ import { QualityPlan } from '../common/quality-plan.model';
 })
 export class QualityPlansComponent implements OnInit {
 
-  
-  isReadOnly= true;
+
+  isReadOnly = true;
   buttonDisable = true;
+
+  testLevelsArray: any = ['Unit Testing', 'Integration Testing'];
+  testCaseTypeArray: any = ['Code-based Test Cases', 'Natural Language Test Cases'];
+  developmentPhaseArray: any = ['Requirements Specification', 'Design', 'Implementation', 'Testing', 'Maintenance', 'Migration'];
+  purposeArray: any = ['Quality Assessment', 'Quality Monitoring', 'Quality Prediction', 'Quality Control'];
+  qualityCharacteristicArray: any = ['Test Effectivity', 'Reliability', 'Usability', 'Performance Efficiency', 'Security', 'Maintainability', 'Portability', 'Reusability'];
+
+  qualityAspects: qualityAspect[] = [
+    {
+      qc: 'Test Effectivity',
+      qbc: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']
+
+    },
+    {
+      qc: 'Reliability',
+      qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
+    }
+  ];
 
   constructor(private qualityPlanService: QualityPlanService) { }
 
-  testLevelsArray: any = ['Unit Testing','Integration Testing'];
-  testCaseTypeArray: any = ['Code-based Test Cases','Natural Language Test Cases'];
-  developmentPhaseArray: any = ['Requirements Specification','Design','Implementation','Testing','Maintenance','Migration'];
-  purposeArray: any = ['Quality Assessment','Quality Monitoring','Quality Prediction','Quality Control'];
 
   ngOnInit() {
     this.qualityPlanList();
@@ -40,32 +61,28 @@ export class QualityPlansComponent implements OnInit {
       developmentPhase: "",
       sourceTestingFramework: "",
       targetTestingFramework: "",
-      // objectOfStudy: "",
-      // purpose: "",
-      // qualityFocus: "",
-      // viewpoint: "",
-      // context: "",
-      goalDimensions: [],
       goalArray: [],
-      question: "",
+      questionArray: [],
+      qualityFactorArray: [],
+      measurementArray: [],
       qualityPlanName: ""
     }
   }
 
   onSubmit(form: NgForm) {
-    if(form.value._id == ""){
-    this.qualityPlanService.postQualityPlan(form.value).subscribe((res) => {
-      this.reset(form);
-      this.qualityPlanList();
+    if (form.value._id == "") {
+      this.qualityPlanService.postQualityPlan(form.value).subscribe((res) => {
+        this.reset(form);
+        this.qualityPlanList();
 
-    })
+      })
     }
-    else{
+    else {
       this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
         this.reset(form);
         this.qualityPlanList();
-    })
-  }
+      })
+    }
 
   }
 
@@ -76,7 +93,7 @@ export class QualityPlansComponent implements OnInit {
     });
   }
 
-  onView(qp: QualityPlan){
+  onView(qp: QualityPlan) {
     this.isReadOnly = true;
     this.buttonDisable = true;
     this.qualityPlanService.selectedQualityPlan = qp;

@@ -1,0 +1,16 @@
+{
+  "QualitySubCharacteristics": [
+    {
+      "qualitySubCharacteristic": "Test Coverage",
+      "percentage": 80
+    },
+    {
+      "qualitySubCharacteristic": "Test Correctness",
+      "percentage": 70
+    },
+    {
+      "qualitySubCharacteristic": "Fault-Revealing Capability",
+      "percentage": 75
+    }
+  ]
+}

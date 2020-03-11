@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ChartsModule } from 'ng2-charts';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 //components
 import { NavbarComponent } from './navbar/navbar.component';
@@ -52,6 +54,7 @@ import { VisualizationComponent } from './visualization/visualization.component'
     MatTableModule,
     HttpClientModule,
     ChartsModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

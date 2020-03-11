@@ -49,15 +49,5 @@
   }
   
   .example-container-four > * {
-    width: 55%;
-  }
-
-  .example-container-five {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container-five > * {
-    width: 60%;
+    width: 70%;
   }

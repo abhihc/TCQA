@@ -8,18 +8,40 @@ export class QualityPlan {
     developmentPhase: string;
     sourceTestingFramework: string;
     targetTestingFramework: string;
-    // objectOfStudy: any;
-    // purpose: any;
-    // qualityFocus: string;
-    // viewpoint: string;
-    // context: string;
-    goalDimensions: any;
-    goalArray: Array<goalArray>;
-    question: string;
+    goalArray: Array<Goal>;
+    questionArray: Array<Question>;
+    qualityFactorArray: Array<QualityFactor>;
+    measurementArray: Array<Measurement>;
     qualityPlanName: string;
 }
 
-export class goalArray{
+export class Goal {
     objectOfStudy: string;
     purpose: string;
+    qualityFocus: string;
+    viewpoint: string;
+    context: string;
+}
+
+export class Question {
+    question: string;
+}
+
+
+
+export class QualityFactor {
+    qualityCharacteristic: string;
+    qualitySubCharacteristic: string;
+    qualityAttribute: string;
+
+}
+
+export class Measurement{
+    name: string;
+    informalDefinition: string;
+    measurementType: string;
+    measurementMethod: string;
+    scaleType: string;
+    scaleRange: string;
+    intepretation: string;
 }

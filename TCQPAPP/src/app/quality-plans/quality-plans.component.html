@@ -1,16 +1,16 @@
 <!-- <h1 class="header" align="center">Quality Plans</h1> -->
 <table align="center">
-   <thead>
-       <tr>
-           <th>Quality Plan</th>
-           <th></th>
-           <th></th>
-           <th></th>
-           <th></th>
-           <th>Operation</th>
-       </tr>
+    <thead>
+        <tr>
+            <th>Quality Plan</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Operation</th>
+        </tr>
     </thead>
-       <tr *ngFor="let qp of qualityPlanService.qualityPlans">
+    <tr *ngFor="let qp of qualityPlanService.qualityPlans">
         <td align="center">{{qp.qualityPlanName}}</td>
         <td></td>
         <td></td>
@@ -18,15 +18,15 @@
         <td></td>
         <td>
             <button mat-raised-button color="primary" (click)="onView(qp)">View</button>
-            </td>
-        <td>
-        <button mat-raised-button color="primary" (click)="onEdit(qp)">Edit</button>
         </td>
         <td>
-        <button mat-raised-button color="primary" (click)="onDelete(qp._id)">Delete</button>
+            <button mat-raised-button color="primary" (click)="onEdit(qp)">Edit</button>
         </td>
-       </tr>
-   
+        <td>
+            <button mat-raised-button color="primary" (click)="onDelete(qp._id)">Delete</button>
+        </td>
+    </tr>
+
 </table>
 
 <br>
@@ -43,12 +43,12 @@
                 <mat-panel-title>
                     Characterization of Context
                 </mat-panel-title>
-               
-            </mat-expansion-panel-header>
-   
 
-    <div class="example-container">
-        
+            </mat-expansion-panel-header>
+
+
+            <div class="example-container">
+
                 <mat-grid-list cols="4" rowHeight="100px">
 
                     <mat-grid-tile>
@@ -56,7 +56,7 @@
                         <mat-form-field>
                             <input [readonly]="isReadOnly" type="text" name="testObject" #name="ngModel"
                                 [(ngModel)]="qualityPlanService.selectedQualityPlan.testObject" matInput
-                                placeholder="Test Object" >
+                                placeholder="Test Object">
                         </mat-form-field>
 
                     </mat-grid-tile>
@@ -146,28 +146,170 @@
                     </mat-grid-tile>
                 </mat-grid-list>
 
-           
+
+
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Identification of Information Needs
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <div class="example-container">
+                <mat-grid-list cols="5" rowHeight="100px"
+                    *ngFor="let goal of qualityPlanService.selectedQualityPlan.goalArray; let i = index">
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].objectOfStudy"
+                                name="{{qualityPlanService.selectedQualityPlan.goalArray[i].objectOfStudy}}"
+                                placeholder="Object of Study">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Purpose"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].purpose"
+                                name="{{qualityPlanService.selectedQualityPlan.goalArray[i].purpose}}">
+                                <mat-option *ngFor="let pa of purposeArray" value="{{pa}}">
+                                    {{pa}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].qualityFocus"
+                                name="{{qualityPlanService.selectedQualityPlan.goalArray[i].qualityFocus}}"
+                                placeholder="Quality Focus">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].viewpoint"
+                                name="{{qualityPlanService.selectedQualityPlan.goalArray[i].viewpoint}}"
+                                placeholder="Viewpoint">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].context"
+                                name="{{qualityPlanService.selectedQualityPlan.goalArray[i].context}}"
+                                placeholder="Context">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+            </div>
+
+            <div class="example-container">
+                <mat-grid-list cols="5" rowHeight="100px"
+                    *ngFor="let question of qualityPlanService.selectedQualityPlan.questionArray; let i = index">
+                    <mat-grid-tile align="center">
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.questionArray[i].question"
+                                name="{{qualityPlanService.selectedQualityPlan.questionArray[i].question}}"
+                                placeholder="Question">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Definition of Quality Understanding
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <div class="example-container">
+                <mat-grid-list cols="5" rowHeight="100px"
+                    *ngFor="let qualityFactor of qualityPlanService.selectedQualityPlan.qualityFactorArray; let i = index">
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Quality Characteristic"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualityCharacteristic"
+                                name="{{qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualityCharacteristic}}">
+                                <mat-option *ngFor="let qc of qualityCharacteristicArray" value="{{qc}}">
+                                    {{qc}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Quality Sub Characteristic"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualitySubCharacteristic"
+                                name="{{qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualitySubCharacteristic}}">
+                                <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
+                                    <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
+                                        {{qualitySC}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualityAttribute"
+                                name="{{qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualityAttribute}}"
+                                placeholder="Quality Attribute">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+
+                </mat-grid-list>
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+
+
+
+
+    <br>
+    <br>
+    <div class="example-container-three">
+        <mat-form-field>
+            <input type="text" name="qualityPlanName" #name="ngModel"
+                [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityPlanName" matInput
+                placeholder="Quality Plan Name">
+        </mat-form-field>
 
     </div>
-</mat-expansion-panel>
-</mat-accordion>
+
     <br>
-<br>
-<div class="example-container-three">
-    <mat-form-field>
-        <input type="text" name="qualityPlanName" #name="ngModel"
-            [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityPlanName" matInput
-            placeholder="Quality Plan Name">
-    </mat-form-field>
-
-</div>
-
-<br>
-<br>
+    <br>
     <div class="example-container-three">
-        <button [disabled] = "buttonDisable" mat-raised-button color="warn" type="button" (click)="reset(qualityPlanForm)">Reset</button>
+        <button [disabled]="buttonDisable" mat-raised-button color="warn" type="button"
+            (click)="reset(qualityPlanForm)">Reset</button>
         <br>
-        <button [disabled] = "buttonDisable" mat-raised-button color="primary" type="submit">Save Plan</button>
+        <button [disabled]="buttonDisable" mat-raised-button color="primary" type="submit">Save Plan</button>
     </div>
 
 

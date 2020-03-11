@@ -1,0 +1,26 @@
+{
+    "QualitySubCharacteristics": [
+        {
+            "qualitySubCharacteristic": "Test Coverage",
+            "percentage": 80
+        },
+        {
+            "qualitySubCharacteristic": "Test Correctness",
+            "percentage": 70
+        },
+        {
+            "qualitySubCharacteristic": "Understandability",
+            "percentage": 75
+        },
+{
+            "qualitySubCharacteristic": "Test Evaluability",
+            "percentage": 85
+        },
+{
+            "qualitySubCharacteristic": "Time Behaviour",
+            "percentage": 80
+        }
+
+
+    ]
+}

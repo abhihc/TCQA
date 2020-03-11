@@ -24,7 +24,6 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    console.log(req.body.goalArray);
     var quality = new QualityPlan({
         testObject: req.body.testObject,
         testItem: req.body.testItem,
@@ -35,6 +34,9 @@ router.post('/', (req, res) => {
         sourceTestingFramework: req.body.sourceTestingFramework,
         targetTestingFramework: req.body.targetTestingFramework,
         goalArray: req.body.goalArray,
+        questionArray: req.body.questionArray,
+        qualityFactorArray: req.body.qualityFactorArray,
+        measurementArray: req.body.measurementArray,
         qualityPlanName: req.body.qualityPlanName,      
     });
     console.log(quality)
@@ -57,7 +59,10 @@ router.put('/:id', (req, res) => {
         developmentPhase: req.body.developmentPhase,
         sourceTestingFramework: req.body.sourceTestingFramework,
         targetTestingFramework: req.body.targetTestingFramework,
-        //goalArray: req.body.goalArray,
+        goalArray: req.body.goalArray,
+        questionArray: req.body.questionArray,
+        qualityFactorArray: req.body.qualityFactorArray,
+        measurementArray: req.body.measurementArray,
         qualityPlanName: req.body.qualityPlanName,
     }
     QualityPlan.findByIdAndUpdate(req.params.id, { $set: quality }, { new: true }, (err, doc) => {
