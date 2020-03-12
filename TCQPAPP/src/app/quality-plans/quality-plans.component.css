@@ -24,3 +24,12 @@
   .example-container-three > * {
     width: 20%;
   }
+  .example-container-four {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container-four > * {
+    width: 70%;
+  }

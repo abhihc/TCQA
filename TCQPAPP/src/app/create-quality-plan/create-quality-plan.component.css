@@ -29,7 +29,7 @@
   }
   
   .example-container-two > * {
-    width: 25%;
+    width: 90%;
   }
 
   .example-container-three {
@@ -50,4 +50,14 @@
   
   .example-container-four > * {
     width: 70%;
+  }
+
+  .example-container-five {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container-five > * {
+    width: 10%;
   }

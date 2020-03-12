@@ -3,17 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
-
-
-
 import { QualityPlanService } from '../common/quality-plan.service';
-import { QualityPlan, QualityFactor } from '../common/quality-plan.model';
+import { QualityPlan, QualityFactor, QualityPlanAttribute } from '../common/quality-plan.model';
 
 interface qualityAspect {
   qc: string;
   qbc: string[];
 }
-
 
 @Component({
   selector: 'app-create-quality-plan',
@@ -29,28 +25,7 @@ export class CreateQualityPlanComponent implements OnInit {
   qualityFactorArray: FormArray;
   measurementArray: FormArray;
 
-  testLevelsArray: any = ['Unit Testing', 'Integration Testing'];
-  testCaseTypeArray: any = ['Code-based Test Cases', 'Natural Language Test Cases'];
-  developmentPhaseArray: any = ['Requirements Specification', 'Design', 'Implementation', 'Testing', 'Maintenance', 'Migration'];
-  purposeArray: any = ['Quality Assessment', 'Quality Monitoring', 'Quality Prediction', 'Quality Control'];
-  qualityCharacteristicArray: any = ['Test Effectivity', 'Reliability', 'Usability', 'Performance Efficiency', 'Security', 'Maintainability', 'Portability', 'Reusability'];
-  measurementTypeArray: any = ['Subjective','Objective'];
-  scaleTypeArray: any = ['Nominal','Ordinal','Absolute','Ratio'];
-
-  qualityAspects: qualityAspect[] = [
-    {
-      qc: 'Test Effectivity',
-      qbc: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']
-
-    },
-    {
-      qc: 'Reliability',
-      qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
-    }
-  ];
-
-  // readonly qualityAspect = [{type: 'Test Effectivity', values: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']}, {type: 'Reliability', values: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']}];
-
+  qpa = new QualityPlanAttribute();
 
   constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder) {
   }
@@ -110,7 +85,7 @@ export class CreateQualityPlanComponent implements OnInit {
     measurementMethod: '',
     scaleType: '',
     scaleRange: '',
-    intepretation: ''
+    interpretation: ''
     })
   }
 
@@ -147,9 +122,17 @@ export class CreateQualityPlanComponent implements OnInit {
     this.goalArray.push(this.createGoal());
   }
 
+  removeGoal(index){
+    this.goalArray.removeAt(index);
+  }
+
   addQuestion() {
     this.questionArray = this.qualityForm.get('questionArray') as FormArray;
     this.questionArray.push(this.createQuestion());
+  }
+
+  removeQuestion(index){
+    this.questionArray.removeAt(index);
   }
 
   addQualityFactor() {
@@ -157,18 +140,40 @@ export class CreateQualityPlanComponent implements OnInit {
     this.qualityFactorArray.push(this.createQualityFactor());
   }
 
+  removeQualityFactor(index){
+    this.qualityFactorArray.removeAt(index);
+  }
+
   addMeasurement(){
     this.measurementArray = this.qualityForm.get('measurementArray') as FormArray;
     this.measurementArray.push(this.createMeasurement());
   }
+
+  removeMeasurement(index){
+    this.measurementArray.removeAt(index);
+  }
+
+  qualityAspects: qualityAspect[] = [
+    {
+      qc: 'Test Effectivity',
+      qbc: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']
+
+    },
+    {
+      qc: 'Reliability',
+      qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
+    },
+    {
+      qc: 'Usability',
+      qbc: ['Understandability', 'Learnability', 'Operability', 'Test Evaluability']
+    }
+
+  ];
 
   // getQualityCharacteristics(type){
   //   const select = this.qualityAspect.find(_ => _.type == type);
   //   return select ? select.values : select;
 
   // }
-
-  check() {
-  }
 
 }

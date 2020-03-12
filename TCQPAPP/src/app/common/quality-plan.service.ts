@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs'; 
-
-
-
+import { Observable } from 'rxjs';
 import { QualityPlan } from './quality-plan.model';
 
 
@@ -13,23 +10,23 @@ export class QualityPlanService {
   qualityPlans: QualityPlan[];
   readonly baseURL = 'http://localhost:3000/qualityPlans';
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  postQualityPlan(qp : QualityPlan){
+  postQualityPlan(qp: QualityPlan) {
     console.log(qp)
     return this.http.post(this.baseURL, qp);
   }
 
-  getQualityPlanList(){
+  getQualityPlanList() {
     return this.http.get(this.baseURL);
   }
 
-  putQualityPlan(qp : QualityPlan){
+  putQualityPlan(qp: QualityPlan) {
     return this.http.put(this.baseURL + `/${qp._id}`, qp);
   }
 
-  deleteQualityPlan(_id: string){
-    return this.http.delete(this.baseURL + `/${_id}` );
+  deleteQualityPlan(_id: string) {
+    return this.http.delete(this.baseURL + `/${_id}`);
   }
 
 }

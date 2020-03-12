@@ -1,4 +1,3 @@
-<!-- <h1 class="header" align="center">Quality Plans</h1> -->
 <table align="center">
     <thead>
         <tr>
@@ -87,7 +86,7 @@
 
                             <mat-select [disabled]="isReadOnly" matInput placeholder="Test Level"
                                 [(ngModel)]="qualityPlanService.selectedQualityPlan.testLevels" name="testLevels">
-                                <mat-option *ngFor="let testLevel of testLevelsArray" value="{{testLevel}}">
+                                <mat-option *ngFor="let testLevel of qpa2.testLevelsArray" value="{{testLevel}}">
                                     {{testLevel}}
                                 </mat-option>
                             </mat-select>
@@ -101,7 +100,7 @@
 
                             <mat-select [disabled]="isReadOnly" matInput placeholder="Test Case Type"
                                 [(ngModel)]="qualityPlanService.selectedQualityPlan.testCaseType" name="testCaseType">
-                                <mat-option *ngFor="let tct of testCaseTypeArray" value="{{tct}}">
+                                <mat-option *ngFor="let tct of qpa2.testCaseTypeArray" value="{{tct}}">
                                     {{tct}}
                                 </mat-option>
                             </mat-select>
@@ -117,7 +116,7 @@
                             <mat-select [disabled]="isReadOnly" matInput placeholder="Development Phase"
                                 [(ngModel)]="qualityPlanService.selectedQualityPlan.developmentPhase"
                                 name="developmentPhase">
-                                <mat-option *ngFor="let dp of developmentPhaseArray" value="{{dp}}">
+                                <mat-option *ngFor="let dp of qpa2.developmentPhaseArray" value="{{dp}}">
                                     {{dp}}
                                 </mat-option>
                             </mat-select>
@@ -160,7 +159,7 @@
                 </mat-panel-title>
 
             </mat-expansion-panel-header>
-
+            <h2 align="center">Goals</h2>
             <div class="example-container">
                 <mat-grid-list cols="5" rowHeight="100px"
                     *ngFor="let goal of qualityPlanService.selectedQualityPlan.goalArray; let i = index">
@@ -178,7 +177,7 @@
                             <mat-select [disabled]="isReadOnly" matInput placeholder="Purpose"
                                 [(ngModel)]="qualityPlanService.selectedQualityPlan.goalArray[i].purpose"
                                 name="{{qualityPlanService.selectedQualityPlan.goalArray[i].purpose}}">
-                                <mat-option *ngFor="let pa of purposeArray" value="{{pa}}">
+                                <mat-option *ngFor="let pa of qpa2.purposeArray" value="{{pa}}">
                                     {{pa}}
                                 </mat-option>
                             </mat-select>
@@ -214,19 +213,16 @@
 
                 </mat-grid-list>
             </div>
+            <h2 align="center">Questions</h2>
 
-            <div class="example-container">
-                <mat-grid-list cols="5" rowHeight="100px"
-                    *ngFor="let question of qualityPlanService.selectedQualityPlan.questionArray; let i = index">
-                    <mat-grid-tile align="center">
-                        <mat-form-field>
+            <div class="example-container-four" *ngFor="let question of qualityPlanService.selectedQualityPlan.questionArray; let i = index">
+
+                        <mat-form-field appearance="fill">
                             <input [readonly]="isReadOnly" matInput
                                 [(ngModel)]="qualityPlanService.selectedQualityPlan.questionArray[i].question"
                                 name="{{qualityPlanService.selectedQualityPlan.questionArray[i].question}}"
                                 placeholder="Question">
                         </mat-form-field>
-                    </mat-grid-tile>
-                </mat-grid-list>
             </div>
 
 
@@ -250,7 +246,7 @@
                             <mat-select [disabled]="isReadOnly" matInput placeholder="Quality Characteristic"
                                 [(ngModel)]="qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualityCharacteristic"
                                 name="{{qualityPlanService.selectedQualityPlan.qualityFactorArray[i].qualityCharacteristic}}">
-                                <mat-option *ngFor="let qc of qualityCharacteristicArray" value="{{qc}}">
+                                <mat-option *ngFor="let qc of qpa2.qualityCharacteristicArray" value="{{qc}}">
                                     {{qc}}
                                 </mat-option>
                             </mat-select>
@@ -287,8 +283,79 @@
         </mat-expansion-panel>
     </mat-accordion>
 
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Definition of Measurements
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <div class="example-container-four" *ngFor="let qualityFactor of qualityPlanService.selectedQualityPlan.measurementArray; let i = index">
+    
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.measurementArray[i].name"
+                                name="{{qualityPlanService.selectedQualityPlan.measurementArray[i].name}}"
+                                placeholder="Name">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.measurementArray[i].informalDefinition"
+                                name="{{qualityPlanService.selectedQualityPlan.measurementArray[i].informalDefinition}}"
+                                placeholder="Informal Definition">
+                                <textarea matInput></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Measurement Type"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.measurementArray[i].measurementType"
+                                name="{{qualityPlanService.selectedQualityPlan.measurementArray[i].measurementType}}">
+                                <mat-option *ngFor="let mt of qpa2.measurementTypeArray" value="{{mt}}">
+                                    {{mt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.measurementArray[i].measurementMethod"
+                                name="{{qualityPlanService.selectedQualityPlan.measurementArray[i].measurementMethod}}"
+                                placeholder="Measurement Method">
+                                <textarea matInput></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-select [disabled]="isReadOnly" matInput placeholder="Scale Type"
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.measurementArray[i].scaleType"
+                                name="{{qualityPlanService.selectedQualityPlan.measurementArray[i].scaleType}}">
+                                <mat-option *ngFor="let st of qpa2.scaleTypeArray" value="{{st}}">
+                                    {{st}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.measurementArray[i].scaleRange"
+                                name="{{qualityPlanService.selectedQualityPlan.measurementArray[i].scaleRange}}"
+                                placeholder="Scale Range">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input [readonly]="isReadOnly" matInput
+                                [(ngModel)]="qualityPlanService.selectedQualityPlan.measurementArray[i].interpretation"
+                                name="{{qualityPlanService.selectedQualityPlan.measurementArray[i].interpretation}}"
+                                placeholder="Interpretation">
+                        </mat-form-field>
 
 
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
 
 
 

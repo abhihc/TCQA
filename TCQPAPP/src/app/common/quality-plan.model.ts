@@ -36,12 +36,22 @@ export class QualityFactor {
 
 }
 
-export class Measurement{
+export class Measurement {
     name: string;
     informalDefinition: string;
     measurementType: string;
     measurementMethod: string;
     scaleType: string;
     scaleRange: string;
-    intepretation: string;
+    interpretation: string;
+}
+
+export class QualityPlanAttribute {
+    testLevelsArray: any = ['Unit Testing', 'Integration Testing'];
+    testCaseTypeArray: any = ['Code-based Test Cases', 'Natural Language Test Cases'];
+    developmentPhaseArray: any = ['Requirements Specification', 'Design', 'Implementation', 'Testing', 'Maintenance', 'Migration'];
+    purposeArray: any = ['Quality Assessment', 'Quality Monitoring', 'Quality Prediction', 'Quality Control'];
+    qualityCharacteristicArray: any = ['Test Effectivity', 'Reliability', 'Usability', 'Performance Efficiency', 'Security', 'Maintainability', 'Portability', 'Reusability'];
+    measurementTypeArray: any = ['Subjective', 'Objective'];
+    scaleTypeArray: any = ['Nominal', 'Ordinal', 'Absolute', 'Ratio'];
 }

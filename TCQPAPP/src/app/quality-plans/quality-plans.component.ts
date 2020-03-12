@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { QualityPlanService } from '../common/quality-plan.service';
-import { QualityPlan } from '../common/quality-plan.model';
-
+import { QualityPlan,QualityPlanAttribute } from '../common/quality-plan.model';
 
 interface qualityAspect {
   qc: string;
   qbc: string[];
 }
-
 
 @Component({
   selector: 'app-quality-plans',
@@ -22,26 +20,9 @@ export class QualityPlansComponent implements OnInit {
   isReadOnly = true;
   buttonDisable = true;
 
-  testLevelsArray: any = ['Unit Testing', 'Integration Testing'];
-  testCaseTypeArray: any = ['Code-based Test Cases', 'Natural Language Test Cases'];
-  developmentPhaseArray: any = ['Requirements Specification', 'Design', 'Implementation', 'Testing', 'Maintenance', 'Migration'];
-  purposeArray: any = ['Quality Assessment', 'Quality Monitoring', 'Quality Prediction', 'Quality Control'];
-  qualityCharacteristicArray: any = ['Test Effectivity', 'Reliability', 'Usability', 'Performance Efficiency', 'Security', 'Maintainability', 'Portability', 'Reusability'];
-
-  qualityAspects: qualityAspect[] = [
-    {
-      qc: 'Test Effectivity',
-      qbc: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']
-
-    },
-    {
-      qc: 'Reliability',
-      qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
-    }
-  ];
+  qpa2 = new QualityPlanAttribute();
 
   constructor(private qualityPlanService: QualityPlanService) { }
-
 
   ngOnInit() {
     this.qualityPlanList();
@@ -111,4 +92,16 @@ export class QualityPlansComponent implements OnInit {
     this.qualityPlanList();
     this.reset();
   }
+
+  qualityAspects: qualityAspect[] = [
+    {
+      qc: 'Test Effectivity',
+      qbc: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']
+
+    },
+    {
+      qc: 'Reliability',
+      qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
+    }
+  ];
 }
