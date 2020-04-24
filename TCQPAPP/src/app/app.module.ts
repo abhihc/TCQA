@@ -1,30 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule,MatToolbarModule,MatFormFieldModule,MatInputModule, MatSelectModule, MatGridListModule, MatTableModule, MatExpansionModule, MatIconModule, MatDialogModule } from '@angular/material';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 
 
 //components
-import { NavbarComponent } from './navbar/navbar.component';
-import { CreateQualityPlanComponent } from './create-quality-plan/create-quality-plan.component';
-import { QualityPlansComponent } from './quality-plans/quality-plans.component';
-import { VisualizationComponent } from './visualization/visualization.component';
-
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CreateQualityPlanComponent } from './components/create-quality-plan/create-quality-plan.component';
+import { QualityPlansComponent } from './components/quality-plans/quality-plans.component';
+import { ResultsViewComponent } from './components/results-view/results-view.component';
+import { ResultsListComponent } from './components/results-list/results-list.component';
+import { ResultsAddComponent } from './components/results-add/results-add.component';
 
 //services
-//import { QualityPlanService } from './common/quality-plan.service';
-
+import { QualityPlanService } from './common/quality-plan.service';
+import { ApiService } from './common/api.service';
 
 
 
@@ -34,7 +35,9 @@ import { VisualizationComponent } from './visualization/visualization.component'
     NavbarComponent,
     CreateQualityPlanComponent,
     QualityPlansComponent,
-    VisualizationComponent
+    ResultsViewComponent,
+    ResultsListComponent,
+    ResultsAddComponent
   ],
   imports: [
     BrowserModule,
@@ -53,10 +56,11 @@ import { VisualizationComponent } from './visualization/visualization.component'
     ReactiveFormsModule,
     MatTableModule,
     HttpClientModule,
-    ChartsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgbModalModule,
+    NgxChartsModule
   ],
-  providers: [],
+  providers: [QualityPlanService,ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
