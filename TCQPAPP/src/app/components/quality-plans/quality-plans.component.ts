@@ -111,7 +111,7 @@ export class QualityPlansComponent implements OnInit {
     }
   }
 
-  submit(form: NgForm) {
+  onSubmit(form: NgForm) {
     console.log(form.value);
     form.value._id = this.data._id;
     
