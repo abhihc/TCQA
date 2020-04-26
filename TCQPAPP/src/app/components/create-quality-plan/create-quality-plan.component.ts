@@ -170,10 +170,5 @@ export class CreateQualityPlanComponent implements OnInit {
 
   ];
 
-  // getQualityCharacteristics(type){
-  //   const select = this.qualityAspect.find(_ => _.type == type);
-  //   return select ? select.values : select;
-
-  // }
 
 }

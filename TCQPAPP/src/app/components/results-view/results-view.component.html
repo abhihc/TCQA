@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 5px;">
-    <div class="row ml-5">
-     <div class="col">
+    <div class="row">
+     
             <div class="col-6 chart">
             <ngx-charts-bar-vertical
                     [results]="dataChart1"
@@ -20,8 +20,7 @@
                     (deactivate)="onDeactivate($event)">
             </ngx-charts-bar-vertical>
     </div>
-        </div>
-    <div class="col">
+     
         <div class="col-6 chart">
             <ngx-charts-bar-vertical
                     [results]="dataChart2"
@@ -40,11 +39,11 @@
                     (activate)="onInteractChart2($event)"
                     (deactivate)="onDeactivate($event)">
             </ngx-charts-bar-vertical>
+    
     </div>
-    </div>
-
+</div>
     <div class="col">
-        <div class="col-6 chart">
+        <div class="col-8 chart">
             <ngx-charts-bar-vertical
                     [results]="dataChart3"
                     [legend]="showLegend"
@@ -63,6 +62,5 @@
                     (deactivate)="onDeactivate($event)">
             </ngx-charts-bar-vertical>
         </div>
-    </div>
-</div>
+
 </div>

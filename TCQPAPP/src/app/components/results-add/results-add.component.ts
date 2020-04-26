@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./results-add.component.css']
 })
 export class ResultsAddComponent implements OnInit {
-  @ViewChild('fileInput')
+  @ViewChild('nameInput', {static: false})
   fileUploadElement: ElementRef;
 
   submitted = false;

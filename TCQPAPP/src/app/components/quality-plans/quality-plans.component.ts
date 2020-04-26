@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan,QualityPlanAttribute } from './../../common/quality-plan.model';
 
@@ -16,17 +17,77 @@ interface qualityAspect {
 })
 export class QualityPlansComponent implements OnInit {
 
+  data = new QualityPlan();
 
   isReadOnly = true;
   buttonDisable = true;
 
-  qpa2 = new QualityPlanAttribute();
+  editForm: FormGroup;
+  goalArray: FormArray;
+  questionArray: FormArray;
+  qualityFactorArray: FormArray;
+  measurementArray: FormArray;
 
-  constructor(private qualityPlanService: QualityPlanService) { }
+  qpa = new QualityPlanAttribute();
+
+  constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder) { }
 
   ngOnInit() {
     this.qualityPlanList();
     this.reset();
+
+    this.editForm = this.formbuilder.group({
+      _id: [''],
+      testObject: [''],
+      testItem: [''],
+      testSuite: [''],
+      testLevels: [''],
+      testCaseType: [''],
+      developmentPhase: [''],
+      sourceTestingFramework: [''],
+      targetTestingFramework: [''],
+      qualityPlanName: [''],
+      goalArray: this.formbuilder.array([this.createGoal()]),
+      questionArray: this.formbuilder.array([this.createQuestion()]),
+      qualityFactorArray: this.formbuilder.array([this.createQualityFactor()]),
+      measurementArray: this.formbuilder.array([this.createMeasurement()])
+    })
+  }
+
+  createGoal(): FormGroup {
+    return this.formbuilder.group({
+      objectOfStudy: '',
+      purpose: '',
+      qualityFocus: '',
+      viewpoint: '',
+      context: ''
+    })
+  }
+
+  createQuestion(): FormGroup {
+    return this.formbuilder.group({
+      question: ''
+    })
+  }
+
+  createQualityFactor(): FormGroup {
+    return this.formbuilder.group({
+      qualityCharacteristic: '',
+      qualitySubCharacteristic: '',
+      qualityAttribute: ''
+    })
+  }
+
+  createMeasurement(): FormGroup{
+    return this.formbuilder.group({
+    name: '',
+    informalDefinition: '',
+    measurementType: '',
+    measurementMethod: '',
+    scaleType: '',
+    scaleRange: '',
+    interpretation: ''
+    })
   }
 
   reset(form?: NgForm) {
@@ -50,20 +111,15 @@ export class QualityPlansComponent implements OnInit {
     }
   }
 
-  onSubmit(form: NgForm) {
-    if (form.value._id == "") {
-      this.qualityPlanService.postQualityPlan(form.value).subscribe((res) => {
-        this.reset(form);
-        this.qualityPlanList();
-
-      })
-    }
-    else {
+  submit(form: NgForm) {
+    console.log(form.value);
+    form.value._id = this.data._id;
+    
       this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
         this.reset(form);
         this.qualityPlanList();
       })
-    }
+    
 
   }
 
@@ -77,13 +133,14 @@ export class QualityPlansComponent implements OnInit {
   onView(qp: QualityPlan) {
     this.isReadOnly = true;
     this.buttonDisable = true;
-    this.qualityPlanService.selectedQualityPlan = qp;
+    this.data = qp;
   }
 
   onEdit(qp: QualityPlan) {
     this.isReadOnly = false;
     this.buttonDisable = false;
-    this.qualityPlanService.selectedQualityPlan = qp;
+    this.data = qp;
+    
   }
 
   onDelete(_id: string) {
