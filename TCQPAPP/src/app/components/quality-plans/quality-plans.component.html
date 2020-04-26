@@ -1,48 +1,44 @@
 <table align="center">
     <thead>
         <tr>
-            <th>Quality Plan</th>
+            <th scope="col center">Quality Plan Name</th>
             <th></th>
             <th></th>
-            <th></th>
-            <th></th>
-            <th>Operation</th>
+
+            <th scope="col center">Operation</th>
         </tr>
     </thead>
-    <tr *ngFor="let qp of qualityPlanService.qualityPlans">
-        <td align="center">{{qp.qualityPlanName}}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <button mat-raised-button color="primary" (click)="onView(qp)">View</button>
-        </td>
-        <td>
-            <button mat-raised-button color="primary" (click)="onEdit(qp)">Edit</button>
-        </td>
-        <td>
-            <button mat-raised-button color="primary" (click)="onDelete(qp._id)">Delete</button>
-        </td>
-    </tr>
-
+    <tbody>
+        <tr *ngFor="let qp of qualityPlanService.qualityPlans">
+            <td>{{qp.qualityPlanName}}</td>
+            <td></td>
+            <td></td>
+            <td>
+                <button mat-raised-button color="primary" (click)="onView(qp)">View</button>
+            </td>
+            <td>
+                <button mat-raised-button color="primary" (click)="onEdit(qp)">Edit</button>
+            </td>
+            <td>
+                <button mat-raised-button color="primary" (click)="onDelete(qp._id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
 </table>
 
 <br>
 
-
 <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
-
     <br>
-
     <div class="example-container-three">
         <mat-form-field>
-            <input [readonly]="isReadOnly" type="text" class="form-control" id="qualityPlanName" formControlName="qualityPlanName" matInput
-                placeholder="Quality Plan Name" value="{{data.qualityPlanName}}">
+            <input [readonly]="isReadOnly" type="text" class="form-control" id="qualityPlanName"
+                formControlName="qualityPlanName" matInput placeholder="Quality Plan Name"
+                value="{{data.qualityPlanName}}">
 
         </mat-form-field>
     </div>
-<br>
+    <br>
     <!-- <mat-accordion>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -54,90 +50,149 @@
                 </mat-panel-description>
             </mat-expansion-panel-header> -->
 
-            <div class="example-container">
+    <div class="example-container">
 
-                <mat-grid-list cols="4" rowHeight="100px">
+        <mat-grid-list cols="4" rowHeight="100px">
 
-                    <mat-grid-tile>
-                        <mat-form-field>
-                            <input [readonly]="isReadOnly" type="text" class="form-control" id="testObject" formControlName="testObject"
-                                matInput placeholder="Test Object" value="{{data.testObject}}">
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input [readonly]="isReadOnly" type="text" class="form-control" id="testObject"
+                        formControlName="testObject" matInput placeholder="Test Object" value="{{data.testObject}}">
+                </mat-form-field>
+            </mat-grid-tile>
 
-                    <mat-grid-tile>
-                        <mat-form-field>
-                            <input [readonly]="isReadOnly" type="text" class="form-control" id="testItem" formControlName="testItem" matInput
-                                placeholder="Test Item" value="{{data.testObject}}">
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input [readonly]="isReadOnly" type="text" class="form-control" id="testItem"
+                        formControlName="testItem" matInput placeholder="Test Item" value="{{data.testItem}}">
+                </mat-form-field>
+            </mat-grid-tile>
 
-                 <!--    <mat-grid-tile>
-                        <mat-form-field>
-                            <input [readonly]="isReadOnly" type="text" class="form-control" id="testSuite" formControlName="testSuite" matInput
-                                placeholder="Test Suite" value="{{data.testObject}}">
-                        </mat-form-field>
-                    </mat-grid-tile> -->
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input [readonly]="isReadOnly" type="text" class="form-control" id="testSuite"
+                        formControlName="testSuite" matInput placeholder="Test Suite" value="{{data.testSuite}}">
+                </mat-form-field>
+            </mat-grid-tile>
 
-                    <!-- <mat-grid-tile>
-                        <mat-form-field>
-                            <mat-select matInput placeholder="Test Level" class="form-control" id="testLevels"
-                                formControlName="testLevels" value="{{data.testLevels}}">
-                                <mat-option *ngFor="let testLevel of qpa.testLevelsArray" value="{{testLevel}}">
-                                    {{testLevel}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </mat-grid-tile> -->
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-select matInput placeholder="Test Level" class="form-control" id="testLevels"
+                        formControlName="testLevels" value="{{data.testLevels}}">
+                        <mat-option *ngFor="let testLevel of qpa.testLevelsArray" value="{{testLevel}}">
+                            {{testLevel}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
 
-                    <!-- <mat-grid-tile>
-                        <mat-form-field>
-                            <mat-select [readonly]="isReadOnly" matInput placeholder="Test Case Type" class="form-control" id="testCaseType"
-                                formControlName="testCaseType">
-                                <mat-option *ngFor="let tct of qpa.testCaseTypeArray" value="{{tct}}">
-                                    {{tct}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-select matInput placeholder="Test Case Type" class="form-control" id="testCaseType"
+                        formControlName="testCaseType" value="{{data.testCaseType}}">
+                        <mat-option *ngFor="let tct of qpa.testCaseTypeArray" value="{{tct}}">
+                            {{tct}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
 
-                    <mat-grid-tile>
-                        <mat-form-field>
-                            <mat-select [readonly]="isReadOnly" matInput placeholder="Development Phase" class="form-control"
-                                id="developmentPhase" formControlName="developmentPhase">
-                                <mat-option *ngFor="let dpa of qpa.developmentPhaseArray" value="{{dpa}}">
-                                    {{dpa}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-select matInput placeholder="Development Phase" class="form-control" id="developmentPhase"
+                        formControlName="developmentPhase" value="{{data.developmentPhase}}">
+                        <mat-option *ngFor="let dpa of qpa.developmentPhaseArray" value="{{dpa}}">
+                            {{dpa}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
 
-                    <mat-grid-tile>
-                        <mat-form-field>
-                            <input [readonly]="isReadOnly" type="text" class="form-control" id="sourceTestingFramework"
-                                formControlName="sourceTestingFramework" matInput
-                                placeholder="Source Testing Framework">
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input [readonly]="isReadOnly" type="text" class="form-control" id="sourceTestingFramework"
+                        formControlName="sourceTestingFramework" matInput placeholder="Source Testing Framework"
+                        value="{{data.sourceTestingFramework}}">
+                </mat-form-field>
+            </mat-grid-tile>
 
-                    <mat-grid-tile>
-                        <mat-form-field>
-                            <input [readonly]="isReadOnly" type="text" class="form-control" id="targetTestingFramework"
-                                formControlName="targetTestingFramework" matInput
-                                placeholder="Target Testing Framework">
-                        </mat-form-field>
-                    </mat-grid-tile> -->
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input [readonly]="isReadOnly" type="text" class="form-control" id="targetTestingFramework"
+                        formControlName="targetTestingFramework" matInput placeholder="Target Testing Framework"
+                        value="{{data.sourceTestingFramework}}">
+                </mat-form-field>
+            </mat-grid-tile>
 
-                </mat-grid-list>
-            </div>
-        <!-- </mat-expansion-panel>
+        </mat-grid-list>
+    </div>
+    <!-- </mat-expansion-panel>
     </mat-accordion> -->
+
+    <div class="example-container-two" formArrayName="goalArray"
+        *ngFor="let item of editForm.get('goalArray').controls; let i=index;">
+
+        <mat-grid-list cols="6" rowHeight="100px">
+            <div [formGroupName]="i">
+
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <input matInput placeholder="Object of Study" class="form-control"
+                            formControlName="objectOfStudy" id="objectOfStudy" value="{{data.objectOfStudy}}">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-select matInput placeholder="Purpose" class="form-control" id="purpose"
+                            formControlName="purpose" value="{{data.purpose}}">
+                            <mat-option *ngFor="let pa of qpa.purposeArray" value="{{pa}}">
+                                {{pa}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <input class="form-control" formControlName="qualityFocus"
+                            id="qualityFocus" matInput placeholder="Quality Focus" value="{{data.qualityFocus}}">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <!-- <mat-grid-tile>
+                    <mat-form-field>
+                        <input [readonly]="isReadOnly" class="form-control" formControlName="viewpoint" id="viewpoint"
+                            matInput placeholder="Viewpoint" value="{{data.viewpoint}}">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <input [readonly]="isReadOnly" class="form-control" formControlName="context" id="context"
+                            matInput placeholder="Context" value="{{data.context}}">
+                    </mat-form-field>
+                </mat-grid-tile>  -->
+
+            </div>
+        </mat-grid-list>
+    </div>
+
+
+    <!-- <div formArrayName="questionArray" *ngFor="let item of qualityForm.get('questionArray').controls; let i=index;">
+        <div class="example-container-four" [formGroupName]="i">
+            <mat-form-field appearance="fill">
+                <input matInput class="form-control" formControlName="question" id="question" placeholder="Question">
+
+            </mat-form-field>
+        </div> -->
+
 
 
     <br>
     <br>
     <div class="example-container-three">
-       
+
         <button [disabled]="buttonDisable" mat-raised-button color="primary" type="submit">Save Plan</button>
     </div>
 

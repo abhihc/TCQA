@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
-import { QualityPlan,QualityPlanAttribute } from './../../common/quality-plan.model';
+import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { reduce } from 'rxjs/operators';
 
 interface qualityAspect {
   qc: string;
@@ -41,9 +42,9 @@ export class QualityPlansComponent implements OnInit {
       testObject: [''],
       testItem: [''],
       testSuite: [''],
-      testLevels: [''],
-      testCaseType: [''],
-      developmentPhase: [''],
+      testLevels: [{ value: '', disabled: true }],
+      testCaseType: [{ value: '', disabled: true }],
+      developmentPhase: [{ value: '', disabled: true }],
       sourceTestingFramework: [''],
       targetTestingFramework: [''],
       qualityPlanName: [''],
@@ -78,15 +79,15 @@ export class QualityPlansComponent implements OnInit {
     })
   }
 
-  createMeasurement(): FormGroup{
+  createMeasurement(): FormGroup {
     return this.formbuilder.group({
-    name: '',
-    informalDefinition: '',
-    measurementType: '',
-    measurementMethod: '',
-    scaleType: '',
-    scaleRange: '',
-    interpretation: ''
+      name: '',
+      informalDefinition: '',
+      measurementType: '',
+      measurementMethod: '',
+      scaleType: '',
+      scaleRange: '',
+      interpretation: ''
     })
   }
 
@@ -111,15 +112,13 @@ export class QualityPlansComponent implements OnInit {
     }
   }
 
-  submit(form: NgForm) {
-    console.log(form.value);
-    form.value._id = this.data._id;
-    
-      this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
-        this.reset(form);
-        this.qualityPlanList();
-      })
-    
+  onSubmit(form: NgForm) {
+    // console.log(form.value);
+    this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
+      this.reset(form);
+      this.qualityPlanList();
+    })
+
 
   }
 
@@ -131,16 +130,74 @@ export class QualityPlansComponent implements OnInit {
   }
 
   onView(qp: QualityPlan) {
+     //console.log(qp);
+    this.editForm.patchValue({
+      _id: qp._id,
+      testObject: qp.testObject,
+      testItem: qp.testItem,
+      testSuite: qp.testSuite,
+      testLevels: qp.testLevels,
+      testCaseType: qp.testCaseType,
+      developmentPhase: qp.developmentPhase,
+      sourceTestingFramework: qp.sourceTestingFramework,
+      targetTestingFramework: qp.targetTestingFramework,
+      // goalArray: qp.goalArray,
+      // questionArray: qp.questionArray,
+      // qualityFactorArray: qp.qualityFactorArray,
+      // measurementArray: qp.measurementArray,
+      qualityPlanName: qp.qualityPlanName
+    })
+    this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
+   // console.log(this.editForm.value);
     this.isReadOnly = true;
     this.buttonDisable = true;
+    this.editForm.get('testLevels').disable();
+    this.editForm.get('testCaseType').disable();
+    this.editForm.get('developmentPhase').disable();
+    //this.editForm.get('goalArray').disable();
     this.data = qp;
+    console.log(this.data)
   }
 
+  setExistingGoals(goalset: any): FormArray{
+    const formArray = new FormArray([]);
+    goalset.forEach(element => {
+      formArray.push(this.formbuilder.group({
+        objectOfStudy: element.objectOfStudy,
+        purpose: element.purpose,
+        qualityFocus: element.qualityFocus,
+        viewpoint: element.viewpoint,
+        context: element.context
+      }));
+    });
+
+    return formArray;
+  }
+
+
   onEdit(qp: QualityPlan) {
+    this.editForm.patchValue({
+      testObject: qp.testObject,
+      testItem: qp.testItem,
+      testSuite: qp.testSuite,
+      testLevels: qp.testLevels,
+      testCaseType: qp.testCaseType,
+      developmentPhase: qp.developmentPhase,
+      sourceTestingFramework: qp.sourceTestingFramework,
+      targetTestingFramework: qp.targetTestingFramework,
+      // goalArray: qp.goalArray,
+      // questionArray: qp.questionArray,
+      // qualityFactorArray: qp.qualityFactorArray,
+      // measurementArray: qp.measurementArray,
+      qualityPlanName: qp.qualityPlanName
+    })
     this.isReadOnly = false;
     this.buttonDisable = false;
+    this.editForm.get('testLevels').enable();
+    this.editForm.get('testCaseType').enable();
+    this.editForm.get('developmentPhase').enable();
+    this.editForm.get('goalArray').enable();
     this.data = qp;
-    
   }
 
   onDelete(_id: string) {
