@@ -142,13 +142,13 @@ export class QualityPlansComponent implements OnInit {
       sourceTestingFramework: qp.sourceTestingFramework,
       targetTestingFramework: qp.targetTestingFramework,
       // goalArray: qp.goalArray,
-      // questionArray: qp.questionArray,
+      //questionArray: qp.questionArray,
       // qualityFactorArray: qp.qualityFactorArray,
       // measurementArray: qp.measurementArray,
       qualityPlanName: qp.qualityPlanName
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
-   // console.log(this.editForm.value);
+    console.log(this.editForm.value);
     this.isReadOnly = true;
     this.buttonDisable = true;
     this.editForm.get('testLevels').disable();
@@ -156,7 +156,7 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.get('developmentPhase').disable();
     //this.editForm.get('goalArray').disable();
     this.data = qp;
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   setExistingGoals(goalset: any): FormArray{
@@ -191,6 +191,7 @@ export class QualityPlansComponent implements OnInit {
       // measurementArray: qp.measurementArray,
       qualityPlanName: qp.qualityPlanName
     })
+    this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.isReadOnly = false;
     this.buttonDisable = false;
     this.editForm.get('testLevels').enable();

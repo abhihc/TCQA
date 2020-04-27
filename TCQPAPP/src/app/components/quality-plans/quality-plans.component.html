@@ -138,14 +138,14 @@
                 <mat-grid-tile>
                     <mat-form-field>
                         <input matInput placeholder="Object of Study" class="form-control"
-                            formControlName="objectOfStudy" id="objectOfStudy" value="{{data.objectOfStudy}}">
+                            formControlName="objectOfStudy" id="objectOfStudy">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field>
                         <mat-select matInput placeholder="Purpose" class="form-control" id="purpose"
-                            formControlName="purpose" value="{{data.purpose}}">
+                            formControlName="purpose">
                             <mat-option *ngFor="let pa of qpa.purposeArray" value="{{pa}}">
                                 {{pa}}
                             </mat-option>
@@ -155,36 +155,37 @@
 
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input class="form-control" formControlName="qualityFocus"
-                            id="qualityFocus" matInput placeholder="Quality Focus" value="{{data.qualityFocus}}">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <!-- <mat-grid-tile>
-                    <mat-form-field>
-                        <input [readonly]="isReadOnly" class="form-control" formControlName="viewpoint" id="viewpoint"
-                            matInput placeholder="Viewpoint" value="{{data.viewpoint}}">
+                        <input class="form-control" formControlName="qualityFocus" id="qualityFocus" matInput
+                            placeholder="Quality Focus">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input [readonly]="isReadOnly" class="form-control" formControlName="context" id="context"
-                            matInput placeholder="Context" value="{{data.context}}">
+                        <input class="form-control" formControlName="viewpoint" id="viewpoint" matInput
+                            placeholder="Viewpoint">
                     </mat-form-field>
-                </mat-grid-tile>  -->
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <input class="form-control" formControlName="context" id="context" matInput
+                            placeholder="Context">
+                    </mat-form-field>
+                </mat-grid-tile>
 
             </div>
         </mat-grid-list>
     </div>
 
 
-    <!-- <div formArrayName="questionArray" *ngFor="let item of qualityForm.get('questionArray').controls; let i=index;">
+    <!-- <div formArrayName="questionArray" *ngFor="let item of editForm.get('questionArray').controls; let i=index;">
         <div class="example-container-four" [formGroupName]="i">
             <mat-form-field appearance="fill">
                 <input matInput class="form-control" formControlName="question" id="question" placeholder="Question">
 
             </mat-form-field>
+        </div>
         </div> -->
 
 
