@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
@@ -113,6 +114,7 @@ export class QualityPlansComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    form.value._id = this.data._id;
     // console.log(form.value);
     this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
       this.reset(form);
@@ -130,7 +132,7 @@ export class QualityPlansComponent implements OnInit {
   }
 
   onView(qp: QualityPlan) {
-     //console.log(qp);
+    //console.log(qp);
     this.editForm.patchValue({
       _id: qp._id,
       testObject: qp.testObject,
@@ -141,25 +143,27 @@ export class QualityPlansComponent implements OnInit {
       developmentPhase: qp.developmentPhase,
       sourceTestingFramework: qp.sourceTestingFramework,
       targetTestingFramework: qp.targetTestingFramework,
-      // goalArray: qp.goalArray,
-      //questionArray: qp.questionArray,
-      // qualityFactorArray: qp.qualityFactorArray,
-      // measurementArray: qp.measurementArray,
       qualityPlanName: qp.qualityPlanName
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
-    console.log(this.editForm.value);
+    this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
+    this.editForm.setControl('qualityFactorArray', this.setExistingQualityFactor(qp.qualityFactorArray));
+    this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
+    //console.log(this.editForm.value);
     this.isReadOnly = true;
     this.buttonDisable = true;
     this.editForm.get('testLevels').disable();
     this.editForm.get('testCaseType').disable();
     this.editForm.get('developmentPhase').disable();
-    //this.editForm.get('goalArray').disable();
+    this.editForm.get('goalArray').disable();
+    this.editForm.get('questionArray').disable();
+    this.editForm.get('qualityFactorArray').disable();
+    this.editForm.get('measurementArray').disable();
     this.data = qp;
-    //console.log(this.data)
+   // console.log(this.data)
   }
 
-  setExistingGoals(goalset: any): FormArray{
+  setExistingGoals(goalset: any): FormArray {
     const formArray = new FormArray([]);
     goalset.forEach(element => {
       formArray.push(this.formbuilder.group({
@@ -174,6 +178,43 @@ export class QualityPlansComponent implements OnInit {
     return formArray;
   }
 
+  setExistingQuestions(questionset: any): FormArray {
+    const formArray = new FormArray([]);
+    questionset.forEach(element => {
+      formArray.push(this.formbuilder.group({
+        question: element.question
+      }));
+    });
+    return formArray;
+  }
+
+  setExistingQualityFactor(qualityFactorSet: any): FormArray {
+    const formArray = new FormArray([]);
+    qualityFactorSet.forEach(element => {
+      formArray.push(this.formbuilder.group({
+        qualityCharacteristic: element.qualityCharacteristic,
+        qualitySubCharacteristic: element.qualitySubCharacteristic,
+        qualityAttribute: element.qualityAttribute
+      }));
+    });
+    return formArray;
+  }
+
+  setMeasurement(measurementSet: any): FormArray {
+    const formArray = new FormArray([]);
+    measurementSet.forEach(element => {
+      formArray.push(this.formbuilder.group({
+        name: element.name,
+        informalDefinition: element.informalDefinition,
+        measurementType: element.measurementType,
+        measurementMethod: element.measurementMethod,
+        scaleType: element.scaleType,
+        scaleRange: element.scaleRange,
+        interpretation: element.interpretation
+      }));
+    });
+    return formArray;
+  }
 
   onEdit(qp: QualityPlan) {
     this.editForm.patchValue({
@@ -185,19 +226,21 @@ export class QualityPlansComponent implements OnInit {
       developmentPhase: qp.developmentPhase,
       sourceTestingFramework: qp.sourceTestingFramework,
       targetTestingFramework: qp.targetTestingFramework,
-      // goalArray: qp.goalArray,
-      // questionArray: qp.questionArray,
-      // qualityFactorArray: qp.qualityFactorArray,
-      // measurementArray: qp.measurementArray,
       qualityPlanName: qp.qualityPlanName
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
+    this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
+    this.editForm.setControl('qualityFactorArray', this.setExistingQualityFactor(qp.qualityFactorArray));
+    this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
     this.isReadOnly = false;
     this.buttonDisable = false;
     this.editForm.get('testLevels').enable();
     this.editForm.get('testCaseType').enable();
     this.editForm.get('developmentPhase').enable();
     this.editForm.get('goalArray').enable();
+    this.editForm.get('questionArray').enable();
+    this.editForm.get('qualityFactorArray').enable();
+    this.editForm.get('measurementArray').enable();
     this.data = qp;
   }
 
@@ -206,6 +249,7 @@ export class QualityPlansComponent implements OnInit {
     this.qualityPlanService.deleteQualityPlan(_id).subscribe();
     this.qualityPlanList();
     this.reset();
+    location.reload();
   }
 
   qualityAspects: qualityAspect[] = [
@@ -217,6 +261,31 @@ export class QualityPlansComponent implements OnInit {
     {
       qc: 'Reliability',
       qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
+    },
+    {
+      qc: 'Usability',
+      qbc: ['Understandability', 'Learnability', 'Operability', 'Test Evaluability']
+    },
+    {
+      qc: 'Performance Efficiency',
+      qbc: ['Time Behaviour', 'Resource Utilization']
+    },
+    {
+      qc: 'Security',
+      qbc: ['Confidentiality', 'Accountability', 'Authenticity']
+    },
+    {
+      qc: 'Maintainability',
+      qbc: ['Analysability', 'Analysability', 'Stability', 'Complexity']
+    },
+    {
+      qc: 'Portability',
+      qbc: ['Adaptability', 'Installability']
+    },
+    {
+      qc: 'Reusability',
+      qbc: ['Coupling', 'Flexibility']
     }
+
   ];
 }

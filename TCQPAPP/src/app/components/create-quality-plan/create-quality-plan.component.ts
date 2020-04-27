@@ -77,15 +77,15 @@ export class CreateQualityPlanComponent implements OnInit {
     })
   }
 
-  createMeasurement(): FormGroup{
+  createMeasurement(): FormGroup {
     return this.formbuilder.group({
-    name: '',
-    informalDefinition: '',
-    measurementType: '',
-    measurementMethod: '',
-    scaleType: '',
-    scaleRange: '',
-    interpretation: ''
+      name: '',
+      informalDefinition: '',
+      measurementType: '',
+      measurementMethod: '',
+      scaleType: '',
+      scaleRange: '',
+      interpretation: ''
     })
   }
 
@@ -122,7 +122,7 @@ export class CreateQualityPlanComponent implements OnInit {
     this.goalArray.push(this.createGoal());
   }
 
-  removeGoal(index){
+  removeGoal(index) {
     this.goalArray.removeAt(index);
   }
 
@@ -131,7 +131,7 @@ export class CreateQualityPlanComponent implements OnInit {
     this.questionArray.push(this.createQuestion());
   }
 
-  removeQuestion(index){
+  removeQuestion(index) {
     this.questionArray.removeAt(index);
   }
 
@@ -140,16 +140,16 @@ export class CreateQualityPlanComponent implements OnInit {
     this.qualityFactorArray.push(this.createQualityFactor());
   }
 
-  removeQualityFactor(index){
+  removeQualityFactor(index) {
     this.qualityFactorArray.removeAt(index);
   }
 
-  addMeasurement(){
+  addMeasurement() {
     this.measurementArray = this.qualityForm.get('measurementArray') as FormArray;
     this.measurementArray.push(this.createMeasurement());
   }
 
-  removeMeasurement(index){
+  removeMeasurement(index) {
     this.measurementArray.removeAt(index);
   }
 
@@ -166,6 +166,26 @@ export class CreateQualityPlanComponent implements OnInit {
     {
       qc: 'Usability',
       qbc: ['Understandability', 'Learnability', 'Operability', 'Test Evaluability']
+    },
+    {
+      qc: 'Performance Efficiency',
+      qbc: ['Time Behaviour', 'Resource Utilization']
+    },
+    {
+      qc: 'Security',
+      qbc: ['Confidentiality', 'Accountability', 'Authenticity']
+    },
+    {
+      qc: 'Maintainability',
+      qbc: ['Analysability', 'Analysability', 'Stability', 'Complexity']
+    },
+    {
+      qc: 'Portability',
+      qbc: ['Adaptability', 'Installability']
+    },
+    {
+      qc: 'Reusability',
+      qbc: ['Coupling', 'Flexibility']
     }
 
   ];
