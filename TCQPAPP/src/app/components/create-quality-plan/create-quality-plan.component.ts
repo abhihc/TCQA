@@ -25,6 +25,8 @@ export class CreateQualityPlanComponent implements OnInit {
   qualityFactorArray: FormArray;
   measurementArray: FormArray;
 
+  isReadOnly = true;
+
   qpa = new QualityPlanAttribute();
 
   constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder) {
@@ -71,6 +73,7 @@ export class CreateQualityPlanComponent implements OnInit {
 
   createQualityFactor(): FormGroup {
     return this.formbuilder.group({
+      questionNo: '',
       qualityCharacteristic: '',
       qualitySubCharacteristic: '',
       qualityAttribute: ''

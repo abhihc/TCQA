@@ -23,6 +23,7 @@ export class QualityPlansComponent implements OnInit {
 
   isReadOnly = true;
   buttonDisable = true;
+  questionReadOnly = true;
 
   editForm: FormGroup;
   goalArray: FormArray;
@@ -74,6 +75,7 @@ export class QualityPlansComponent implements OnInit {
 
   createQualityFactor(): FormGroup {
     return this.formbuilder.group({
+      questionNo: '',
       qualityCharacteristic: '',
       qualitySubCharacteristic: '',
       qualityAttribute: ''
@@ -159,6 +161,7 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.get('questionArray').disable();
     this.editForm.get('qualityFactorArray').disable();
     this.editForm.get('measurementArray').disable();
+    this.questionReadOnly = true;
     this.data = qp;
    // console.log(this.data)
   }
@@ -241,6 +244,7 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.get('questionArray').enable();
     this.editForm.get('qualityFactorArray').enable();
     this.editForm.get('measurementArray').enable();
+    this.questionReadOnly = true;
     this.data = qp;
   }
 

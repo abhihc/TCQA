@@ -187,7 +187,7 @@
     <div formArrayName="questionArray" *ngFor="let item of editForm.get('questionArray').controls; let i=index;">
         <div class="example-container-four" [formGroupName]="i">
             <mat-form-field>
-                <input matInput placeholder="Question" class="form-control" formControlName="question" id="question">
+                <input matInput placeholder="Question {{i+1}}" class="form-control" formControlName="question" id="question">
 
             </mat-form-field>
         </div>
@@ -208,6 +208,12 @@
         *ngFor="let item of editForm.get('qualityFactorArray').controls; let i=index;">
         <mat-grid-list cols="4" rowHeight="100px">
             <div [formGroupName]="i">
+                <mat-grid-tile>
+                <mat-form-field>
+                    <input [readonly]="questionReadOnly" matInput placeholder="Question {{i+1}}" class="form-control" formControlName="question" id="question">
+    
+                </mat-form-field>
+            </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
                         <mat-select matInput placeholder="Quality Characteristic" class="form-control"

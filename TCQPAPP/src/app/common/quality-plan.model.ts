@@ -30,6 +30,7 @@ export class Question {
 
 
 export class QualityFactor {
+    questionNo: string;
     qualityCharacteristic: string;
     qualitySubCharacteristic: string;
     qualityAttribute: string;
