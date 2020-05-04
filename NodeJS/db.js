@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/CrudDB', { useFindAndModify: false , useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+mongoose.connect('mongodb+srv://dbUser:dbUser@cluster0-llkcd.mongodb.net/test?retryWrites=true&w=majority', { useFindAndModify: false , useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if (!err){
         console.log('MongoDB connection succeeded.');
     }

@@ -22,7 +22,7 @@ export class ResultsViewComponent implements OnInit {
   public yAxisLabelAllCharts = 'Percentage';
   public xAxisLabelChart2 = 'Quality Sub-Characteristics';
   public xAxisLabelChart3 = 'Quality Attributes';
-  colorScheme = ['#336699', '#4C1C00','#98DB92', '#2F4858', '#9EE493', '#F1BB87', '#700353' , '#320D6D'];
+  colorScheme = ['#336699', '#4C1C00','#98DB92', '#2F4858', '	#FF0000', '#F1BB87', '#700353' , '#320D6D'];
 
   customColors = [];
 
