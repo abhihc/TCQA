@@ -1,10 +1,12 @@
 import { QualityAttribute } from './../../common/quality-results.model';
+import { Result } from './../../common/result';
 import { Router } from '@angular/router';
 import { ApiService } from './../../common/api.service';
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
-import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { QualityPlan } from './../../common/quality-plan.model';
+
 
 @Component({
   selector: 'app-results-add',
@@ -13,11 +15,13 @@ import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.m
   providers: [QualityPlanService]
 })
 export class ResultsAddComponent implements OnInit {
-  @ViewChild('nameInput', {static: false})
+  @ViewChild('nameInput', { static: false })
   fileUploadElement: ElementRef;
 
   submitted = false;
   addResultForm: FormGroup;
+  show: boolean = false;
+  isReadOnly = true;
 
   newResult = {
     name: '',
@@ -36,11 +40,12 @@ export class ResultsAddComponent implements OnInit {
 
   ngOnInit() {
     this.qualityPlanList();
-   }
+  }
 
   mainForm() {
     this.addResultForm = this.fb.group({
-      file: [null]
+      file: [null],
+      qualityAttribute: this.fb.array([])
     });
   }
 
@@ -51,8 +56,20 @@ export class ResultsAddComponent implements OnInit {
   }
 
   inputResults(qp: QualityPlan) {
-    console.log(qp);
-    
+
+    //console.log(qp);
+    this.show = true;
+    const control = <FormArray>this.addResultForm.controls['qualityAttribute'];
+    qp.qualityFactorArray.forEach(x => {
+      control.push(this.fb.control(x.qualityAttribute))
+    });
+    console.log(control.value);
+  }
+
+  getQualityAttribute(qualityAttribute) {
+    return this.fb.group({
+      qualityAttribute: [qualityAttribute]
+    });
   }
 
   uploadFile(event) {
@@ -71,9 +88,9 @@ export class ResultsAddComponent implements OnInit {
           this.newResult.results = JSON.parse(reader.result as string);
           this.addResultForm.get('file').updateValueAndValidity();
         } catch (e) {
-            alert('Please upload a valid JSON file.');
-            this.fileUploadElement.nativeElement.value = '';
-            this.addResultForm.get('file').reset();
+          alert('Please upload a valid JSON file.');
+          this.fileUploadElement.nativeElement.value = '';
+          this.addResultForm.get('file').reset();
         }
 
       } else {
@@ -86,7 +103,7 @@ export class ResultsAddComponent implements OnInit {
   }
 
   // Getter to access form control
-  get myForm(){
+  get myForm() {
     return this.addResultForm.controls;
   }
 

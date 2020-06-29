@@ -1,48 +1,42 @@
-<div class="container" style="margin-top: 70px;">
-    <div class="row justify-content-center">
-        <div class="col-md-4 register-employee">
-            <!-- form card register -->
-            <div class="card-body">
-                    
-                
+<table align="center">
+    <thead>
+        <tr>
+            <th scope="col center">Quality Plans</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let qp of qualityPlanService.qualityPlans">
+            <td>{{qp.qualityPlanName}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button mat-raised-button color="primary" (click)="inputResults(qp)">Input Results</button>
+            </td>
+        </tr>
+    </tbody>
 
-                    <table align="center">
-                        <thead>
-                            <tr>
-                                <th scope="col center">Quality Plans</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let qp of qualityPlanService.qualityPlans">
-                                <td>{{qp.qualityPlanName}}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button mat-raised-button color="primary" (click)="inputResults(qp)">Input Results</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        
-                    </table>
+</table>
 
 
 
-                    <form [formGroup]="addResultForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show">
+    <div class="example-container-four" formArrayName="qualityAttribute">
+      <div *ngFor="let item of addResultForm.get('qualityAttribute').controls; let i=index;">
+        <!-- <div [formGroupName]="i"> -->
+            <mat-grid-list cols="2" rowHeight="100px">
 
+                <mat-form-field>
+                    <input [readonly]="isReadOnly" type="text" class="form-control" id="qualityAttribute" formControlName="{{i}}"
+                        matInput placeholder="Quality Attribute">
 
-                        
+                </mat-form-field>
 
-                    <mat-form-field>
-                        qualityPlanName;
-                        <label class="form-control" formControlName="qualityAttribute" id="qualityAttribute"
-                            placeholder="Quality Attribute"> </label>
-                    </mat-form-field>
-                    
-                </form>
-                
-            </div>
-        </div><!-- form card register -->
+            </mat-grid-list>
+        <!-- </div> -->
     </div>
-</div>
+    </div>
+
+
+</form>
