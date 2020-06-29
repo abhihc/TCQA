@@ -11,6 +11,7 @@ interface qualityAspect {
   qbc: string[];
 }
 
+
 @Component({
   selector: 'app-create-quality-plan',
   templateUrl: './create-quality-plan.component.html',
@@ -116,6 +117,7 @@ export class CreateQualityPlanComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.qualityPlanService.postQualityPlan(form.value).subscribe((res) => {
       this.reset(form);
+      alert('Quality Plan saved successfully');
 
     })
   }

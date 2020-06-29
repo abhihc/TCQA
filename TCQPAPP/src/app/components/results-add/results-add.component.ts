@@ -1,12 +1,16 @@
+import { QualityAttribute } from './../../common/quality-results.model';
 import { Router } from '@angular/router';
 import { ApiService } from './../../common/api.service';
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { QualityPlanService } from './../../common/quality-plan.service';
+import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
 
 @Component({
   selector: 'app-results-add',
   templateUrl: './results-add.component.html',
-  styleUrls: ['./results-add.component.css']
+  styleUrls: ['./results-add.component.css'],
+  providers: [QualityPlanService]
 })
 export class ResultsAddComponent implements OnInit {
   @ViewChild('nameInput', {static: false})
@@ -24,17 +28,31 @@ export class ResultsAddComponent implements OnInit {
     public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private qualityPlanService: QualityPlanService
   ) {
     this.mainForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.qualityPlanList();
+   }
 
   mainForm() {
     this.addResultForm = this.fb.group({
       file: [null]
     });
+  }
+
+  qualityPlanList() {
+    this.qualityPlanService.getQualityPlanList().subscribe((res) => {
+      this.qualityPlanService.qualityPlans = res as QualityPlan[];
+    });
+  }
+
+  inputResults(qp: QualityPlan) {
+    console.log(qp);
+    
   }
 
   uploadFile(event) {
@@ -49,7 +67,7 @@ export class ResultsAddComponent implements OnInit {
         this.newResult.name = fileNameParts[0];
 
         try {
-          JSON.parse(reader.result as string);
+          JSON.parse(reader.result as string); //reading the JSON file
           this.newResult.results = JSON.parse(reader.result as string);
           this.addResultForm.get('file').updateValueAndValidity();
         } catch (e) {

@@ -3,16 +3,43 @@
         <div class="col-md-4 register-employee">
             <!-- form card register -->
             <div class="card-body">
-                <form [formGroup]="addResultForm" (ngSubmit)="onSubmit()">
                     
+                
+
+                    <table align="center">
+                        <thead>
+                            <tr>
+                                <th scope="col center">Quality Plans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let qp of qualityPlanService.qualityPlans">
+                                <td>{{qp.qualityPlanName}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button mat-raised-button color="primary" (click)="inputResults(qp)">Input Results</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+
+
+
+                    <form [formGroup]="addResultForm" (ngSubmit)="onSubmit()">
+
+
+                        
+
+                    <mat-form-field>
+                        qualityPlanName;
+                        <label class="form-control" formControlName="qualityAttribute" id="qualityAttribute"
+                            placeholder="Quality Attribute"> </label>
+                    </mat-form-field>
                     
-                    <div class="form-group">
-                        <input #fileInput type="file" (change)="uploadFile($event)">
-                    </div>
-                    
-                    <div class="form-group">
-                        <button mat-raised-button color="primary" class="btn btn-success btn-lg btn-block" type="submit">Upload Execution</button>
-                    </div>
                 </form>
                 
             </div>
