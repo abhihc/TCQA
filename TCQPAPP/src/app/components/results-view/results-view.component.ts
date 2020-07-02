@@ -68,11 +68,11 @@ export class ResultsViewComponent implements OnInit {
           let chart1Record = {};
           const chart1Children = [];
           self.chartDataMapping.forward[chart1Counter] = {};
-          chart1D.QualitySubCharacteristics.forEach((chart2D) => {
+          chart1D.qualitySubCharacteristics.forEach((chart2D) => {
             let chart2Record = {};
             const chart2Children = [];
             self.chartDataMapping.forward[chart1Counter][chart2Counter] = [];
-            chart2D.QualityAttributes.forEach((chart3D) => {
+            chart2D.qualityAttributes.forEach((chart3D) => {
               let chart3Record = {};
               self.chartDataMapping.reverse[chart3Counter] = {};
               self.chartDataMapping.reverse[chart3Counter][chart2Counter] = chart1Counter;

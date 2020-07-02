@@ -11,7 +11,7 @@ var QualityPlan = mongoose.model('QualityPlan',{
     targetTestingFramework: {type: String},
     goalArray: {type: Array},
     questionArray: {type: Array},
-    qualityFactorArray: {type: Array},
+    QualityCharacteristics: {type: Array},
     measurementArray: {type: Array},
     qualityPlanName: {type: String}
 });

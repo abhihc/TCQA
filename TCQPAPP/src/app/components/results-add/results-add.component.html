@@ -22,21 +22,75 @@
 
 
 <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show">
-    <div class="example-container-four" formArrayName="qualityAttribute">
-      <div *ngFor="let item of addResultForm.get('qualityAttribute').controls; let i=index;">
-        <!-- <div [formGroupName]="i"> -->
-            <mat-grid-list cols="2" rowHeight="100px">
 
-                <mat-form-field>
-                    <input [readonly]="isReadOnly" type="text" class="form-control" id="qualityAttribute" formControlName="{{i}}"
-                        matInput placeholder="Quality Attribute">
+    <div class = "example-container-four">
+        <mat-form-field>
+            <input matInput type="text" placeholder="Execution Name" class="form-control"
+                formControlName="executionName" id="executionName">
+        </mat-form-field>
+    </div>
 
+
+
+    <div formArrayName="QualityCharacteristics">
+        <div *ngFor="let item of addResultForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
+            
+            <div formGroupName="{{iqc}}" class="QualityCharacteristics">
+                <mat-form-field [hidden]="true">
+                    <mat-select matInput placeholder="Quality Characteristic"
+                        formControlName="qualityCharacteristic">
+                        <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
+                            {{qc}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
 
-            </mat-grid-list>
-        <!-- </div> -->
-    </div>
-    </div>
+                <div formArrayName="qualitySubCharacteristics">
+                    <div *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
+                        <div formGroupName="{{iqsc}}" class="qualitySubCharacteristics">
+                        <mat-form-field [hidden]="true">
+                            <mat-select matInput placeholder="Quality Sub Characteristic"
+                                formControlName="qualitySubCharacteristic">
+                                <mat-optgroup *ngFor="let qualityaspect of qualityAspects"
+                                    [label]="qualityaspect.qc">
+                                    <mat-option *ngFor="let qualitySC of qualityaspect.qbc"
+                                        value="{{qualitySC}}">
+                                        {{qualitySC}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-select>
+                        </mat-form-field>
 
+                        <div formArrayName="qualityAttributes">
+                            <div *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
+                                <div class="example-container-four">
+                                <mat-grid-list cols="2" rowHeight="100px">
+                                <div formGroupName="{{iqa}}">
 
+                        <mat-form-field>
+                            <input matInput class="form-control" formControlName="qualityAttribute"
+                                id="qualityAttribute" placeholder="Quality Attribute">
+
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="number" class="form-control" formControlName="scoreQA"
+                                id="scoreQA" placeholder="Score">
+
+                        </mat-form-field>
+                        
+                        </div>
+                    </mat-grid-list>
+                </div>
+                        </div>
+                        </div>   
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="example-container-three">
+    <button align="center" type="submit" mat-raised-button color="primary">Submit</button>
+</div>
 </form>

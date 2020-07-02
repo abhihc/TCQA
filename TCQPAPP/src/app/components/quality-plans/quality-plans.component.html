@@ -204,49 +204,53 @@
         </mat-expansion-panel-header>
 
 
-    <div class="example-container" formArrayName="qualityFactorArray"
-        *ngFor="let item of editForm.get('qualityFactorArray').controls; let i=index;">
-        <mat-grid-list cols="4" rowHeight="100px">
-            <div [formGroupName]="i">
-                <mat-grid-tile>
-                <mat-form-field>
-                    <input [readonly]="questionReadOnly" matInput placeholder="Question {{i+1}}" class="form-control" formControlName="question" id="question">
-    
-                </mat-form-field>
-            </mat-grid-tile>
-                <mat-grid-tile>
+        <div formArrayName="QualityCharacteristics">
+            <div *ngFor="let item of editForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
+                <div formGroupName="{{iqc}}" class="QualityCharacteristics">
                     <mat-form-field>
-                        <mat-select matInput placeholder="Quality Characteristic" class="form-control"
-                            id="qualityCharacteristic" formControlName="qualityCharacteristic">
-                            <mat-option *ngFor="let qc of qpa.qualityCharacteristicArray" value="{{qc}}">
+                        <mat-select matInput placeholder="Quality Characteristic"
+                            formControlName="qualityCharacteristic">
+                            <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
                                 {{qc}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                </mat-grid-tile>
 
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select matInput placeholder="Quality Sub Characteristic" class="form-control"
-                            id="qualitySubCharacteristic" formControlName="qualitySubCharacteristic">
-                            <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
-                                <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
-                                    {{qualitySC}}
-                                </mat-option>
-                            </mat-optgroup>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
+                    <div formArrayName="qualitySubCharacteristics">
+                        <div *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
+                            <div formGroupName="{{iqsc}}" class="qualitySubCharacteristics">
+                            <mat-form-field>
+                                <mat-select matInput placeholder="Quality Sub Characteristic"
+                                    formControlName="qualitySubCharacteristic">
+                                    <mat-optgroup *ngFor="let qualityaspect of qualityAspects"
+                                        [label]="qualityaspect.qc">
+                                        <mat-option *ngFor="let qualitySC of qualityaspect.qbc"
+                                            value="{{qualitySC}}">
+                                            {{qualitySC}}
+                                        </mat-option>
+                                    </mat-optgroup>
+                                </mat-select>
+                            </mat-form-field>
 
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input matInput class="form-control" formControlName="qualityAttribute" id="qualityAttribute"
-                            placeholder="Quality Attribute">
-                    </mat-form-field>
-                </mat-grid-tile>
+                            <div formArrayName="qualityAttributes">
+                                <div *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
+                                    <div formGroupName="{{iqa}}" class="qualityAttributes">
+
+                            <mat-form-field>
+                                <input matInput class="form-control" formControlName="qualityAttribute"
+                                    id="qualityAttribute" placeholder="Quality Attribute">
+
+                            </mat-form-field>
+                            </div>
+                            </div>
+                            </div>   
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </mat-grid-list>
-    </div>
+        </div>
 
 </mat-expansion-panel>
 </mat-accordion>

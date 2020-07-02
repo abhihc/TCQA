@@ -61,3 +61,26 @@
   .example-container-five > * {
     width: 10%;
   }
+     
+   .QualityCharacteristics{
+    align-items: center;
+    display: flex;
+    flex-direction: column;     
+   }
+   
+   .qualitySubCharacteristics{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+     border: green solid 1px;
+   }
+   
+   .qualityAttributes{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+     border: blue solid 1px;
+   }
+  
+   
+   

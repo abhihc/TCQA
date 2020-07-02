@@ -28,7 +28,7 @@ export class QualityPlansComponent implements OnInit {
   editForm: FormGroup;
   goalArray: FormArray;
   questionArray: FormArray;
-  qualityFactorArray: FormArray;
+  QualityCharacteristics: FormArray;
   measurementArray: FormArray;
 
   qpa = new QualityPlanAttribute();
@@ -52,7 +52,7 @@ export class QualityPlansComponent implements OnInit {
       qualityPlanName: [''],
       goalArray: this.formbuilder.array([this.createGoal()]),
       questionArray: this.formbuilder.array([this.createQuestion()]),
-      qualityFactorArray: this.formbuilder.array([this.createQualityFactor()]),
+      QualityCharacteristics: this.formbuilder.array([this.createQC()]),
       measurementArray: this.formbuilder.array([this.createMeasurement()])
     })
   }
@@ -73,12 +73,23 @@ export class QualityPlansComponent implements OnInit {
     })
   }
 
-  createQualityFactor(): FormGroup {
+  createQC() {
     return this.formbuilder.group({
-      questionNo: '',
       qualityCharacteristic: '',
+      qualitySubCharacteristics: this.formbuilder.array([this.createQSC()])
+    })
+  }
+
+  createQSC() {
+    return this.formbuilder.group({
       qualitySubCharacteristic: '',
-      qualityAttribute: ''
+      qualityAttributes: this.formbuilder.array([this.createQA()])
+    })
+  }
+
+  createQA() {
+    return this.formbuilder.group({
+      qualityAttribute: '',
     })
   }
 
@@ -109,7 +120,7 @@ export class QualityPlansComponent implements OnInit {
       targetTestingFramework: "",
       goalArray: [],
       questionArray: [],
-      qualityFactorArray: [],
+      QualityCharacteristics: [],
       measurementArray: [],
       qualityPlanName: ""
     }
@@ -149,7 +160,7 @@ export class QualityPlansComponent implements OnInit {
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
-    this.editForm.setControl('qualityFactorArray', this.setExistingQualityFactor(qp.qualityFactorArray));
+    this.editForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
     this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
     //console.log(this.editForm.value);
     this.isReadOnly = true;
@@ -159,7 +170,7 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.get('developmentPhase').disable();
     this.editForm.get('goalArray').disable();
     this.editForm.get('questionArray').disable();
-    this.editForm.get('qualityFactorArray').disable();
+    this.editForm.get('QualityCharacteristics').disable();
     this.editForm.get('measurementArray').disable();
     this.questionReadOnly = true;
     this.data = qp;
@@ -191,16 +202,36 @@ export class QualityPlansComponent implements OnInit {
     return formArray;
   }
 
-  setExistingQualityFactor(qualityFactorSet: any): FormArray {
-    const formArray = new FormArray([]);
-    qualityFactorSet.forEach(element => {
-      formArray.push(this.formbuilder.group({
+  setExistingQC(qcSet: any): FormArray {
+    const formArray1 = new FormArray([]);
+    qcSet.forEach(element => {
+      formArray1.push(this.formbuilder.group({
         qualityCharacteristic: element.qualityCharacteristic,
+        qualitySubCharacteristics: this.setQBC(element.qualitySubCharacteristics)
+      }));
+    });
+    return formArray1;
+  }
+
+  setQBC(qscSet: any): FormArray {
+    const formArray2 = new FormArray([]);
+    qscSet.forEach(element => {
+      formArray2.push(this.formbuilder.group({
         qualitySubCharacteristic: element.qualitySubCharacteristic,
+        qualityAttributes: this.setQA(element.qualityAttributes)
+      }));
+    });
+    return formArray2;
+  }
+
+  setQA(qaSet: any): FormArray {
+    const formArray3 = new FormArray([]);
+    qaSet.forEach(element => {
+      formArray3.push(this.formbuilder.group({
         qualityAttribute: element.qualityAttribute
       }));
     });
-    return formArray;
+    return formArray3;
   }
 
   setMeasurement(measurementSet: any): FormArray {
@@ -233,7 +264,7 @@ export class QualityPlansComponent implements OnInit {
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
-    this.editForm.setControl('qualityFactorArray', this.setExistingQualityFactor(qp.qualityFactorArray));
+    this.editForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
     this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
     this.isReadOnly = false;
     this.buttonDisable = false;
@@ -242,7 +273,7 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.get('developmentPhase').enable();
     this.editForm.get('goalArray').enable();
     this.editForm.get('questionArray').enable();
-    this.editForm.get('qualityFactorArray').enable();
+    this.editForm.get('QualityCharacteristics').enable();
     this.editForm.get('measurementArray').enable();
     this.questionReadOnly = true;
     this.data = qp;

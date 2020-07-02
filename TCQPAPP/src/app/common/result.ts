@@ -22,5 +22,5 @@ export class QualitySubCharacteristic {
 
 export class QualityAttribute { 
     qualityAttribute : string;
-    scoreQBC : number;
+    scoreQA : number;
 }

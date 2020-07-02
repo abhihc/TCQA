@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
 import { QualityPlanService } from './../../common/quality-plan.service';
-import { QualityPlan, QualityFactor, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
 
 interface qualityAspect {
   qc: string;
@@ -23,7 +23,7 @@ export class CreateQualityPlanComponent implements OnInit {
   qualityForm: FormGroup;
   goalArray: FormArray;
   questionArray: FormArray;
-  qualityFactorArray: FormArray;
+  QualityCharacteristics: FormArray;
   measurementArray: FormArray;
 
   isReadOnly = true;
@@ -51,7 +51,7 @@ export class CreateQualityPlanComponent implements OnInit {
       qualityPlanName: [''],
       goalArray: this.formbuilder.array([this.createGoal()]),
       questionArray: this.formbuilder.array([this.createQuestion()]),
-      qualityFactorArray: this.formbuilder.array([this.createQualityFactor()]),
+      QualityCharacteristics: this.formbuilder.array([this.createQC()]),
       measurementArray: this.formbuilder.array([this.createMeasurement()])
     })
   }
@@ -72,12 +72,23 @@ export class CreateQualityPlanComponent implements OnInit {
     })
   }
 
-  createQualityFactor(): FormGroup {
+  createQC() {
     return this.formbuilder.group({
-      questionNo: '',
       qualityCharacteristic: '',
+      qualitySubCharacteristics: this.formbuilder.array([this.createQSC()])
+    })
+  }
+
+  createQSC() {
+    return this.formbuilder.group({
       qualitySubCharacteristic: '',
-      qualityAttribute: ''
+      qualityAttributes: this.formbuilder.array([this.createQA()])
+    })
+  }
+
+  createQA() {
+    return this.formbuilder.group({
+      qualityAttribute: '',
     })
   }
 
@@ -108,7 +119,7 @@ export class CreateQualityPlanComponent implements OnInit {
       targetTestingFramework: "",
       goalArray: [],
       questionArray: [],
-      qualityFactorArray: [],
+      QualityCharacteristics: [],
       measurementArray: [],
       qualityPlanName: "",
     }
@@ -140,14 +151,28 @@ export class CreateQualityPlanComponent implements OnInit {
     this.questionArray.removeAt(index);
   }
 
-  addQualityFactor() {
-    this.qualityFactorArray = this.qualityForm.get('qualityFactorArray') as FormArray;
-    this.qualityFactorArray.push(this.createQualityFactor());
+  addQC() {
+    const control = <FormArray> this.qualityForm.controls['QualityCharacteristics'];
+    control.push(this.createQC());
   }
 
-  removeQualityFactor(index) {
-    this.qualityFactorArray.removeAt(index);
+  addQSC(iqc){
+    const control = (<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray;
+    control.push(this.createQSC());
   }
+
+  addQA(iqc,iqsc){
+    const control = ((<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray).at(iqsc).get('qualityAttributes') as FormArray;
+    control.push(this.createQA());
+  }
+
+  // removeQA(iqc,iqsc,iqa){
+  //   this.QualityCharacteristics[iqc].qualitySubCharacteristics[iqsc].qualityAttributes.removeAt(iqa);
+  // }
+
+  // removeQualityFactor(index) {
+  //   this.QualityCharacteristics.removeAt(index);
+  // }
 
   addMeasurement() {
     this.measurementArray = this.qualityForm.get('measurementArray') as FormArray;

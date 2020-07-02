@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
         targetTestingFramework: req.body.targetTestingFramework,
         goalArray: req.body.goalArray,
         questionArray: req.body.questionArray,
-        qualityFactorArray: req.body.qualityFactorArray,
+        QualityCharacteristics: req.body.QualityCharacteristics,
         measurementArray: req.body.measurementArray,
         qualityPlanName: req.body.qualityPlanName,      
     });
@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
         targetTestingFramework: req.body.targetTestingFramework,
         goalArray: req.body.goalArray,
         questionArray: req.body.questionArray,
-        qualityFactorArray: req.body.qualityFactorArray,
+        QualityCharacteristics: req.body.QualityCharacteristics,
         measurementArray: req.body.measurementArray,
         qualityPlanName: req.body.qualityPlanName,
     }

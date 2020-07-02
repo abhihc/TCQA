@@ -10,7 +10,7 @@ export class QualityPlan {
     targetTestingFramework: string;
     goalArray: Array<Goal>;
     questionArray: Array<Question>;
-    qualityFactorArray: Array<QualityFactor>;
+    QualityCharacteristics: Array<QualityCharacteristic>;
     measurementArray: Array<Measurement>;
     qualityPlanName: string;
 }
@@ -28,14 +28,21 @@ export class Question {
 }
 
 
+export class QualityCharacteristic {
+    qualityCharacteristic:string;
+    qualitySubCharacteristics: Array<QualitySubCharacteristic>;
+}
 
-export class QualityFactor {
-    questionNo: string;
-    qualityCharacteristic: string;
+export class QualitySubCharacteristic{
     qualitySubCharacteristic: string;
+    qualityAttributes: Array<QualityAttribute>;
+}
+
+export class QualityAttribute{
     qualityAttribute: string;
 
 }
+
 
 export class Measurement {
     name: string;
@@ -52,7 +59,7 @@ export class QualityPlanAttribute {
     testCaseTypeArray: any = ['Code-based Test Cases', 'Natural Language Test Cases'];
     developmentPhaseArray: any = ['Requirements Specification', 'Design', 'Implementation', 'Testing', 'Maintenance', 'Migration'];
     purposeArray: any = ['Quality Assessment', 'Quality Monitoring', 'Quality Prediction', 'Quality Control'];
-    qualityCharacteristicArray: any = ['Test Effectivity', 'Reliability', 'Usability', 'Performance Efficiency', 'Security', 'Maintainability', 'Portability', 'Reusability'];
+    QualityCharacteristics1: any = ['Test Effectivity', 'Reliability', 'Usability', 'Performance Efficiency', 'Security', 'Maintainability', 'Portability', 'Reusability'];
     measurementTypeArray: any = ['Subjective', 'Objective'];
     scaleTypeArray: any = ['Nominal', 'Ordinal', 'Absolute', 'Ratio'];
 }
