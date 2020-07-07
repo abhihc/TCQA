@@ -49,6 +49,7 @@ export class CreateQualityPlanComponent implements OnInit {
       sourceTestingFramework: [''],
       targetTestingFramework: [''],
       qualityPlanName: [''],
+      thresholdValue: null,
       goalArray: this.formbuilder.array([this.createGoal()]),
       questionArray: this.formbuilder.array([this.createQuestion()]),
       QualityCharacteristics: this.formbuilder.array([this.createQC()]),
@@ -122,6 +123,7 @@ export class CreateQualityPlanComponent implements OnInit {
       QualityCharacteristics: [],
       measurementArray: [],
       qualityPlanName: "",
+      thresholdValue: null
     }
   }
 
@@ -164,6 +166,21 @@ export class CreateQualityPlanComponent implements OnInit {
   addQA(iqc,iqsc){
     const control = ((<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray).at(iqsc).get('qualityAttributes') as FormArray;
     control.push(this.createQA());
+  }
+
+  removeQA(iqc,iqsc){
+    const control = ((<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray).at(iqsc).get('qualityAttributes') as FormArray;
+    control.removeAt(iqsc);
+  }
+
+  removeQSC(iqc){
+    const control = (<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray;
+    control.removeAt(iqc);
+  }
+
+  removeQC(iqc){
+    const control = <FormArray> this.qualityForm.controls['QualityCharacteristics'];
+    control.removeAt(iqc);
   }
 
   // removeQA(iqc,iqsc,iqa){

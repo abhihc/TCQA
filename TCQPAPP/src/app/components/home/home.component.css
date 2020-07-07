@@ -1,0 +1,96 @@
+mat-grid-tile {
+    background: lightblue;
+    
+  }
+  
+  .example{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+
+  .main-content{
+    margin-top: 20px;
+    padding: 30px 15px;
+    min-height: calc(100vh - 123px);
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+  .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px; }
+
+    .col-md-4{
+      position: relative;
+      width: 100%;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px; 
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 33.33333%;
+          flex: 0 0 33.33333%;
+  max-width: 33.33333%;}
+
+      .card {
+        font-size: .875rem; 
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-clip: border-box;
+        border: 1px solid grey;
+        border-radius: 0.25rem;
+        margin-bottom: 15px;
+        margin-right: 15px;
+        margin-left: 15px;
+        border: 0;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 6px;
+  color: #333333;
+  width: 100%;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .card-header1{
+        background-color: chartreuse;
+      }
+
+      .card-header2{
+        background-color: orange;
+      }
+
+      .card-header3{
+        background-color: aqua;
+      }
+
+      .card-header4{
+        background-color: yellow
+      }
+
+      .card-header5{
+        background-color:tomato
+      }
+
+      .card-header6{
+        background-color:magenta
+      }

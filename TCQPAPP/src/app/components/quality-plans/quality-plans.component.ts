@@ -50,6 +50,7 @@ export class QualityPlansComponent implements OnInit {
       sourceTestingFramework: [''],
       targetTestingFramework: [''],
       qualityPlanName: [''],
+      thresholdValue: null,
       goalArray: this.formbuilder.array([this.createGoal()]),
       questionArray: this.formbuilder.array([this.createQuestion()]),
       QualityCharacteristics: this.formbuilder.array([this.createQC()]),
@@ -122,7 +123,8 @@ export class QualityPlansComponent implements OnInit {
       questionArray: [],
       QualityCharacteristics: [],
       measurementArray: [],
-      qualityPlanName: ""
+      qualityPlanName: "",
+      thresholdValue: null
     }
   }
 
@@ -156,7 +158,8 @@ export class QualityPlansComponent implements OnInit {
       developmentPhase: qp.developmentPhase,
       sourceTestingFramework: qp.sourceTestingFramework,
       targetTestingFramework: qp.targetTestingFramework,
-      qualityPlanName: qp.qualityPlanName
+      qualityPlanName: qp.qualityPlanName,
+      thresholdValue: qp.thresholdValue
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
@@ -260,7 +263,8 @@ export class QualityPlansComponent implements OnInit {
       developmentPhase: qp.developmentPhase,
       sourceTestingFramework: qp.sourceTestingFramework,
       targetTestingFramework: qp.targetTestingFramework,
-      qualityPlanName: qp.qualityPlanName
+      qualityPlanName: qp.qualityPlanName,
+      thresholdValue: qp.thresholdValue
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));

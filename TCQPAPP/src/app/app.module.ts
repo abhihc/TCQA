@@ -26,6 +26,10 @@ import { ResultsAddComponent } from './components/results-add/results-add.compon
 //services
 import { QualityPlanService } from './common/quality-plan.service';
 import { ApiService } from './common/api.service';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { DocumentationComponent } from './components/documentation/documentation.component';
+import { ToolsComponent } from './components/tools/tools.component';
 
 
 
@@ -37,7 +41,11 @@ import { ApiService } from './common/api.service';
     QualityPlansComponent,
     ResultsViewComponent,
     ResultsListComponent,
-    ResultsAddComponent
+    ResultsAddComponent,
+    HeaderComponent,
+    HomeComponent,
+    DocumentationComponent,
+    ToolsComponent
   ],
   imports: [
     BrowserModule,

@@ -65,7 +65,8 @@
    .QualityCharacteristics{
     align-items: center;
     display: flex;
-    flex-direction: column;     
+    flex-direction: column; 
+    border: red solid 1px;   
    }
    
    .qualitySubCharacteristics{

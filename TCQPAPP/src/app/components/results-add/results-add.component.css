@@ -46,11 +46,9 @@
       align-items: center;
       display: flex;
       flex-direction: column;
+      width: 70%;
     }
-    
-    .example-container-four > * {
-      width: 40%;
-    }
+
   
     .example-container-five {
       align-items: center;
@@ -59,5 +57,5 @@
     }
     
     .example-container-five > * {
-      width: 10%;
+      width: 20%;
     }

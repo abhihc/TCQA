@@ -2,3 +2,12 @@
     min-height: 300px;
     margin-bottom: 50px;
 }
+.example-container-three {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container-three > * {
+    width: 20%;
+  }

@@ -13,7 +13,8 @@ var QualityPlan = mongoose.model('QualityPlan',{
     questionArray: {type: Array},
     QualityCharacteristics: {type: Array},
     measurementArray: {type: Array},
-    qualityPlanName: {type: String}
+    qualityPlanName: {type: String},
+    thresholdValue: {type: Number}
 });
 
 module.exports = { QualityPlan };

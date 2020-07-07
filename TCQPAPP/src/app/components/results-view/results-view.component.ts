@@ -2,20 +2,26 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
-
 import { ApiService } from './../../common/api.service';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+
+import { QualityPlanService } from './../../common/quality-plan.service';
+import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { count } from 'console';
 
 
 
 @Component({
   selector: 'app-results-view',
   templateUrl: './results-view.component.html',
-  styleUrls: ['./results-view.component.css']
+  styleUrls: ['./results-view.component.css'],
+  providers: [QualityPlanService]
 })
 export class ResultsViewComponent implements OnInit {
 
   resultData: any;
+  viewResultForm: FormGroup;
+  show: boolean = false;
 
   public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';
@@ -48,13 +54,21 @@ export class ResultsViewComponent implements OnInit {
   };
 
   constructor(
+    public fb: FormBuilder,
     private actRoute: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private qualityPlanService: QualityPlanService
     ) { }
 
     ngOnInit(): void {
       const id = this.actRoute.snapshot.paramMap.get('id');
       this.getResultData(id);
+    }
+
+    mainForm() {
+      this.viewResultForm = this.fb.group({
+        thresholdScore: null
+      });
     }
 
     getResultData(id) {
@@ -116,10 +130,28 @@ export class ResultsViewComponent implements OnInit {
         self.dataChart1 = [...self.dataChart1];
         self.dataChart2 = [...self.dataChart2];
         self.dataChart3 = [...self.dataChart3];
-        console.log('resultData', this.resultData);
+        //console.log('resultData', this.resultData);
+        
       });
     }
 
+    decision(){
+      this.show = true;
+      let count: number = 0;
+      let count2: number = 0;
+      this.dataChart1.forEach(element => {
+        count+=1;
+        if(element.value>80){
+          count2+=1;
+        }
+      });
+      if(count == count2){
+        console.log("Test Suite can be migrated");
+      }else{
+        console.log("Test Suite should not be migrated");
+      }
+
+    }
 
     public onInteractChart1(event): void {
       if (event && event.value && event.value.extra && event.value.extra.children && event.value.extra.children.length) {

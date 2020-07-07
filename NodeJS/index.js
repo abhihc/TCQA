@@ -6,6 +6,7 @@ const { mongoose } = require('./db.js');
 
 var qualityPlanController = require('./controllers/qualityPlanController.js');
 var qualityPlanResultsController = require('./controllers/qualityPlanResultsController.js');
+var toolController = require('./controllers/toolController.js');
 
 
 var app = express();
@@ -20,3 +21,4 @@ app.listen(3000, () => console.log('Server started at port: 3000'));
 
 app.use('/qualityPlans', qualityPlanController);
 app.use('/qualityPlanResults', qualityPlanResultsController);
+app.use('/tools', toolController);

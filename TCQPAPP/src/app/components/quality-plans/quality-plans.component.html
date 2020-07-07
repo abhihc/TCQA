@@ -263,6 +263,17 @@
             </mat-panel-title>
   </mat-expansion-panel-header>
 
+  <br>
+    <div class="example-container-three">
+        <mat-form-field>
+            <input [readonly]="isReadOnly" type="text" class="form-control" id="thresholdValue"
+                formControlName="thresholdValue" matInput placeholder="Threshold Score"
+                value="{{data.thresholdValue}}">
+
+        </mat-form-field>
+    </div>
+    <br>
+
     <div formArrayName="measurementArray" *ngFor="let item of editForm.get('measurementArray').controls; let i=index;">
         <div class="example-container-four" [formGroupName]="i">
             <mat-form-field>
