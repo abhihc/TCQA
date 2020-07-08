@@ -1,3 +1,4 @@
+import { Result } from './../../common/result';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ApiService } from './../../common/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -28,6 +29,9 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     this.apiService.getQualityPlans().subscribe((data) => {
      this.qualityPlans = data;
     });
+    
+    
+    
   }
 
   showQualityPlanResults(qualityPlan, content) {

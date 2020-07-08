@@ -1,12 +1,21 @@
-<div id="menu">
+<!-- <div id="menu">
 <mat-toolbar>
     
     <a mat-button routerLink="home" routerLinkActive="active">Home</a>
     <a mat-button routerLink="CreateQualityPlan" routerLinkActive="active">Create Quality Plan</a>
     <a mat-button routerLink="QualityPlans" routerLinkActive="active">Quality Plans</a> 
     <a mat-button routerLinkActive="active" routerLink="/add-result">Input Results</a>
-    <a mat-button routerLinkActive="active" routerLink="/results-list">Executions</a>
-    <a mat-button class="navbar-brand" href="/">Dashboard</a>
-    
+    <a mat-button routerLinkActive="active" routerLink="/results-list">Executions</a>    
 </mat-toolbar>
-</div>
+</div> -->
+
+<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

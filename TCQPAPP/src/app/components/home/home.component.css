@@ -13,7 +13,7 @@ mat-grid-tile {
   .main-content{
     margin-top: 20px;
     padding: 30px 15px;
-    min-height: calc(100vh - 123px);
+    min-height: 30px;
 }
 
 .container-fluid {
@@ -72,7 +72,7 @@ mat-grid-tile {
       }
 
       .card-header1{
-        background-color: chartreuse;
+        background-color: #4CAF50;
       }
 
       .card-header2{
@@ -80,11 +80,11 @@ mat-grid-tile {
       }
 
       .card-header3{
-        background-color: aqua;
+        background-color: #33b5e5;
       }
 
       .card-header4{
-        background-color: yellow
+        background-color:#2BBBAD;
       }
 
       .card-header5{
@@ -92,5 +92,19 @@ mat-grid-tile {
       }
 
       .card-header6{
-        background-color:magenta
+        background-color:#aa66cc;
+      }
+
+      .chart {
+        min-height: 300px;
+        margin-bottom: 50px;
+    }
+    .example-container-three {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .example-container-three > * {
+        width: 20%;
       }

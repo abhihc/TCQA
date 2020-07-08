@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule,MatToolbarModule,MatFormFieldModule,MatInputModule, MatSelectModule, MatGridListModule, MatTableModule, MatExpansionModule, MatIconModule, MatDialogModule } from '@angular/material';
+import { MatDividerModule, MatCardModule, MatPaginatorModule,MatButtonModule,MatToolbarModule,MatFormFieldModule,MatInputModule, MatSelectModule, MatGridListModule, MatTableModule, MatExpansionModule, MatIconModule, MatDialogModule } from '@angular/material';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,6 +11,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 //components
@@ -30,6 +32,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { ToolsComponent } from './components/tools/tools.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 
@@ -45,10 +52,13 @@ import { ToolsComponent } from './components/tools/tools.component';
     HeaderComponent,
     HomeComponent,
     DocumentationComponent,
-    ToolsComponent
+    ToolsComponent,
+    MainNavComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -60,13 +70,20 @@ import { ToolsComponent } from './components/tools/tools.component';
     MatDialogModule, 
     MatGridListModule,
     MatExpansionModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
     HttpClientModule,
     NgSelectModule,
     NgbModalModule,
-    NgxChartsModule
+    NgxChartsModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDividerModule, 
+    MatCardModule, 
+    MatPaginatorModule
   ],
   providers: [QualityPlanService,ApiService],
   bootstrap: [AppComponent]

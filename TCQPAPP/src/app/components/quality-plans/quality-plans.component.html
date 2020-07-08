@@ -1,31 +1,32 @@
-<table align="center">
-    <thead>
+<div class="container" style="margin-top: 40px;">
+    <table class="table table-bordered">
+        <thead class="table-success">
         <tr>
-            <th scope="col center">Quality Plan Name</th>
-            <th></th>
-            <th></th>
-
-            <th scope="col center">Operation</th>
+            <th scope="col">Quality Plan Name</th>
+               <th scope="col center">Operation</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let qp of qualityPlanService.qualityPlans">
-            <td>{{qp.qualityPlanName}}</td>
-            <td></td>
-            <td></td>
-            <td>
-                <button mat-raised-button color="primary" (click)="onView(qp)">View</button>
+            <td scope="row">{{qp.qualityPlanName}}</td>
+            <div class="maticon">
+            <td class="text-center">
+                <button mat-icon-button color="primary" (click)="onView(qp)">
+                    <mat-icon>preview</mat-icon>
+                  </button>                
+                <button mat-icon-button color="primary" (click)="onEdit(qp)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                <button mat-icon-button color="primary" (click)="onDelete(qp._id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
             </td>
-            <td>
-                <button mat-raised-button color="primary" (click)="onEdit(qp)">Edit</button>
-            </td>
-            <td>
-                <button mat-raised-button color="primary" (click)="onDelete(qp._id)">Delete</button>
-            </td>
+        </div>
         </tr>
     </tbody>
 </table>
 
+</div>
 <br>
 
 <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">

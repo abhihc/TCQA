@@ -29,6 +29,8 @@ export class ResultsAddComponent implements OnInit {
   isReadOnly = true;
   QualityCharacteristics: FormArray;
 
+  currentid: string = '';
+
   newResult = {
     name: '',
     results: null
@@ -235,7 +237,7 @@ export class ResultsAddComponent implements OnInit {
       // console.log(this.addResultForm.value);
       // console.log(this.newResult);
 
-      console.log(this.addResultForm.value['QualityCharacteristics']);
+      console.log(this.addResultForm);
 
       this.apiService.addResults(this.newResult).subscribe(
         (res) => {

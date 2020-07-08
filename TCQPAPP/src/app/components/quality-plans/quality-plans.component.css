@@ -82,3 +82,7 @@
     display: flex;
     flex-direction: column;
    }
+
+   .maticon{
+     font-size: x-large;
+   }

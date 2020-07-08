@@ -12,7 +12,9 @@
             <td></td>
             <td></td>
             <td>
-                <button mat-raised-button color="primary" (click)="inputResults(qp)">Input Results</button>
+                <button mat-icon-button color="primary" (click)="inputResults(qp)">
+                    <mat-icon>input</mat-icon>
+                  </button>
             </td>
         </tr>
     </tbody>
@@ -20,10 +22,10 @@
 </table>
 
 
-
 <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show">
     <br>
-
+    <input type="hidden" class="form-control" id="_id" formControlName="_id">
+    
     <div class="example-container-five">
         <mat-form-field>
             <input matInput type="text" placeholder="Execution Name" class="form-control"

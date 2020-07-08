@@ -18,6 +18,14 @@ qualityPlanResultsController.route('/add-result').post((req, res, next) => {
     })
 });
 
+//get all ids
+qualityPlanResultsController.get('/', (req, res) => {
+    QualityPlanResult.find((err, docs) => {
+        if (!err) { res.send(docs); }
+        else { console.log('Error in Retriving results:' + JSON.stringify(err, undefined, 2)); }
+    });
+});
+
 // Get All Quality Plan Name
 qualityPlanResultsController.route('/').get((req, res) => {
     QualityPlanResult.find({},'name qualityPlan', (error, data) => {
@@ -28,6 +36,8 @@ qualityPlanResultsController.route('/').get((req, res) => {
         }
     })
 })
+
+
 
 // Get all Quality Plan List
 qualityPlanResultsController.route('/list-quality-plans').get((req, res) => {

@@ -1,3 +1,4 @@
+import { Result } from './result';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -10,6 +11,8 @@ export class ApiService {
 
   baseUri = 'http://localhost:3000/qualityPlanResults';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
+  results: Result[];
+
 
   constructor(private http: HttpClient) { }
 
