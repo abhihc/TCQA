@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   resultData: any;
   viewResultForm: FormGroup;
   show: boolean = false;
+  checkid: string;
 
   public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';
@@ -73,14 +74,14 @@ export class HomeComponent implements OnInit {
     this.apiService.getResults().subscribe((res) => {
       this.apiService.results = res as Result[];
       currentid = this.apiService.results[this.apiService.results.length-1]._id;
+      this.checkid = currentid;
+      console.log(this.checkid);
       this.getResultData(currentid);
-    }); 
+    });
+
   }
 
-  showfunction(){
-
-    this.show = true;
-  }
+ 
 
   getResultData(id) {
     const self = this;
