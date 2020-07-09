@@ -1,49 +1,60 @@
-<div class="container" style="margin-top: 5px;">
-    <div class="row">
-     
+<div class="container">
+        <div class="row">
             <div class="col-6 chart">
-            <ngx-charts-bar-vertical
-                    [results]="dataChart1"
-                    [legend]="showLegend"
-                    [customColors]="customColors"
-                    [xAxis]="showXAxis"
-                    [yAxis]="showYAxis"
-                    [xAxisLabel]="xAxisLabelChart1"
-                    [yAxisLabel]="yAxisLabelAllCharts"
-                    [showXAxisLabel]="showXAxis"
-                    [showYAxisLabel]="showYAxis"
-                    [yScaleMin]="yScaleMin"
-                    [yScaleMax]="yScaleMax"
-                    [yAxisTicks]="yAxisTicks"
-                    [activeEntries]="highlightedChart1"
-                    (activate)="onInteractChart1($event)"
-                    (deactivate)="onDeactivate($event)">
-            </ngx-charts-bar-vertical>
-    </div>
-     
-        <div class="col-6 chart">
-            <ngx-charts-bar-vertical
-                    [results]="dataChart2"
-                    [legend]="showLegend"
-                    [customColors]="customColors"
-                    [xAxis]="showXAxis"
-                    [yAxis]="showYAxis"
-                    [xAxisLabel]="xAxisLabelChart2"
-                    [yAxisLabel]="yAxisLabelAllCharts"
-                    [showXAxisLabel]="showXAxis"
-                    [showYAxisLabel]="showYAxis"
-                    [yScaleMin]="yScaleMin"
-                    [yScaleMax]="yScaleMax"
-                    [yAxisTicks]="yAxisTicks"
-                    [activeEntries]="highlightedChart2"
-                    (activate)="onInteractChart2($event)"
-                    (deactivate)="onDeactivate($event)">
-            </ngx-charts-bar-vertical>
-    
-    </div>
-</div>
-    <div class="col">
-        <div class="col-8 chart">
+                <mat-card style="height:300px; display: grid; margin:7px 0px 7px 0px !important;"> 
+                    <mat-card-content style="padding-bottom: 0px">
+                        <ngx-charts-bar-vertical
+                                                    [results]="dataChart1"
+                                                    [legend]="showLegend"
+                                                    [customColors]="customColors"
+                                                    [xAxis]="showXAxis"
+                                                    [yAxis]="showYAxis"
+                                                    [xAxisLabel]="xAxisLabelChart1"
+                                                    [yAxisLabel]="yAxisLabelAllCharts"
+                                                    [showXAxisLabel]="showXAxis"
+                                                    [showYAxisLabel]="showYAxis"
+                                                    [yScaleMin]="yScaleMin"
+                                                    [yScaleMax]="yScaleMax"
+                                                    [yAxisTicks]="yAxisTicks"
+                                                    [activeEntries]="highlightedChart1"
+                                                    (activate)="onInteractChart1($event)"
+                                                    (deactivate)="onDeactivate($event)">
+                                            </ngx-charts-bar-vertical>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-6 chart">
+                <mat-card style="height:400px; display: grid; margin:7px 0px 7px 0px !important;">
+                    <mat-card-content style="padding-bottom: 0px">
+                        
+                            <ngx-charts-bar-vertical
+                                    [results]="dataChart2"
+                                    [legend]="showLegend"
+                                    [customColors]="customColors"
+                                    [xAxis]="showXAxis"
+                                    [yAxis]="showYAxis"
+                                    [xAxisLabel]="xAxisLabelChart2"
+                                    [yAxisLabel]="yAxisLabelAllCharts"
+                                    [showXAxisLabel]="showXAxis"
+                                    [showYAxisLabel]="showYAxis"
+                                    [yScaleMin]="yScaleMin"
+                                    [yScaleMax]="yScaleMax"
+                                    [yAxisTicks]="yAxisTicks"
+                                    [activeEntries]="highlightedChart2"
+                                    (activate)="onInteractChart2($event)"
+                                    (deactivate)="onDeactivate($event)">
+                            </ngx-charts-bar-vertical>                
+                    
+                    
+                    </mat-card-content>
+                
+                </mat-card>
+            </div>
+            <div class="col-6 chart">
+            <mat-card style="height:400px; display: grid; margin:7px 0px 7px 0px !important;">
+                <mat-card-content style="padding-bottom: 0px">
             <ngx-charts-bar-vertical
                     [results]="dataChart3"
                     [legend]="showLegend"
@@ -61,8 +72,11 @@
                     (activate)="onInteractChart3($event)"
                     (deactivate)="onDeactivate($event)">
             </ngx-charts-bar-vertical>
-        </div>
-
+        </mat-card-content>
+                
+    </mat-card>
+    </div>
+    </div>
 </div>
 
 <!-- <div class="main-content">
