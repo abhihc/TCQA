@@ -1,39 +1,55 @@
 <mat-nav-list>
-
-    <mat-divider></mat-divider>
-
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="home">Home</a>
-
-    <h2 matSubheader>Quality Plans</h2>
- 
-    <!-- <a mat-button routerLinkActive="active" routerLink="/add-result">Input Results</a>
-    <a mat-button routerLinkActive="active" routerLink="/results-list">Executions</a>  -->
-    
-    
-    <a mat-list-item routerLinkActive="active" routerLink="/CreateQualityPlan">Create Quality Plan</a>
-    <a mat-list-item routerLinkActive="active" routerLink="/QualityPlans">List of Quality Plans</a>
-    
-    <h2 matSubheader>Quality Assessments</h2>
-    <a mat-list-item routerLinkActive="active" routerLink="/results-list">List of Assessment Results</a>
-    <a mat-list-item routerLinkActive="active" routerLink="/add-result">Add Assessment Result</a>
-
-    <h2 matSubheader>Other</h2>
-    <a mat-list-item routerLinkActive="active" routerLink="/Documentation">Documentation</a>
-    <a mat-list-item routerLinkActive="active" routerLink="/Tools">Tools</a>
-    
 <!-- 
-    <mat-divider></mat-divider>
+    <mat-list-item>
+        <a class="fa fa-home"></a><a routerLinkActive="active" routerLink="home">Home</a><a class="fa fa-angle-right"></a>
+    </mat-list-item>
 
-    <h2 matSubheader>Tools</h2>
+    
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-        <mat-icon>import_contacts</mat-icon>
-        Contacts
-    </a>
+    <h2 matSubheader>QUALITY PLANS</h2>
+ 
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-        <mat-icon>contact_phone</mat-icon>
-        Leads
-    </a> -->
+    
+    <mat-list-item>
+        <i class="fa fa-plus-square"></i><a routerLinkActive="active" routerLink="/CreateQualityPlan">Create Quality Plan</a><a class="fa fa-angle-right"></a>
+    </mat-list-item>
+    
+    <mat-list-item>
+        <i class="fa fa-list"></i><a routerLinkActive="active" routerLink="/QualityPlans">List of Quality Plans</a><a class="fa fa-angle-right"></a>
+    </mat-list-item>
+
+    
+
+    
+    <h2 matSubheader>QUALITY ASSESSMENTS</h2>
+    <mat-list-item>
+        <i class="fa fa-list"></i><a routerLinkActive="active" routerLink="/results-list">List of Assessment Results</a><a class="fa fa-angle-right"></a>
+    </mat-list-item>
+    
+    <mat-list-item> 
+        <i class="fa fa-plus-square"></i><a routerLinkActive="active" routerLink="/add-result">Add Assessment Result</a><a class="fa fa-angle-right"></a>
+    </mat-list-item>
+    
+    <h2 matSubheader>OTHER</h2>
+    <mat-list-item>
+        <a routerLinkActive="active" routerLink="/Documentation">Documentation</a><a class="fa fa-angle-right"></a>
+    </mat-list-item><mat-list-item>
+        <a routerLinkActive="active" routerLink="/Tools">Tools</a><a class="fa fa-angle-right"></a>
+    </mat-list-item> -->
+    
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="home"><a class="fa fa-home"></a>&nbsp;Home</a>
+
+    <h2 matSubheader>QUALITY PLANS</h2>
+    
+    <a mat-list-item routerLinkActive="active" routerLink="/CreateQualityPlan"><a class="fa fa-plus-square"></a>&nbsp;Create Quality Plan</a>
+    <a mat-list-item routerLinkActive="active" routerLink="/QualityPlans"><a class="fa fa-list"></a>&nbsp;List of Quality Plans</a>
+    
+    <h2 matSubheader>QUALITY ASSESSMENTS</h2>
+    <a mat-list-item routerLinkActive="active" routerLink="/results-list"><a class="fa fa-list"></a>&nbsp;List of Assessment Results</a>
+    <a mat-list-item routerLinkActive="active" routerLink="/add-result"><a class="fa fa-plus-square"></a>&nbsp;Add Assessment Result</a>
+
+    <h2 matSubheader>OTHER</h2>
+    <a mat-list-item routerLinkActive="active" routerLink="/Documentation"><a class="fa fa-book"></a>&nbsp;Documentation</a>
+    <a mat-list-item routerLinkActive="active" routerLink="/Tools"><a class="fa fa-wrench"></a>&nbsp;Tools</a>
 
 </mat-nav-list>

@@ -12,7 +12,6 @@ import { HomeComponent } from './components/home/home.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { DocumentationComponent } from './components/documentation/documentation.component';
 
- 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent},
