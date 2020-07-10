@@ -9,12 +9,15 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 import { QualityPlanService } from './../../common/quality-plan.service';
+import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { ToolDetail } from './../../common/toolDetail.model';
+import { ToolDetailService } from './../../common/toolDetail.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [QualityPlanService]
+  providers: [QualityPlanService,ToolDetailService]
 })
 export class HomeComponent implements OnInit {
 
@@ -22,6 +25,9 @@ export class HomeComponent implements OnInit {
   viewResultForm: FormGroup;
   show: boolean = false;
   checkid: string;
+  noOfQPs : number = 0;
+  noOfExecutions : number = 0;
+  noofTools : number = 0;
 
   public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';
@@ -55,12 +61,12 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private apiService: ApiService, public fb: FormBuilder,
-    private actRoute: ActivatedRoute) { }
+    private actRoute: ActivatedRoute, private qualityPlanService: QualityPlanService, private toolDetailService: ToolDetailService) { }
 
   ngOnInit(): void {
     this.getID();
-    //let id = this.getID();
-    //this.getResultData(id);
+    this.qualityPlanList();
+    this.toolList();
   }
 
   mainForm() {
@@ -69,10 +75,26 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  qualityPlanList() {
+    this.qualityPlanService.getQualityPlanList().subscribe((res) => {
+      this.qualityPlanService.qualityPlans = res as QualityPlan[];
+      this.noOfQPs = this.qualityPlanService.qualityPlans.length;
+    });
+  }
+
+  toolList() {
+    this.toolDetailService.getToolDetailList().subscribe((res) => {
+      this.toolDetailService.Tools = res as ToolDetail[];
+      this.noofTools = this.toolDetailService.Tools.length;
+    });
+    
+  }
+
   getID() {
     let currentid: string = "";
     this.apiService.getResults().subscribe((res) => {
       this.apiService.results = res as Result[];
+      this.noOfExecutions = this.apiService.results.length;
       currentid = this.apiService.results[this.apiService.results.length-1]._id;
       this.checkid = currentid;
       console.log(this.checkid);

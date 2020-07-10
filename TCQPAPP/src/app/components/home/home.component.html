@@ -4,35 +4,41 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-chart">
+                    
+                    <div class="card-body">
+                        <div class="font">
+                        <a class="card-title">Number of Quality Plans Created :  {{noOfQPs}}</a>
+                      </div>
+                    </div>
                     <div class="card-header1">
-                        <a mat-button routerLink="/CreateQualityPlan" routerLinkActive="active">Create Quality Plan</a>
-                    </div>
-                    <div class="card-body">
-                        <a class="card-title">Test Case Quality Plan approach</a>
-                        
+                        <a mat-button routerLink="/CreateQualityPlan" routerLinkActive="active">Create New Quality Plan&nbsp;<a class="fa fa-angle-right"></a></a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card card-chart">
+                    
+                    <div class="card-body">
+                        <div class="font">
+                        <a class="card-title">Number of Executions Added : {{noOfExecutions}}</a>
+                    </div>
+                    </div>
                     <div class="card-header2">
-                        <a mat-button routerLink="/QualityPlans" routerLinkActive="active">Quality Plans</a>
-                    </div>
-                    <div class="card-body">
-                        <a class="card-title">List of Quality Plans created</a>
-                        
+                        <a mat-button routerLink="/add-result" routerLinkActive="active">Add New Execution&nbsp;<a class="fa fa-angle-right"></a></a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card card-chart">
-                    <div class="card-header3">
-                        <a mat-button routerLink="/add-result" routerLinkActive="active">Input Results</a>
-                    </div>
                     <div class="card-body">
-                        <a class="card-title">Input the Quality Assessment results</a>
-                        
+                        <div class="font">
+                        <a class="card-title">Number of Tools : {{noofTools}}</a>
                     </div>
+                    </div>
+                    <div class="card-header3">
+                        <a mat-button routerLink="/Tools" routerLinkActive="active">Add New Tool&nbsp;<a class="fa fa-angle-right"></a></a>
+                    </div>
+                    
                 </div>
             </div>
             
@@ -82,25 +88,6 @@
 
 
 
-
-
-
-<!-- <mat-grid-list cols="2" rowHeight="2:1">
-    <div class="example">
-    <mat-grid-tile>
-        <a mat-button routerLink="/Create Quality Plan" routerLinkActive="active">Create Quality Plan</a>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <a mat-button routerLink="/Quality Plans" routerLinkActive="active">Quality Plans</a>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <a mat-button routerLink="/add-result" routerLinkActive="active">Input Results</a>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <a mat-button routerLink="/results-list" routerLinkActive="active">Executions</a>
-    </mat-grid-tile>
-</div>
-  </mat-grid-list> -->
 
 
 
