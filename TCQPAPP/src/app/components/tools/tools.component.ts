@@ -24,6 +24,7 @@ export class ToolsComponent implements OnInit {
     this.toolForm = this.formbuilder.group({
       _id: [''],
       qualityAttribute: [''],
+      toolName: [''],
       toolInfo: ['']
     })
   }
@@ -34,6 +35,7 @@ export class ToolsComponent implements OnInit {
     this.toolDetailService.selectedTool = {
       _id: "",
       qualityAttribute: "",
+      toolName: "",
       toolInfo: ""
     }
   }

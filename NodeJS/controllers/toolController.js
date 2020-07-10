@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     var tool = new Tool({
         qualityAttribute: req.body.qualityAttribute,
+        toolName: req.body.toolName,
         toolInfo: req.body.toolInfo
     });
     tool.save((err, doc) => {
@@ -30,6 +31,7 @@ router.put('/:id', (req, res) => {
 
     var tool = new Tool({
         qualityAttribute: req.body.qualityAttribute,
+        toolName: req.body.toolName,
         toolInfo: req.body.toolInfo
     });
     Tool.findByIdAndUpdate(req.params.id, { $set: tool }, { new: true }, (err, doc) => {

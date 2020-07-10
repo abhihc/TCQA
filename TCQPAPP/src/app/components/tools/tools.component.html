@@ -10,12 +10,12 @@
                           <table class="table">
                               <thead>
                                       <th scope="col">Quality Attribute</th>
-                                      <th scope="col">Tools Info</th>
+                                      <th scope="col">Tool</th>
                               </thead>
                               <tbody>
                                 <tr *ngFor="let t of toolDetailService.Tools; let i = index">
                                   <td>{{t.qualityAttribute}}</td>
-                                  <td>{{t.toolInfo}}</td>
+                                  <td><a href="{{t.toolInfo}}">{{t.toolName}}</a></td>
                                 </tr>
                               </tbody>
                           </table>
@@ -34,16 +34,20 @@
 
 
   <div class="example-container-four">
-    <mat-form-field>
+    <mat-form-field [style.width.px]=300>
       <input matInput class="form-control" formControlName="qualityAttribute" id="qualityAttribute"
         placeholder="Quality Attribute">
     </mat-form-field>
-    <br>
 
-    <mat-form-field >
-      <input matInput class="form-control" formControlName="toolInfo" id="toolInfo" placeholder="Tool Info">
+    <mat-form-field [style.width.px]=300 >
+      <input matInput class="form-control" formControlName="toolName" id="toolName" placeholder="Tool Name">
     </mat-form-field>
-  </div>
+
+
+  <mat-form-field [style.width.px]=300>
+    <input matInput class="form-control" formControlName="toolInfo" id="toolInfo" placeholder="Tool Link">
+  </mat-form-field>
+</div>
 
   <div class="example-container-three">
     <button mat-raised-button color="primary" type="submit">Save Tool</button>
