@@ -14,14 +14,14 @@ import { DocumentationComponent } from './components/documentation/documentation
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent },
   { path: 'view-result/:id', component: ResultsViewComponent },
   { path: 'add-result', component: ResultsAddComponent },
   { path: 'results-list', component: ResultsListComponent },
-  {path: 'quality-plans', component: QualityPlansComponent},
-  {path: 'create-quality-plan', component: CreateQualityPlanComponent},
-  {path: 'documentation', component: DocumentationComponent},
-  {path: 'tools', component: ToolsComponent}
+  { path: 'quality-plans', component: QualityPlansComponent },
+  { path: 'create-quality-plan', component: CreateQualityPlanComponent },
+  { path: 'documentation', component: DocumentationComponent },
+  { path: 'tools', component: ToolsComponent }
 ];
 
 @NgModule({
