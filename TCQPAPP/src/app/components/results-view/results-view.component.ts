@@ -30,7 +30,7 @@ export class ResultsViewComponent implements OnInit {
 
   public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';
-  public yAxisLabelAllCharts = 'Percentage';
+  public yAxisLabelAllCharts = 'Quality Score (%)';
   public xAxisLabelChart2 = 'Quality Sub-Characteristics';
   public xAxisLabelChart3 = 'Quality Attributes';
   colorScheme = ['#336699', '#4C1C00','#98DB92', '#2F4858', '	#FF0000', '#F1BB87', '#700353' , '#320D6D'];
@@ -78,7 +78,7 @@ export class ResultsViewComponent implements OnInit {
     }
 
     qualityPlanList() {
-      
+
       this.qualityPlanService.getQualityPlanList().subscribe((res) => {
         this.qualityPlanService.qualityPlans = res as QualityPlan[];
         this.qualityPlanService.qualityPlans.forEach(element => {
@@ -91,7 +91,7 @@ export class ResultsViewComponent implements OnInit {
         });
       });
 
-     
+
     }
 
     getResultData(id) {
@@ -155,7 +155,7 @@ export class ResultsViewComponent implements OnInit {
         self.dataChart3 = [...self.dataChart3];
         this.qpName = this.resultData.qualityPlan;
         console.log(this.qpName);
-        
+
       });
     }
 
