@@ -25,13 +25,14 @@ export class CreateQualityPlanComponent implements OnInit {
   questionArray: FormArray;
   QualityCharacteristics: FormArray;
   measurementArray: FormArray;
-  questionNo: number = 1;
+  Count = [];
 
   isReadOnly = true;
 
   qpa = new QualityPlanAttribute();
 
   constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder) {
+    this.Count.length = 3;
   }
 
 
@@ -157,19 +158,16 @@ export class CreateQualityPlanComponent implements OnInit {
   addQC() {
     const control = <FormArray> this.qualityForm.controls['QualityCharacteristics'];
     control.push(this.createQC());
-    this.questionNo+=1;
   }
 
   addQSC(iqc){
     const control = (<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray;
     control.push(this.createQSC());
-    this.questionNo+=1;
   }
 
   addQA(iqc,iqsc){
     const control = ((<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray).at(iqsc).get('qualityAttributes') as FormArray;
     control.push(this.createQA());
-    this.questionNo+=1;
   }
 
   removeQA(iqc,iqsc){
