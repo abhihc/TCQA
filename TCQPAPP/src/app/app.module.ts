@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDividerModule, MatCardModule, MatPaginatorModule,MatButtonModule,MatToolbarModule,MatFormFieldModule,MatInputModule, MatSelectModule, MatGridListModule, MatTableModule, MatExpansionModule, MatIconModule, MatDialogModule } from '@angular/material';
+import { MatDividerModule, MatCardModule,MatButtonToggleModule, MatPaginatorModule,MatButtonModule,MatToolbarModule,MatFormFieldModule,MatInputModule, MatSelectModule, MatGridListModule, MatTableModule, MatExpansionModule, MatIconModule, MatDialogModule } from '@angular/material';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -68,6 +68,7 @@ import { MainheaderComponent } from './components/mainheader/mainheader.componen
     MatIconModule,
     MatSelectModule,
     MatDialogModule, 
+    MatButtonToggleModule,
     MatGridListModule,
     MatExpansionModule,
     FormsModule,

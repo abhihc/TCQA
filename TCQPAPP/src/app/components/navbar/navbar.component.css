@@ -2,11 +2,6 @@
     color: red;
     font-weight: bold;
 }
-:host {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
   mat-drawer {
     width: 270px;
   }

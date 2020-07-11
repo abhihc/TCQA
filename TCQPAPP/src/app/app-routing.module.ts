@@ -18,10 +18,10 @@ const routes: Routes = [
   { path: 'view-result/:id', component: ResultsViewComponent },
   { path: 'add-result', component: ResultsAddComponent },
   { path: 'results-list', component: ResultsListComponent },
-  {path: 'QualityPlans', component: QualityPlansComponent},
-  {path: 'CreateQualityPlan', component: CreateQualityPlanComponent},
-  {path: 'Documentation', component: DocumentationComponent},
-  {path: 'Tools', component: ToolsComponent}
+  {path: 'quality-plans', component: QualityPlansComponent},
+  {path: 'create-quality-plan', component: CreateQualityPlanComponent},
+  {path: 'documentation', component: DocumentationComponent},
+  {path: 'tools', component: ToolsComponent}
 ];
 
 @NgModule({

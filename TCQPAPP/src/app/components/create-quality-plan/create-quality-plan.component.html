@@ -11,37 +11,33 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <mat-card style="height:300px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
+                <mat-card style="height:370px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
                     <mat-card-title class="card-title" align="center">
                         Characterization of Context
                     </mat-card-title>
                     <mat-card-content>
-
-                        <mat-grid-list cols="4" rowHeight="100px">
+                        <mat-grid-list cols="3" rowHeight="100px">
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
+                                <mat-form-field [style.width.px]=260>
                                     <input type="text" class="form-control" id="testObject" formControlName="testObject"
                                         matInput placeholder="Test Object">
                                 </mat-form-field>
                             </mat-grid-tile>
-
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
+                                <mat-form-field [style.width.px]=260>
                                     <input type="text" class="form-control" id="testItem" formControlName="testItem"
                                         matInput placeholder="Test Item">
                                 </mat-form-field>
                             </mat-grid-tile>
-
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
+                                <mat-form-field [style.width.px]=260>
                                     <input type="text" class="form-control" id="testSuite" formControlName="testSuite"
                                         matInput placeholder="Test Suite">
                                 </mat-form-field>
                             </mat-grid-tile>
-
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
-                                    <mat-select matInput placeholder="Test Level" class="form-control" id="testLevels"
+                                <mat-form-field [style.width.px]=260>
+                                    <mat-select matInput placeholder="Test Level" id="testLevels"
                                         formControlName="testLevels">
                                         <mat-option *ngFor="let testLevel of qpa.testLevelsArray" value="{{testLevel}}">
                                             {{testLevel}}
@@ -49,84 +45,74 @@
                                     </mat-select>
                                 </mat-form-field>
                             </mat-grid-tile>
-
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
-                                    <mat-select matInput placeholder="Test Case Type" class="form-control"
-                                        id="testCaseType" formControlName="testCaseType">
+                                <mat-form-field [style.width.px]=260>
+                                    <mat-select matInput placeholder="Test Case Type" id="testCaseType"
+                                        formControlName="testCaseType">
                                         <mat-option *ngFor="let tct of qpa.testCaseTypeArray" value="{{tct}}">
                                             {{tct}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </mat-grid-tile>
-
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
-                                    <mat-select matInput placeholder="Development Phase" class="form-control"
-                                        id="developmentPhase" formControlName="developmentPhase">
+                                <mat-form-field [style.width.px]=260>
+                                    <mat-select matInput placeholder="Development Phase" id="developmentPhase"
+                                        formControlName="developmentPhase">
                                         <mat-option *ngFor="let dpa of qpa.developmentPhaseArray" value="{{dpa}}">
                                             {{dpa}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </mat-grid-tile>
-
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
+                                <mat-form-field [style.width.px]=260>
                                     <input type="text" class="form-control" id="sourceTestingFramework"
                                         formControlName="sourceTestingFramework" matInput
                                         placeholder="Source Testing Framework">
                                 </mat-form-field>
                             </mat-grid-tile>
-
                             <mat-grid-tile>
-                                <mat-form-field [style.width.px]=230>
+                                <mat-form-field [style.width.px]=260>
                                     <input type="text" class="form-control" id="targetTestingFramework"
                                         formControlName="targetTestingFramework" matInput
                                         placeholder="Target Testing Framework">
                                 </mat-form-field>
                             </mat-grid-tile>
                         </mat-grid-list>
-
-
                     </mat-card-content>
                 </mat-card>
             </div>
-
-
         </div>
-
     </div>
-    <br>
-
-
 
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <mat-card style="height:500px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
+                <mat-card style="height:600px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
                     <mat-card-title class="card-title" align="center">
                         Identification of Information Needs
                     </mat-card-title>
                     <mat-card-content>
-                        <div class="example-container-two" formArrayName="goalArray"
+                        <div formArrayName="goalArray"
                             *ngFor="let item of qualityForm.get('goalArray').controls; let i=index;">
 
                             <mat-grid-list cols="3" rowHeight="100px">
                                 <div [formGroupName]="i">
 
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
+                                        <mat-form-field [style.width.px]=260>
                                             <input matInput class="form-control" formControlName="objectOfStudy"
                                                 id="objectOfStudy" placeholder="Object of Study">
 
                                         </mat-form-field>
                                     </mat-grid-tile>
 
+
+
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
-                                            <mat-select matInput placeholder="Purpose" class="form-control" id="purpose"
+                                        <mat-form-field [style.width.px]=260>
+                                            <mat-select matInput placeholder="Purpose" id="purpose"
                                                 formControlName="purpose">
                                                 <mat-option *ngFor="let pa of qpa.purposeArray" value="{{pa}}">
                                                     {{pa}}
@@ -136,7 +122,7 @@
                                     </mat-grid-tile>
 
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
+                                        <mat-form-field [style.width.px]=260>
                                             <input matInput class="form-control" formControlName="qualityFocus"
                                                 id="qualityFocus" placeholder="Quality Focus">
 
@@ -144,34 +130,37 @@
                                     </mat-grid-tile>
 
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
+                                        <mat-form-field [style.width.px]=260>
                                             <input matInput class="form-control" formControlName="viewpoint"
                                                 id="viewpoint" placeholder="Viewpoint">
                                         </mat-form-field>
                                     </mat-grid-tile>
 
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
+                                        <mat-form-field [style.width.px]=260>
                                             <input matInput class="form-control" formControlName="context" id="context"
                                                 placeholder="Context">
 
                                         </mat-form-field>
                                     </mat-grid-tile>
-                                    <mat-grid-tile>
-                                        <button mat-raised-button color="warn" style="width : 10em;" type="button"
-                                            (click)="removeGoal(i)">Remove
-                                            Goal</button>
 
-                                    </mat-grid-tile>
+
                                 </div>
                             </mat-grid-list>
                         </div>
+                        <mat-grid-list cols="3" rowHeight="100px">
+                            <mat-grid-tile></mat-grid-tile>
+                            <mat-grid-tile>
+                                <button mat-raised-button color="warn" style="width : 10em;" type="button"
+                                    (click)="removeGoal(i)">Remove
+                                    Goal</button> &nbsp;
 
-                        <div class="example-container-three">
-                            <button mat-raised-button class="btn btn-default" style="width : 10em;" type="button"
-                                (click)="addGoal()">Add Goal</button>
-                        </div>
-                        <br>
+                                <button mat-button style="width : 10em;" type="button" (click)="addGoal()">Add
+                                    Goal</button>
+                            </mat-grid-tile>
+                            <mat-grid-tile></mat-grid-tile>
+                        </mat-grid-list>
+
                         <div formArrayName="questionArray"
                             *ngFor="let item of qualityForm.get('questionArray').controls; let i=index;">
                             <div class="example-container-four" [formGroupName]="i">
@@ -181,18 +170,18 @@
 
                                 </mat-form-field>
                             </div>
-                            <div class="example-container-three">
-                                <button align="center" mat-raised-button style="width : 10em;" color="warn"
-                                    type="button" (click)="removeQuestion(i)">Remove Question</button>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="example-container-three">
-                            <button mat-raised-button style="width : 10em;" type="button" (click)="addQuestion()">Add
-                                Question</button>
                         </div>
 
-
+                        <mat-grid-list cols="3" rowHeight="100px">
+                            <mat-grid-tile></mat-grid-tile>
+                            <mat-grid-tile>
+                                <button mat-raised-button style="width : 10em;" color="warn" type="button"
+                                    (click)="removeQuestion(i)">Remove Question</button>&nbsp;
+                                <button mat-button style="width : 10em;" type="button" (click)="addQuestion()">Add
+                                    Question</button>
+                            </mat-grid-tile>
+                            <mat-grid-tile></mat-grid-tile>
+                        </mat-grid-list>
 
                     </mat-card-content>
                 </mat-card>
@@ -202,24 +191,20 @@
         </div>
 
     </div>
-
-    <br>
-
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <mat-card style="height:500px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
+                <mat-card style="height:550px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
                     <mat-card-title class="card-title" align="center">
-                        Definition of Quality Unerstanding
+                        Definition of Quality Understanding
                     </mat-card-title>
                     <mat-card-content>
-
 
                         <div formArrayName="QualityCharacteristics">
                             <div
                                 *ngFor="let item of qualityForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
                                 <div formGroupName="{{iqc}}" class="QualityCharacteristics">
-                                    <mat-form-field [style.width.px]=230>
+                                    <mat-form-field [style.width.px]=260>
                                         <mat-select matInput placeholder="Quality Characteristic"
                                             formControlName="qualityCharacteristic">
                                             <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
@@ -232,7 +217,7 @@
                                         <div
                                             *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
                                             <div formGroupName="{{iqsc}}" class="qualitySubCharacteristics">
-                                                <mat-form-field [style.width.px]=230>
+                                                <mat-form-field [style.width.px]=260>
                                                     <mat-select matInput placeholder="Quality Sub Characteristic"
                                                         formControlName="qualitySubCharacteristic">
                                                         <mat-optgroup *ngFor="let qualityaspect of qualityAspects"
@@ -249,53 +234,59 @@
                                                     <div
                                                         *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
                                                         <div formGroupName="{{iqa}}" class="qualityAttributes">
-
-                                                            <mat-form-field [style.width.px]=230>
+                                                            <mat-form-field appearance="fill" [style.width.px]=260>
+                                                                <input [readonly]="isReadOnly" matInput
+                                                                    placeholder="Question {{questionNo}}">
+                                                            </mat-form-field>
+                                                            <mat-form-field [style.width.px]=260>
                                                                 <input matInput class="form-control"
                                                                     formControlName="qualityAttribute"
                                                                     id="qualityAttribute"
                                                                     placeholder="Quality Attribute">
                                                             </mat-form-field>
+
                                                         </div>
                                                     </div>
-                                                    <button mat-raised-button class="btn btn-default" type="button"
-                                                        (click)="addQA(iqc,iqsc)">Add Quality
-                                                        Attribute</button>
                                                     <button mat-raised-button class="btn btn-default" color="warn"
                                                         type="button" (click)="removeQA(iqc,iqsc)">Remove
-                                                        Quality Attribute</button>
-                                                    <br>
-                                                    <br>
+                                                        Quality Attribute</button> &nbsp;
+                                                    <button mat-button class="btn btn-default" type="button"
+                                                        (click)="addQA(iqc,iqsc)">Add Quality
+                                                        Attribute</button>
                                                 </div>
+
                                             </div>
                                         </div>
-
-                                        <button mat-raised-button class="btn btn-default" type="button"
+                                        <br>
+                                        <button mat-raised-button class="btn btn-default" color="warn" type="button"
+                                            (click)="removeQSC(iqc)">Remove
+                                            Quality Sub Characteristic</button>&nbsp;
+                                        <button mat-button class="btn btn-default" type="button"
                                             (click)="addQSC(iqc)">Add
                                             Quality
                                             Sub Characteristic</button>
-                                        <button mat-raised-button class="btn btn-default" color="warn" type="button"
-                                            (click)="removeQSC(iqc)">Remove
-                                            Quality Sub Characteristic</button>
-                                        <br>
-                                        <br>
+
+
                                     </div>
-
-
-                                    <button mat-raised-button style="width : 20em;" type="button" (click)="addQC()">Add
-                                        Quality
-                                        Characteristic</button>
-                                    <button mat-raised-button style="width : 20em;" color="warn" type="button"
+                                    <br>
+                                    <div class="row">
+                                            <button mat-raised-button style="width : 20em;" color="warn" type="button"
                                         (click)="removeQC(iqc)">Remove
-                                        Quality Characteristic</button>
-                                    <br>
-                                    <br>
-                                </div>
+                                        Quality Characteristic</button> &nbsp;
+            
+                                        <button mat-button style="width : 20em;" type="button" (click)="addQC()">Add
+                                            Quality
+                                            Characteristic</button>
+                                        </div>
+                                        <br>
+
+                                                                                </div>
                             </div>
 
 
 
                         </div>
+
 
 
 
@@ -308,32 +299,29 @@
         </div>
 
     </div>
-
-
-
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <mat-card style="height:520px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
+                <mat-card style="height:460px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
                     <mat-card-title class="card-title" align="center">
                         Definition of Measurements
                     </mat-card-title>
                     <mat-card-content>
 
-                     <div formArrayName="measurementArray"
+                        <div formArrayName="measurementArray"
                             *ngFor="let item of qualityForm.get('measurementArray').controls; let i=index;">
                             <div [formGroupName]="i">
-                                <mat-grid-list cols="4" rowHeight="100px">
+                                <mat-grid-list cols="3" rowHeight="100px">
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
+                                        <mat-form-field [style.width.px]=260>
                                             <input matInput class="form-control" formControlName="name" id="name"
                                                 placeholder="Name">
                                         </mat-form-field>
                                     </mat-grid-tile>
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
-                                            <mat-select matInput placeholder="Measurement Type" class="form-control"
-                                                id="measurementType" formControlName="measurementType">
+                                        <mat-form-field [style.width.px]=260>
+                                            <mat-select matInput placeholder="Measurement Type" id="measurementType"
+                                                formControlName="measurementType">
                                                 <mat-option *ngFor="let mt of qpa.measurementTypeArray" value="{{mt}}">
                                                     {{mt}}
                                                 </mat-option>
@@ -341,76 +329,83 @@
                                         </mat-form-field>
                                     </mat-grid-tile>
                                     <mat-grid-tile>
-                                        <mat-form-field [style.width.px]=230>
-                                            <mat-select matInput placeholder="Scale Type" class="form-control"
-                                                id="scaleType" formControlName="scaleType">
+                                        <mat-form-field [style.width.px]=260>
+                                            <mat-select matInput placeholder="Scale Type" id="scaleType"
+                                                formControlName="scaleType">
                                                 <mat-option *ngFor="let st of qpa.scaleTypeArray" value="{{st}}">
                                                     {{st}}
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
-
+                                    
                                     </mat-grid-tile>
-                                    <mat-grid-tile [style.width.px]=230>
-                                    <mat-form-field >
-                                        <input matInput class="form-control" formControlName="scaleRange" id="scaleRange"
-                                            placeholder="Scale Range">
+                                </mat-grid-list>
+                                        <!-- <mat-form-field [style.width.px]=260>
+                                            <input matInput class="form-control" formControlName="scaleRange"
+                                                id="scaleRange" placeholder="Scale Range">
+                                        </mat-form-field> -->
+
+                               
+                                <div class="example-container-four">
+                                    <mat-form-field [style.width.px]=750>
+                                        <input matInput class="form-control" formControlName="informalDefinition"
+                                            id="informalDefinition" placeholder="Informal Definition">
                                     </mat-form-field>
-                                </mat-grid-tile>
 
-                            </mat-grid-list>
-                            <div class="example-container-four">
-                            <mat-form-field [style.width.px]=750>
-                                <input matInput class="form-control" formControlName="informalDefinition"
-                                    id="informalDefinition" placeholder="Informal Definition">
-                            </mat-form-field>
+                                    <mat-form-field [style.width.px]=750>
+                                        <input matInput class="form-control" formControlName="measurementMethod"
+                                            id="measurementMethod" placeholder="Measurement Method">
+                                    </mat-form-field>
 
-                            <mat-form-field [style.width.px]=750>
-                                <input matInput class="form-control" formControlName="measurementMethod"
-                                    id="measurementMethod" placeholder="Measurement Method">
-                            </mat-form-field>
+                                    <!-- <mat-form-field [style.width.px]=750>
+                                        <input matInput class="form-control" formControlName="interpretation"
+                                            id="interpretation" placeholder="Interpretation">
+                                    </mat-form-field> -->
+                                </div>
 
-                            <mat-form-field [style.width.px]=750>
-                                <input matInput class="form-control" formControlName="interpretation"
-                                    id="interpretation" placeholder="Interpretation">
-                            </mat-form-field>
+                            </div>
                         </div>
+                        <mat-grid-list cols="3" rowHeight="100px">
+                            <mat-grid-tile></mat-grid-tile>
+                            <mat-grid-tile>
+                                <button align="center" style="width : 10em;" mat-raised-button color="warn"
+                                type="button" (click)="removeMeasurement(i)">Remove Measure</button>
+                            <br>&nbsp;
+                            <button mat-button style="width : 10em;" type="button" (click)="addMeasurement()">Add
+                                New
+                                Measure</button>
+                            </mat-grid-tile>
+                            <mat-grid-tile></mat-grid-tile>
+                        </mat-grid-list>
+                        <br>
+                        <br>
 
-                        </div>
-                        <div class="example-container-five">
-                            <button align="center" style="width : 10em;" mat-raised-button color="warn" type="button"
-                                (click)="removeMeasurement(i)">Remove Measure</button>
-                            <br>
-                        </div>
+
+
+                    </mat-card-content>
+                </mat-card>
             </div>
 
-            <div class="example-container-three">
-                <button mat-raised-button style="width : 10em;" type="button" (click)="addMeasurement()">Add New
-                    Measure</button>
-            </div>
 
-            <br>
-            <br>
-
-
-
-            </mat-card-content>
-            </mat-card>
         </div>
-
-
-    </div>
 
     </div>
 
     <div class="example-container-three">
         <br>
 
-        <button mat-raised-button color="warn"  type="button" (click)="reset(qualityForm)">Reset</button>
+        <button mat-raised-button color="warn" type="button" (click)="reset(qualityForm)">Reset</button>
         <br>
-        <button mat-raised-button color="primary" type="submit">Save Plan</button>
+        <button mat-button type="submit">Save Plan</button>
     </div>
 
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
 

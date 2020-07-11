@@ -207,7 +207,7 @@
     .card .card-header-danger:not(.card-header-icon):not(.card-header-text), .card.bg-danger,
     .card.card-rotate.bg-danger .front,
     .card.card-rotate.bg-danger .back {
-      background: linear-gradient(60deg,#3F51B5, #3F51B5); }
+      background: linear-gradient(60deg,#00205b, #00205b); }
     .card .card-header-rose .card-icon,
     .card .card-header-rose .card-text,
     .card .card-header-rose:not(.card-header-icon):not(.card-header-text), .card.bg-rose,
@@ -299,3 +299,11 @@
         display: -webkit-inline-box;
         display: -ms-inline-flexbox;
         display: inline-flex; }
+
+        .mat-icon-button{
+          color: #00205b;
+        }
+  
+        .mat-icon-button:hover {
+          color:#f1971b;
+     }

@@ -61,23 +61,23 @@
      
    .QualityCharacteristics{
     align-items: center;
-    display: flex;
+        display: flex;
     flex-direction: column; 
-    border: red solid 1px;   
+    border: #00205b solid 1px;  
    }
    
    .qualitySubCharacteristics{
     align-items: center;
     display: flex;
     flex-direction: column;
-     border: green solid 1px;
+    border: #00205b solid 1px; 
    }
    
    .qualityAttributes{
     align-items: center;
     display: flex;
     flex-direction: column;
-     border: blue solid 1px;
+    border: #00205b solid 1px; 
    }
   
   
@@ -113,7 +113,8 @@
     .card-title {
 align-items: center;
      
-      font-size: 1.125rem;
+      font-size: 1.4rem;
+
      }
 
       
@@ -138,4 +139,12 @@ align-items: center;
         max-height: 10000px;
         overflow-y: auto;
       }
-      
+ 
+      .mat-button{
+        background-color:#00205b;
+        color: white;
+      }
+
+      .buttons{
+        align-items: center;
+      }

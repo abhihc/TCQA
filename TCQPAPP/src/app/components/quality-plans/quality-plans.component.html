@@ -16,13 +16,13 @@
                                     <tr *ngFor="let qp of qualityPlanService.qualityPlans">
                                         <td scope="row">{{qp.qualityPlanName}}</td>
                                         <td class="text-center">
-                                            <button mat-icon-button color="primary" (click)="onView(qp)">
+                                            <button mat-icon-button (click)="onView(qp)">
                                                 <mat-icon>preview</mat-icon>
                                               </button>                
-                                            <button mat-icon-button color="primary" (click)="onEdit(qp)">
+                                            <button mat-icon-button (click)="onEdit(qp)">
                                                 <mat-icon>edit</mat-icon>
                                               </button>
-                                            <button mat-icon-button color="primary" (click)="onDelete(qp._id)">
+                                            <button mat-icon-button  (click)="onDelete(qp._id)">
                                                 <mat-icon>delete</mat-icon>
                                               </button>
                                         </td>
