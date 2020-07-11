@@ -1,0 +1,18 @@
+.header {
+padding-top: 0.5cm;
+padding-bottom: 2cm;
+padding-left: 2cm;
+  width: 80px;
+  height: 80px;
+}
+
+.header2 {
+    padding-top: 0.7cm;
+    padding-left: 30cm;
+      color: #00205B;
+      font-size: 1.25rem;
+      font-weight: 500;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+

@@ -35,6 +35,7 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MainheaderComponent } from './components/mainheader/mainheader.component';
 
 
 
@@ -52,7 +53,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     DocumentationComponent,
     ToolsComponent,
     MainNavComponent,
-    SidebarComponent
+    SidebarComponent,
+    MainheaderComponent
   ],
   imports: [
     BrowserModule,
