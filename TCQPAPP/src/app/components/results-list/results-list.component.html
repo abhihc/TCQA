@@ -11,11 +11,11 @@
                           <table class="table">
                               <thead>
                                       <th scope="col">Quality Plan Name</th>
-                                      <th scope="col center">Number of Executions</th>
+                                      <th scope="col" class="text-center">Number of Executions</th>
                               </thead>
                               <tbody>
                                 <tr *ngFor="let qualityPlan of qualityPlans; let i = index">
-                                  <td scope="row" class="text-primary" (click)="showQualityPlanResults(qualityPlan._id, content)">{{qualityPlan._id}}</td>
+                                  <td ><a class="primary" (click)="showQualityPlanResults(qualityPlan._id, content)">{{qualityPlan._id}}</a></td>
                                   <td class="text-center">{{qualityPlan.count}}</td>
                                 </tr>
                               </tbody>
@@ -29,17 +29,8 @@
 
 
 
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title"></h4>
-    <button mat-raised-button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p *ngIf="results.length <= 0" class="no-data text-center">There are no execution results for this quality plan uploaded yet!</p>
-    
-    <div class="main-content">
+
+    <div class="main-content" *ngIf="show">
       <div class="container-fluid">
           <div class="row">
               <div class="col-md-12">
@@ -55,10 +46,10 @@
                                   </thead>
                                   <tbody>
                                     <tr *ngFor="let executionResult of results; let i = index">
-                                      <th scope="row"><a [routerLink]="['/view-result/', executionResult._id]">{{executionResult.name}}</a></th>
+                                      <th scope="row"><a class="primary" [routerLink]="['/view-result/', executionResult._id]">{{executionResult.name}}</a></th>
                                       <td class="text-center edit-block">
                                         <span class="delete" (click)="deleteResult(executionResult, i)">
-                                          <button mat-raised-button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                          <button mat-raised-button type="button" >Delete</button>
                                         </span>
                                       </td>
                                     </tr>
@@ -71,31 +62,3 @@
       </div>
     </div>
     
-    
-    
-    
-    
-    
-    
-    
-    <!-- Quality Plan Result list -->
-    <!-- <table class="table table-bordered" *ngIf="results.length > 0">
-      <thead class="table-success">
-        <tr>
-          <th scope="col">Execution Name</th>
-          <th scope="col center">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let executionResult of results; let i = index">
-          <th scope="row"><a [routerLink]="['/view-result/', executionResult._id]">{{executionResult.name}}</a></th>
-          <td class="text-center edit-block">
-            <span class="delete" (click)="deleteResult(executionResult, i)">
-              <button mat-raised-button type="button" class="btn btn-danger btn-sm">Delete</button>
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</ng-template> -->

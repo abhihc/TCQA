@@ -1,29 +1,26 @@
 import { Result } from './../../common/result';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ApiService } from './../../common/api.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-results-list',
   templateUrl: './results-list.component.html',
   styleUrls: ['./results-list.component.css']
 })
-export class ResultsListComponent implements OnInit, OnDestroy {
+export class ResultsListComponent implements OnInit {
 
   closeResult: string;
   results: any = [];
+  show: boolean = false;
   qualityPlans: any = [];
 
-  constructor(private apiService: ApiService, private modalService: NgbModal) {
+  constructor(private apiService: ApiService) {
     this.getQualityPlans();
   }
 
   ngOnInit() {}
 
-  ngOnDestroy() {
-    this.modalService.dismissAll();
-  }
-
+  
 
   getQualityPlans(){
     this.apiService.getQualityPlans().subscribe((data) => {
@@ -37,8 +34,8 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   showQualityPlanResults(qualityPlan, content) {
     this.apiService.getQualityPlanResults(qualityPlan).subscribe((data) => {
       this.results = data;
-      this.modalService.open(content, { size: 'xl' });
      });
+     this.show = true;
   }
 
   deleteResult(resultToDelete, index) {

@@ -44,27 +44,29 @@
             </div>
         </mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="1">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
+            <div class="col-11 chart">
+                <mat-card style="height:400px; width:100%; display: grid;">
+                    <mat-card-content style="padding-bottom: 0px">
                         <h4 class="card-title" align="center">Tools</h4>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <th scope="col">Quality Attribute</th>
-                                <th scope="col">Tool</th>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let t of toolDetailService.Tools; let i = index">
-                                    <td>{{t.qualityAttribute}}</td>
-                                    <td><a href="{{t.toolInfo}}">{{t.toolName}}</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                                        <table class="table">
+                                            <thead>
+                                                    <th scope="col">Quality Attribute</th>
+                                                    <th scope="col">Tool</th>
+                                            </thead>
+                                            <tbody>
+                                              <tr *ngFor="let t of toolDetailService.Tools; let i = index">
+                                                <td>{{t.qualityAttribute}}</td>
+                                                <td><a href="{{t.toolInfo}}">{{t.toolName}}</a></td>
+                                              </tr>
+                                            </tbody>
+                                        </table>  
+                                    </mat-card-content>             
+                </mat-card>
+            </div>    
+            
+            
+            
+                               
         </mat-grid-tile>
         <mat-grid-tile colspan="3" rowspan="1">
             <div class="col-10 chart">

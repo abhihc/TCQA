@@ -1,12 +1,4 @@
-.main-content {}
 
-.container-fluid {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
 
 .row {
     display: -webkit-box;
@@ -149,3 +141,26 @@ mat-grid-tile {
 .card-title {
     font-size: medium !important;
 }
+
+/* .container-fluid {
+    width: 40%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto; }
+  
+  col-md-12 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+      flex: 0 0 40%;
+      max-width: 40%;
+  }
+
+  .card .card-header-danger .card-icon,
+.card .card-header-danger .card-text,
+.card .card-header-danger:not(.card-header-icon):not(.card-header-text),
+.card.bg-danger,
+.card.card-rotate.bg-danger .front,
+.card.card-rotate.bg-danger .back {
+    background: linear-gradient(60deg, #00205b, #00205b);
+} */

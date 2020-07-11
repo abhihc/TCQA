@@ -19,12 +19,11 @@
 }
 
 .container-fluid {
-    width: 35%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
+  width: 70%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
 
 col-md-12 {
     -webkit-box-flex: 0;
@@ -392,12 +391,14 @@ col-md-12 {
     background: transparent;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
-}
+    display: flex; }
+    .card .card-stats .author,
+    .card .card-stats .stats {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex; }
 
-.card .card-stats .author,
-.card .card-stats .stats {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-}
+      .mat-button{
+        background-color:#00205b;
+        color: white;
+      }

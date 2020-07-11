@@ -1,5 +1,5 @@
   .container-fluid {
-    width: 35%;
+    width: 70%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -247,3 +247,14 @@
         display: -webkit-inline-box;
         display: -ms-inline-flexbox;
         display: inline-flex; }
+
+        .primary{
+          color: #00205b;
+          text-decoration: underline;
+        }
+        .primary:hover {
+          color:#f1971b;
+     }
+     .mat-raised-button{
+      background-color: gray;
+    }
