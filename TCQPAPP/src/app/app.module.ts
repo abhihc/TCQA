@@ -36,6 +36,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainheaderComponent } from './components/mainheader/mainheader.component';
+import { MatTreeModule } from '@angular/material/tree';
 
 
 
@@ -67,7 +68,7 @@ import { MainheaderComponent } from './components/mainheader/mainheader.componen
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    MatDialogModule, 
+    MatDialogModule,
     MatButtonToggleModule,
     MatGridListModule,
     MatExpansionModule,
@@ -81,9 +82,10 @@ import { MainheaderComponent } from './components/mainheader/mainheader.componen
     NgxChartsModule,
     MatSidenavModule,
     MatListModule,
-    MatDividerModule, 
-    MatCardModule, 
-    MatPaginatorModule
+    MatDividerModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatTreeModule
   ],
   providers: [QualityPlanService,ApiService],
   bootstrap: [AppComponent]
