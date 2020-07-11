@@ -1,7 +1,7 @@
-
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+        <div class="col">
             <div class="col-md-4">
                 <div class="card card-chart">
                     
@@ -41,17 +41,15 @@
                     
                 </div>
             </div>
-            
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-6 chart">
-            <mat-card style="height:450px; display: grid; margin:7px 0px 7px 0px !important;">
-                <mat-card-header class="card-container">
-                    <span>Recent Quality Assessment Result</span><span class="fill-remaining-space"></span><button mat-raised-button color="primary" type="button" [routerLink]="['/view-result/', checkid]">More Info</button>
-                </mat-card-header> 
+        </div>
+        <div class="col">
+        <div class="col-10 chart">
+            <mat-card style="height:400px; width:600px; display: grid; margin:7px 0px 7px 0px;">
+                <mat-card-title-group>
+                    <span class="fill-remaining-space"></span>
+                    <span  style="font-weight:bold">Recent Quality Assessment Result</span>
+                    <button mat-raised-button type="button" [routerLink]="['/view-result/', checkid]">More Info</button>
+                  </mat-card-title-group>
                 <mat-card-content style="padding-bottom: 0px">
                     <ngx-charts-bar-vertical
                                                 [results]="dataChart1"
@@ -73,28 +71,9 @@
                 </mat-card-content>
             </mat-card>
         </div>
-
+    </div>
+    </div>
             
         </div>
+            </div>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 

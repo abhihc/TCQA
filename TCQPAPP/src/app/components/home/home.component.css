@@ -1,20 +1,7 @@
-mat-grid-tile {
-    background: lightblue;
-    
-  }
-  
-  
-  .example{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-  }
+
 
   .main-content{
-    margin-top: 20px;
-    padding: 30px 15px;
-    min-height: 30px;
+    margin-top: 10px;
 }
 
 .container-fluid {
@@ -24,6 +11,7 @@ mat-grid-tile {
   margin-right: auto;
   margin-left: auto; }
 
+
   .row {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -31,19 +19,33 @@ mat-grid-tile {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     margin-right: -15px;
-    margin-left: -15px; }
+    margin-left: -15px;
+    padding-left: 50px }
 
     .col-md-4{
       position: relative;
-      width: 100%;
       min-height: 1px;
-      padding-right: 15px;
       padding-left: 15px; 
       -webkit-box-flex: 0;
-      -ms-flex: 0 0 33.33333%;
-          flex: 0 0 33.33333%;
-  max-width: 33.33333%;}
+      -ms-flex: 0 0 73.33333%;
+          flex: 0 0 73.33333%;
+  max-width: 73.33333%;}
 
+  .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px; }
+  
+  
+  
+      .chart {
+        min-height: 300px;
+        margin-bottom: 5px;
+    }
       .card {
         font-size: .875rem; 
         position: relative;
@@ -72,29 +74,22 @@ mat-grid-tile {
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
       }
 
+  
       .card-header1{
-        background-color: #33cc33;
+        background-color: #00205b;
+        color: white;
       }
 
       .card-header2{
-        background-color: orange;
+        background-color: #f1971b;
+        color: white;
       }
 
       .card-header3{
-        background-color: #33b5e5;
+        background-color:#18b0e2;
+        color: white;
       }
 
-      .card-header4{
-        background-color:#2BBBAD;
-      }
-
-      .card-header5{
-        background-color:tomato
-      }
-
-      .card-header6{
-        background-color:#aa66cc;
-      }
 
       .chart {
         min-height: 300px;
@@ -113,3 +108,12 @@ mat-grid-tile {
       .font{
         font-weight: 500;
       }
+
+      .fill-remaining-space {
+        flex: 0.5 auto;
+     }
+
+     .mat-raised-button{
+       background-color: #00205b;
+       color: white;
+     }

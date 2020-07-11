@@ -1,5 +1,43 @@
 <div class="container">
         <div class="row">
+                <div class="col-6 chart">
+                    <mat-card style="height:300px; display: grid; margin:7px 0px 7px 0px !important;"> 
+                        <mat-card-title>
+                            Quality Plan Info : 
+                        </mat-card-title>
+                        <mat-card-content style="padding-bottom: 0px">
+                            <table class="table">
+                                <tbody>
+                                        <tr>
+                                            <td class="size">Quality Plan</td>
+                                            <td>
+                                                {{selectedQPName}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="size">Test Suite</td>
+                                            <td>
+                                                {{selectedTS}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="size">Test Object</td>
+                                            <td>
+                                                {{selectedTO}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="size">Source Testing Framework</td>
+                                            <td>
+                                                {{selectedSTF}}
+                                            </td>
+                                        </tr>
+                                       
+                                </tbody>
+                            </table>
+                    </mat-card-content>
+                    </mat-card>
+                </div>
             <div class="col-6 chart">
                 <mat-card style="height:300px; display: grid; margin:7px 0px 7px 0px !important;"> 
                     <mat-card-content style="padding-bottom: 0px">

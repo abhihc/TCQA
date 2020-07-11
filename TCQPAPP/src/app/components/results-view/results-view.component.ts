@@ -20,6 +20,11 @@ import { count } from 'console';
 export class ResultsViewComponent implements OnInit {
 
   resultData: any;
+  qpName: string;
+  selectedQPName: any;
+  selectedTS: any;
+  selectedSTF: any;
+  selectedTO: any;
   viewResultForm: FormGroup;
   show: boolean = false;
 
@@ -63,12 +68,30 @@ export class ResultsViewComponent implements OnInit {
     ngOnInit(): void {
       const id = this.actRoute.snapshot.paramMap.get('id');
       this.getResultData(id);
+       this.qualityPlanList();
     }
 
     mainForm() {
       this.viewResultForm = this.fb.group({
         thresholdScore: null
       });
+    }
+
+    qualityPlanList() {
+      
+      this.qualityPlanService.getQualityPlanList().subscribe((res) => {
+        this.qualityPlanService.qualityPlans = res as QualityPlan[];
+        this.qualityPlanService.qualityPlans.forEach(element => {
+          if(element.qualityPlanName == this.qpName){
+            this.selectedQPName = element.qualityPlanName;
+            this.selectedTS = element.testSuite;
+            this.selectedTO = element.testObject;
+            this.selectedSTF = element.sourceTestingFramework;
+       }
+        });
+      });
+
+     
     }
 
     getResultData(id) {
@@ -130,7 +153,8 @@ export class ResultsViewComponent implements OnInit {
         self.dataChart1 = [...self.dataChart1];
         self.dataChart2 = [...self.dataChart2];
         self.dataChart3 = [...self.dataChart3];
-        //console.log('resultData', this.resultData);
+        this.qpName = this.resultData.qualityPlan;
+        console.log(this.qpName);
         
       });
     }
