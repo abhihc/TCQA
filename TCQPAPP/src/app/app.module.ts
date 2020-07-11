@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDividerModule, MatCardModule,MatButtonToggleModule, MatPaginatorModule,MatButtonModule,MatToolbarModule,MatFormFieldModule,MatInputModule, MatSelectModule, MatGridListModule, MatTableModule, MatExpansionModule, MatIconModule, MatDialogModule } from '@angular/material';
-import { FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { MatDividerModule, MatCardModule, MatButtonToggleModule, MatPaginatorModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatGridListModule, MatTableModule, MatExpansionModule, MatIconModule, MatDialogModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -37,6 +37,8 @@ import { MatListModule } from '@angular/material/list';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainheaderComponent } from './components/mainheader/mainheader.component';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatStepperModule } from '@angular/material/stepper';
+
 
 
 
@@ -85,9 +87,10 @@ import { MatTreeModule } from '@angular/material/tree';
     MatDividerModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTreeModule
+    MatTreeModule,
+    MatStepperModule
   ],
-  providers: [QualityPlanService,ApiService],
+  providers: [QualityPlanService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
