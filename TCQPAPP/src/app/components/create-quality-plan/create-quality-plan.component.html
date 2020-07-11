@@ -469,13 +469,8 @@
         </mat-step>
     </mat-vertical-stepper>
 
-    <mat-grid-list cols="3" rowHeight="100px">
-        <mat-grid-tile></mat-grid-tile>
-
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile>
-            <button mat-raised-button style="width : 10em;" (click)="reset(qualityForm)">Reset</button> &nbsp;
-            <button mat-button style="width : 10em;" type="submit">Save Plan</button>
-        </mat-grid-tile>
-    </mat-grid-list>
+    <div>
+        <button mat-button class="main-save-btn" type="submit">Save Plan</button>
+        <button mat-raised-button class="main-reset-btn" (click)="reset(qualityForm)">Reset</button>
+    </div>
 </form>
