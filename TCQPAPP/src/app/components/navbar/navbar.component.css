@@ -3,13 +3,14 @@
     font-weight: bold;
 }
   mat-drawer {
-    width: 270px;
+    width: 300px;
   }
 
   
   mat-drawer-container {
     height: 100%;
-    background-color: #ededed;    ;
+    background-color: #ededed;
+    margin-left: 10px;
   }
   
   mat-drawer-content {
