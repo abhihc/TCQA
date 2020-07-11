@@ -1,78 +1,86 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-        <div class="col">
-            <div class="col-md-4">
-                <div class="card card-chart">
-                     <div class="card-body">
-                        <div class="font">
-                        <a class="card-title">Number of Quality Plans Created:  {{noOfQPs}}</a>
-                      </div>
+    <mat-grid-list cols="5" rowHeight="450px">
+        <mat-grid-tile colspan="2" rowspan="1">
+            <div style="display: flex; flex-direction: column !important">
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title><a class="card-title">Number of Quality Plans Created: {{noOfQPs}}</a></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions class="sicp-dark-blue">
+                        <button mat-button routerLink="/create-quality-plan" routerLinkActive="active">Create New Quality Plan&nbsp;<a class="fa fa-angle-right"></a></button>
+                    </mat-card-actions>
+                </mat-card>
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title><a class="card-title">Number of Executions Added: {{noOfExecutions}}</a></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions class="sicp-orange">
+                        <button mat-button routerLink="/add-result" routerLinkActive="active">Add New Execution&nbsp;<a class="fa fa-angle-right"></a></button>
+                    </mat-card-actions>
+                </mat-card>
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title><a class="card-title">Number of Tools: {{noofTools}}</a></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions class="sicp-light-blue">
+                        <button mat-button routerLink="/tools" routerLinkActive="active">Add New Tool&nbsp;<a class="fa fa-angle-right"></a></button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3" rowspan="1">
+            <div class="col-10 chart">
+                <mat-card style="height:400px; width:100%; display: grid;">
+                    <mat-card-title-group>
+                        <span style="font-weight:bold">Recent Quality Assessment Result</span>
+                        <button mat-raised-button type="button" class="info-btn" [routerLink]="['/view-result/', checkid]">More Info</button>
+                    </mat-card-title-group>
+                    <mat-card-content style="padding-bottom: 0px">
+                        <ngx-charts-bar-vertical [results]="dataChart1" [legend]="showLegend" [customColors]="customColors" [xAxis]="showXAxis" [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart1" [yAxisLabel]="yAxisLabelAllCharts" [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis"
+                            [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks" [activeEntries]="highlightedChart1" (activate)="onInteractChart1($event)" (deactivate)="onDeactivate($event)">
+                        </ngx-charts-bar-vertical>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="1">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title" align="center">Tools</h4>
                     </div>
-                    <div class="card-header1">
-                        <a mat-button routerLink="/CreateQualityPlan" routerLinkActive="active">Create New Quality Plan&nbsp;<a class="fa fa-angle-right"></a></a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <th scope="col">Quality Attribute</th>
+                                <th scope="col">Tool</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let t of toolDetailService.Tools; let i = index">
+                                    <td>{{t.qualityAttribute}}</td>
+                                    <td><a href="{{t.toolInfo}}">{{t.toolName}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    
-                    <div class="card-body">
-                        <div class="font">
-                        <a class="card-title">Number of Executions Added: {{noOfExecutions}}</a>
-                    </div>
-                    </div>
-                    <div class="card-header2">
-                        <a mat-button routerLink="/add-result" routerLinkActive="active">Add New Execution&nbsp;<a class="fa fa-angle-right"></a></a>
-                    </div>
-                </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3" rowspan="1">
+            <div class="col-10 chart">
+                <mat-card style="height:400px; width:100%;">
+                    <mat-card-title-group>
+                        <span style="font-weight:bold">Overview of the complete process</span>
+                        <button mat-raised-button type="button" class="info-btn" routerLink="/documentation" routerLinkActive="active">More Info</button>
+                    </mat-card-title-group>
+                    <mat-card-content style="padding-bottom: 0px">
+                        <a mat-button routerLink="/documentation" routerLinkActive="active">
+                            <img src="assets/images/processOverview.png" alt="logo" class="process-overview" />
+                        </a>
+                    </mat-card-content>
+                </mat-card>
             </div>
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-body">
-                        <div class="font">
-                        <a class="card-title">Number of Tools: {{noofTools}}</a>
-                    </div>
-                    </div>
-                    <div class="card-header3">
-                        <a mat-button routerLink="/Tools" routerLinkActive="active">Add New Tool&nbsp;<a class="fa fa-angle-right"></a></a>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col">
-        <div class="col-10 chart">
-            <mat-card style="height:400px; width:600px; display: grid; margin:7px 0px 7px 0px;">
-                <mat-card-title-group>
-                    <span class="fill-remaining-space"></span>
-                    <span  style="font-weight:bold">Recent Quality Assessment Result</span>
-                    <button mat-raised-button type="button" [routerLink]="['/view-result/', checkid]">More Info</button>
-                  </mat-card-title-group>
-                <mat-card-content style="padding-bottom: 0px">
-                    <ngx-charts-bar-vertical
-                                                [results]="dataChart1"
-                                                [legend]="showLegend"
-                                                [customColors]="customColors"
-                                                [xAxis]="showXAxis"
-                                                [yAxis]="showYAxis"
-                                                [xAxisLabel]="xAxisLabelChart1"
-                                                [yAxisLabel]="yAxisLabelAllCharts"
-                                                [showXAxisLabel]="showXAxis"
-                                                [showYAxisLabel]="showYAxis"
-                                                [yScaleMin]="yScaleMin"
-                                                [yScaleMax]="yScaleMax"
-                                                [yAxisTicks]="yAxisTicks"
-                                                [activeEntries]="highlightedChart1"
-                                                (activate)="onInteractChart1($event)"
-                                                (deactivate)="onDeactivate($event)">
-                                        </ngx-charts-bar-vertical>
-                </mat-card-content>
-            </mat-card>
-        </div>
-    </div>
-    </div>
-            
-        </div>
-            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
 
+</div>

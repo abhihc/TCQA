@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
       this.toolDetailService.Tools = res as ToolDetail[];
       this.noofTools = this.toolDetailService.Tools.length;
     });
-    
+
   }
 
   getID() {
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
 
   }
 
- 
+
 
   getResultData(id) {
     const self = this;
@@ -165,7 +165,7 @@ export class HomeComponent implements OnInit {
       self.dataChart2 = [...self.dataChart2];
       self.dataChart3 = [...self.dataChart3];
       //console.log('resultData', this.resultData);
-      
+
     });
   }
 
@@ -202,9 +202,5 @@ export class HomeComponent implements OnInit {
     this.highlightedChart2 = [...this.highlightedChart2];
     this.highlightedChart3 = [...this.highlightedChart3];
   }
-
-  
-
-
 
 }
