@@ -49,13 +49,16 @@
         </mat-form-field>
     </div>
 
+    <mat-vertical-stepper #stepper>
+        <mat-step [stepControl]="true">
+            <ng-template matStepLabel>Characterization of Context</ng-template>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:380px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <mat-card-title class="card-title" align="center">
+                    <!-- <mat-card-title class="card-title" align="center">
                         Characterization of Context
-                    </mat-card-title>
+                    </mat-card-title> -->
                     <mat-card-content>
                         <mat-grid-list cols="3" rowHeight="100px">
                             <mat-grid-tile>
@@ -131,14 +134,16 @@
             </div>
         </div>
     </div>
-
+</mat-step>
+<mat-step [stepControl]="true">
+    <ng-template matStepLabel>Identification of Information Needs</ng-template>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:400px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <mat-card-title class="card-title" align="center">
+                    <!-- <mat-card-title class="card-title" align="center">
                         Identification of Information Needs
-                    </mat-card-title>
+                    </mat-card-title> -->
                     <mat-card-content>
                         <div class="example-container-two" formArrayName="goalArray"
                             *ngFor="let item of editForm.get('goalArray').controls; let i=index;">
@@ -204,14 +209,17 @@
         </div>
 
     </div>
+</mat-step>
+<mat-step [stepControl]="true">
+    <ng-template matStepLabel>Definition of Quality Understanding</ng-template>
 
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:500px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <mat-card-title class="card-title" align="center">
+                    <!-- <mat-card-title class="card-title" align="center">
                         Definition of Quality Understanding
-                    </mat-card-title>
+                    </mat-card-title> -->
                     <mat-card-content>
 
 
@@ -267,13 +275,17 @@
         </div>
 
     </div>
+</mat-step>
+<mat-step [stepControl]="true">
+
+    <ng-template matStepLabel>Definition of Measurements</ng-template>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:460px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <mat-card-title class="card-title" align="center">
+                    <!-- <mat-card-title class="card-title" align="center">
                         Definition of Measurements
-                    </mat-card-title>
+                    </mat-card-title> -->
                     <mat-card-content>
                         <div formArrayName="measurementArray" *ngFor="let item of editForm.get('measurementArray').controls; let i=index;">
                             <div class="example-container-four" [formGroupName]="i">
@@ -325,18 +337,12 @@
 
     </div>
 
-    <mat-grid-list cols="3" rowHeight="100px">
-        <mat-grid-tile></mat-grid-tile>
-        
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile>
-            <button mat-raised-button style="width : 10em;" (click)="reset(qualityForm)">Reset</button> &nbsp;
-            <button mat-button style="width : 10em;" type="submit">Save Plan</button>
-    </mat-grid-tile>
-    </mat-grid-list>
-
-   
-
+</mat-step>
+</mat-vertical-stepper>
+<div>
+    <button mat-button class="main-save-btn" type="submit">Save Plan</button>
+    <button mat-raised-button class="main-reset-btn" (click)="reset(editForm)">Reset</button>
+</div>
 
     <br>
     <br>
