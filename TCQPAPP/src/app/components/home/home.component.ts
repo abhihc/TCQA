@@ -1,15 +1,12 @@
-import { count } from 'console';
 import { Result } from './../../common/result';
 import { ApiService } from './../../common/api.service';
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { QualityPlanService } from './../../common/quality-plan.service';
-import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { QualityPlan } from './../../common/quality-plan.model';
 import { ToolDetail } from './../../common/toolDetail.model';
 import { ToolDetailService } from './../../common/toolDetail.service';
 
@@ -164,8 +161,6 @@ export class HomeComponent implements OnInit {
       self.dataChart1 = [...self.dataChart1];
       self.dataChart2 = [...self.dataChart2];
       self.dataChart3 = [...self.dataChart3];
-      //console.log('resultData', this.resultData);
-
     });
   }
 

@@ -1,6 +1,3 @@
-import { element } from 'protractor';
-import { QualityAttribute, QualitySubCharacteristic } from './../../common/quality-results.model';
-import { Result } from './../../common/result';
 import { Router } from '@angular/router';
 import { ApiService } from './../../common/api.service';
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
@@ -9,10 +6,6 @@ import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-interface qualityAspect {
-  qc: string;
-  qbc: string[];
-}
 
 @Component({
   selector: 'app-results-add',

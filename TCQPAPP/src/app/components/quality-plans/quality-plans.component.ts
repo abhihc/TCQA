@@ -1,10 +1,8 @@
-import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
+import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
-import { reduce } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface qualityAspect {

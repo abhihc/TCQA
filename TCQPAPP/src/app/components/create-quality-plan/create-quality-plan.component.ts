@@ -1,10 +1,8 @@
-import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
-import { NgSelectModule, NgOption } from '@ng-select/ng-select';
+import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
-import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { QualityPlanAttribute } from './../../common/quality-plan.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface qualityAspect {
