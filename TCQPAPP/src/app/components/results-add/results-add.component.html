@@ -30,7 +30,7 @@
 
             <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show">
                 <br>
-                <input type="hidden" class="form-control" id="_id" formControlName="_id">
+                <input type="hidden" class="form-control" id="_id">
 
                 <div class="example-container-three">
                     <mat-form-field [style.width.px]=260>
@@ -74,7 +74,7 @@
                                                             </mat-form-field>
                                                         </mat-grid-tile>
                                                         <mat-grid-tile>
-                                                            <mat-form-field [style.width.px]=260>
+                                                            <mat-form-field [style.width.px]=140>
                                                                 <input matInput type="number" class="form-control" formControlName="scoreQA" id="scoreQA" placeholder="Score">
 
                                                             </mat-form-field>
