@@ -5,6 +5,7 @@ import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@an
 import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
 import { reduce } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface qualityAspect {
   qc: string;
@@ -33,7 +34,7 @@ export class QualityPlansComponent implements OnInit {
 
   qpa = new QualityPlanAttribute();
 
-  constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder) { }
+  constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.qualityPlanList();
@@ -134,6 +135,7 @@ export class QualityPlansComponent implements OnInit {
     this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
       this.reset(form);
       this.qualityPlanList();
+      this.openSnackBar('Qulity plan updates successfully', null);
     })
 
 
@@ -177,7 +179,7 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.get('measurementArray').disable();
     this.questionReadOnly = true;
     this.data = qp;
-   // console.log(this.data)
+    // console.log(this.data)
   }
 
   setExistingGoals(goalset: any): FormArray {
@@ -286,6 +288,7 @@ export class QualityPlansComponent implements OnInit {
   onDelete(_id: string) {
     this.buttonDisable = true;
     this.qualityPlanService.deleteQualityPlan(_id).subscribe();
+    this.openSnackBar('Quality plan deleted successfully', null);
     this.qualityPlanList();
     this.reset();
     location.reload();
@@ -327,4 +330,14 @@ export class QualityPlansComponent implements OnInit {
     }
 
   ];
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
+  }
+
+
 }

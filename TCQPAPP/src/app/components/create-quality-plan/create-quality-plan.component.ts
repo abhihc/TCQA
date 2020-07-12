@@ -5,6 +5,7 @@ import { FormArray, FormControl, FormGroup, FormBuilder, FormsModule } from '@an
 import { NgSelectModule, NgOption } from '@ng-select/ng-select';
 import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface qualityAspect {
   qc: string;
@@ -31,7 +32,7 @@ export class CreateQualityPlanComponent implements OnInit {
 
   qpa = new QualityPlanAttribute();
 
-  constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder) {
+  constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) {
     this.Count.length = 3;
   }
 
@@ -132,7 +133,7 @@ export class CreateQualityPlanComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.qualityPlanService.postQualityPlan(form.value).subscribe((res) => {
       this.reset(form);
-      alert('Quality Plan saved successfully');
+      this.openSnackBar('Quality plan saved successfully', null);
 
     })
   }
@@ -156,32 +157,32 @@ export class CreateQualityPlanComponent implements OnInit {
   }
 
   addQC() {
-    const control = <FormArray> this.qualityForm.controls['QualityCharacteristics'];
+    const control = <FormArray>this.qualityForm.controls['QualityCharacteristics'];
     control.push(this.createQC());
   }
 
-  addQSC(iqc){
+  addQSC(iqc) {
     const control = (<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray;
     control.push(this.createQSC());
   }
 
-  addQA(iqc,iqsc){
+  addQA(iqc, iqsc) {
     const control = ((<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray).at(iqsc).get('qualityAttributes') as FormArray;
     control.push(this.createQA());
   }
 
-  removeQA(iqc,iqsc){
+  removeQA(iqc, iqsc) {
     const control = ((<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray).at(iqsc).get('qualityAttributes') as FormArray;
     control.removeAt(iqsc);
   }
 
-  removeQSC(iqc){
+  removeQSC(iqc) {
     const control = (<FormArray>this.qualityForm.controls['QualityCharacteristics']).at(iqc).get('qualitySubCharacteristics') as FormArray;
     control.removeAt(iqc);
   }
 
-  removeQC(iqc){
-    const control = <FormArray> this.qualityForm.controls['QualityCharacteristics'];
+  removeQC(iqc) {
+    const control = <FormArray>this.qualityForm.controls['QualityCharacteristics'];
     control.removeAt(iqc);
   }
 
@@ -238,6 +239,14 @@ export class CreateQualityPlanComponent implements OnInit {
     }
 
   ];
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
+  }
 
 
 }
