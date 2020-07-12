@@ -38,7 +38,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainheaderComponent } from './components/mainheader/mainheader.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatStepperModule } from '@angular/material/stepper';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -88,7 +88,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCardModule,
     MatPaginatorModule,
     MatTreeModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSnackBarModule
   ],
   providers: [QualityPlanService, ApiService],
   bootstrap: [AppComponent]

@@ -13,7 +13,6 @@ export class ToolDetailService {
   constructor(private http: HttpClient) { }
 
   postToolDetail(t: ToolDetail) {
-    console.log(t)
     return this.http.post(this.baseURL, t);
   }
 
@@ -21,11 +20,11 @@ export class ToolDetailService {
    return this.http.get(this.baseURL);
   }
 
-  putToolDetail(t: ToolDetail) {
-    return this.http.put(this.baseURL + `/${t._id}`, t);
+  putToolDetail(t: ToolDetail, id: string) {
+    return this.http.put(this.baseURL + `/${id}`, t);
   }
 
-  deleteToolDetail(_id: string) {
-    return this.http.delete(this.baseURL + `/${_id}`);
+  deleteToolDetail(id: string) {
+    return this.http.delete(this.baseURL + `/${id}`);
   }
 }

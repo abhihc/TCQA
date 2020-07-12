@@ -3,6 +3,7 @@ import { ToolDetailService } from './../../common/toolDetail.service';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tools',
@@ -14,44 +15,73 @@ export class ToolsComponent implements OnInit {
 
   toolForm: FormGroup;
   toolArray: FormArray;
+  toolsList: ToolDetail[];
+  isEditMode: boolean = false;
 
-  constructor(private toolDetailService: ToolDetailService, public formbuilder: FormBuilder) {
+  constructor(private toolDetailService: ToolDetailService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
-    this.toolList();
+    this.getToolList();
     this.reset();
     this.toolForm = this.formbuilder.group({
-      _id: [''],
+      id: [''],
       qualityAttribute: [''],
       toolName: [''],
       toolInfo: ['']
     })
   }
 
+  getToolList() {
+    this.toolDetailService.getToolDetailList().subscribe((res) => {
+      this.toolsList = res as ToolDetail[];
+    });
+  }
+
   onEdit(t: ToolDetail) {
     this.toolForm.patchValue({
+      id: t._id,
       qualityAttribute: t.qualityAttribute,
       toolName: t.toolName,
       toolInfo: t.toolInfo
-    })
+    });
+    this.toolForm.setControl('id', this.formbuilder.control(t._id));
     this.toolForm.setControl('qualityAttribute', this.formbuilder.control(t.qualityAttribute));
     this.toolForm.setControl('toolName', this.formbuilder.control(t.toolName));
     this.toolForm.setControl('toolInfo', this.formbuilder.control(t.toolInfo));
-    //this.isReadOnly = false;
-    //this.buttonDisable = false;
-    this.toolForm.get('qualityAttribute').enable();
-    this.toolForm.get('toolName').enable();
-    this.toolForm.get('toolInfo').enable();
-    //this.data = qp;
+    this.isEditMode = true;
   }
 
-  onDelete(_id: string) {
-    //this.buttonDisable = true;
-    this.toolDetailService.deleteToolDetail(_id).subscribe();
-    this.toolList();
-    this.reset();
-    location.reload();
+  onDelete(id: string) {
+    this.toolDetailService.deleteToolDetail(id).subscribe((res) => {
+      this.openSnackBar('Tool deleted successfully', null);
+      this.getToolList();
+    })
+  }
+
+  onSubmit(form: NgForm) {
+
+    const toolData = {
+      qualityAttribute: form.value.qualityAttribute,
+      toolName: form.value.toolName,
+      toolInfo: form.value.toolInfo
+    } as ToolDetail;
+
+    if (this.isEditMode) {
+      this.toolDetailService.putToolDetail(toolData, form.value.id).subscribe((res) => {
+        this.reset(form);
+        this.openSnackBar('Tool updated successfully', null);
+        this.getToolList();
+        this.isEditMode = false;
+      })
+    } else {
+      this.toolDetailService.postToolDetail(toolData).subscribe((res) => {
+        this.reset(form);
+        this.openSnackBar('Tool created successfully', null);
+        this.getToolList();
+      })
+    }
+
   }
 
   reset(form?: NgForm) {
@@ -65,20 +95,14 @@ export class ToolsComponent implements OnInit {
     }
   }
 
-  onSubmit(form: NgForm) {
-    this.toolDetailService.postToolDetail(form.value).subscribe((res) => {
-      this.reset(form);
-      alert('Tool Details saved successfully');
-      location.reload();
-    })
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
   }
 
-  toolList() {
-    this.toolDetailService.getToolDetailList().subscribe((res) => {
-      this.toolDetailService.Tools = res as ToolDetail[];
-    });
-    console.log(this.toolDetailService.Tools);
-  }
 
 
 }
