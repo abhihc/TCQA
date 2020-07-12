@@ -7,6 +7,7 @@ import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core'
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface qualityAspect {
   qc: string;
@@ -43,7 +44,8 @@ export class ResultsAddComponent implements OnInit {
     private router: Router,
     private ngZone: NgZone,
     private apiService: ApiService,
-    private qualityPlanService: QualityPlanService
+    private qualityPlanService: QualityPlanService,
+    private _snackBar: MatSnackBar
   ) {
     this.mainForm();
   }
@@ -241,12 +243,21 @@ export class ResultsAddComponent implements OnInit {
 
       this.apiService.addResults(this.newResult).subscribe(
         (res) => {
+          this.openSnackBar('Quality assessment added successfully', null);
           this.ngZone.run(() => this.router.navigateByUrl('/results-list'));
         }, (error) => {
-          console.log(error);
           alert('An error ocurred when trying to input results. Please try again');
         });
 
     }
+
+    openSnackBar(message: string, action: string) {
+      this._snackBar.open(message, action, {
+        duration: 2000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      });
+    }
+
 
   }
