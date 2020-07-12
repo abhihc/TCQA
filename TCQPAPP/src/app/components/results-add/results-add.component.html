@@ -1,7 +1,7 @@
-<div class="main-content">
-    <mat-grid-list cols="1" rowHeight="300px">
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div class="card card-assessments">
+
+           <div class="container-fluid">
+            <div class="col-md-12">
+           <div class="card card-assessments">
                 <div class="card-header card-header-danger">
                     <h4 class="card-title" align="center">Quality Plans</h4>
                 </div>
@@ -24,14 +24,16 @@
                     </table>
                 </div>
             </div>
-        </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show" style="width: 60%">
+        </div>
+        </div>
+
+
+            <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show">
                 <br>
-                <input type="hidden" class="form-control" id="_id" formControlName="_id">
+                <input type="hidden" class="form-control" id="_id">
 
                 <div class="example-container-three">
-                    <mat-form-field [style.width.px]=230>
+                    <mat-form-field [style.width.px]=260>
                         <input matInput type="text" placeholder="Execution Name" class="form-control" formControlName="executionName" id="executionName">
                     </mat-form-field>
                 </div>
@@ -66,13 +68,13 @@
                                                     <div formGroupName="{{iqa}}">
                                                         <mat-grid-tile></mat-grid-tile>
                                                         <mat-grid-tile>
-                                                            <mat-form-field [style.width.px]=230>
+                                                            <mat-form-field [style.width.px]=260>
                                                                 <input [readonly]="true" matInput class="form-control" formControlName="qualityAttribute" id="qualityAttribute" placeholder="Quality Attribute">
 
                                                             </mat-form-field>
                                                         </mat-grid-tile>
                                                         <mat-grid-tile>
-                                                            <mat-form-field [style.width.px]=230>
+                                                            <mat-form-field [style.width.px]=140>
                                                                 <input matInput type="number" class="form-control" formControlName="scoreQA" id="scoreQA" placeholder="Score">
 
                                                             </mat-form-field>
@@ -97,7 +99,3 @@
                     <button align="center" type="submit" mat-raised-button color="primary">Submit</button>
                 </div>
             </form>
-        </mat-grid-tile>
-    </mat-grid-list>
-
-</div>

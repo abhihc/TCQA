@@ -53,15 +53,13 @@
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto;
-}
-
-col-md-12 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 40%;
-    flex: 0 0 40%;
-    max-width: 40%;
-}
+    margin-left: auto; }
+  
+    col-md-12 {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 70%;
+              flex: 0 0 70%;
+      max-width: 70%; }
 
 .card {
     border: 0;
@@ -422,8 +420,4 @@ col-md-12 {
 
 .mat-icon-button:hover {
     color: #f1971b;
-}
-
-.card-assessments {
-    width: 70%;
 }

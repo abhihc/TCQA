@@ -1,4 +1,33 @@
 
+  
+  .main-content{
+    margin-top: 20px;
+}
+
+.container-fluid {
+  width: 70%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+  .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px; }
+
+    
+    col-md-12 {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 40%;
+              flex: 0 0 40%;
+      max-width: 40%; }
+
+      
 
   .example-container-two {
     align-items: center;
@@ -64,20 +93,6 @@
    .maticon{
      font-size: x-large;
    }
-
-
-   .container-fluid {
-    width: 35%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto; }
-
-    col-md-12 {
-      -webkit-box-flex: 0;
-          -ms-flex: 0 0 40%;
-              flex: 0 0 40%;
-      max-width: 40%; }
 
 
     
@@ -376,27 +391,10 @@
     flex-direction: column;
     border: #00205b solid 1px; 
    }
-  
-  
-  .main-content{
-    margin-top: 20px;
-}
 
-.container-fluid {
-  width: 70%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto; }
 
-  .row {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px; }
+
+
 
     .card-title {
 align-items: center;
@@ -430,3 +428,14 @@ align-items: center;
       .mat-raised-button{
         background-color: gray;
       }
+
+      .mat-stepper-vertical {
+        margin: 20px !important;
+    }
+    
+    .main-save-btn,
+    .main-reset-btn {
+        width: 120px;
+        float: right;
+        margin-right: 20px;
+    }
