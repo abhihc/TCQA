@@ -29,6 +29,31 @@ export class ToolsComponent implements OnInit {
     })
   }
 
+  onEdit(t: ToolDetail) {
+    this.toolForm.patchValue({
+      qualityAttribute: t.qualityAttribute,
+      toolName: t.toolName,
+      toolInfo: t.toolInfo
+    })
+    this.toolForm.setControl('qualityAttribute', this.formbuilder.control(t.qualityAttribute));
+    this.toolForm.setControl('toolName', this.formbuilder.control(t.toolName));
+    this.toolForm.setControl('toolInfo', this.formbuilder.control(t.toolInfo));
+    //this.isReadOnly = false;
+    //this.buttonDisable = false;
+    this.toolForm.get('qualityAttribute').enable();
+    this.toolForm.get('toolName').enable();
+    this.toolForm.get('toolInfo').enable();
+    //this.data = qp;
+  }
+
+  onDelete(_id: string) {
+    //this.buttonDisable = true;
+    this.toolDetailService.deleteToolDetail(_id).subscribe();
+    this.toolList();
+    this.reset();
+    location.reload();
+  }
+
   reset(form?: NgForm) {
     if (form)
       form.reset();
@@ -54,6 +79,6 @@ export class ToolsComponent implements OnInit {
     });
     console.log(this.toolDetailService.Tools);
   }
-  
+
 
 }
