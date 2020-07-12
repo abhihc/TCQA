@@ -395,6 +395,14 @@ mat-icon-button {
     cursor: pointer !important;
 }
 
+.mat-icon-button {
+    color: #00205b;
+}
+
+.mat-icon-button:hover {
+    color: #f1971b;
+}
+
 .tool-input-form {
     margin-top: 20px;
 }
