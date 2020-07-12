@@ -1,114 +1,103 @@
-
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title" align="center">Quality Plans</h4>
-                    </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                        <th scope="col">Quality Plan Name</th>
-                                        <th scope="col center">Operation</th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let qp of qualityPlanService.qualityPlans">
-                                        <td>{{qp.qualityPlanName}}</td>
-                                        <td>
-                                            <button mat-icon-button color="primary" (click)="inputResults(qp)">
-                                                <mat-icon>input</mat-icon>
-                                              </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                    </div>
+    <mat-grid-list cols="1" rowHeight="300px">
+        <mat-grid-tile colspan="1" rowspan="1">
+            <div class="card card-assessments">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title" align="center">Quality Plans</h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <th scope="col">Quality Plan Name</th>
+                            <th scope="col center">Operation</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let qp of qualityPlanService.qualityPlans">
+                                <td>{{qp.qualityPlanName}}</td>
+                                <td>
+                                    <button mat-icon-button color="primary" (click)="inputResults(qp)">
+                                <mat-icon>input</mat-icon>
+                              </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
-    </div>
-  </div>
-  
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show" style="width: 60%">
+                <br>
+                <input type="hidden" class="form-control" id="_id" formControlName="_id">
 
+                <div class="example-container-three">
+                    <mat-form-field [style.width.px]=230>
+                        <input matInput type="text" placeholder="Execution Name" class="form-control" formControlName="executionName" id="executionName">
+                    </mat-form-field>
+                </div>
+                <div formArrayName="QualityCharacteristics">
+                    <div *ngFor="let item of addResultForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
 
-
-<form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show">
-    <br>
-    <input type="hidden" class="form-control" id="_id" formControlName="_id">
-    
-    <div class="example-container-three">
-        <mat-form-field [style.width.px]=230>
-            <input matInput type="text" placeholder="Execution Name" class="form-control"
-                formControlName="executionName" id="executionName">
-        </mat-form-field>
-    </div>
-    <div formArrayName="QualityCharacteristics">
-        <div *ngFor="let item of addResultForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
-
-            <div formGroupName="{{iqc}}">
-                <mat-form-field [hidden]="true">
-                    <mat-select matInput placeholder="Quality Characteristic" formControlName="qualityCharacteristic">
-                        <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
-                            {{qc}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <div formArrayName="qualitySubCharacteristics">
-                    <div *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
-                        <div formGroupName="{{iqsc}}">
+                        <div formGroupName="{{iqc}}">
                             <mat-form-field [hidden]="true">
-                                <mat-select matInput placeholder="Quality Sub Characteristic"
-                                    formControlName="qualitySubCharacteristic">
-                                    <mat-optgroup *ngFor="let qualityaspect of qualityAspects"
-                                        [label]="qualityaspect.qc">
-                                        <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
-                                            {{qualitySC}}
-                                        </mat-option>
-                                    </mat-optgroup>
+                                <mat-select matInput placeholder="Quality Characteristic" formControlName="qualityCharacteristic">
+                                    <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
+                                        {{qc}}
+                                    </mat-option>
                                 </mat-select>
                             </mat-form-field>
 
-                            <div formArrayName="qualityAttributes">
-                                <div
-                                    *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
-                                    <mat-grid-list cols="4" gutterSize="2px" rowHeight="80px">
-                                        <div formGroupName="{{iqa}}">
-                                            <mat-grid-tile></mat-grid-tile>
-                                            <mat-grid-tile>
-                                                <mat-form-field [style.width.px]=230>
-                                                    <input [readonly]="true" matInput class="form-control"
-                                                        formControlName="qualityAttribute" id="qualityAttribute"
-                                                        placeholder="Quality Attribute">
+                            <div formArrayName="qualitySubCharacteristics">
+                                <div *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
+                                    <div formGroupName="{{iqsc}}">
+                                        <mat-form-field [hidden]="true">
+                                            <mat-select matInput placeholder="Quality Sub Characteristic" formControlName="qualitySubCharacteristic">
+                                                <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
+                                                    <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
+                                                        {{qualitySC}}
+                                                    </mat-option>
+                                                </mat-optgroup>
+                                            </mat-select>
+                                        </mat-form-field>
 
-                                                </mat-form-field>
-                                            </mat-grid-tile>
-                                            <mat-grid-tile>
-                                                <mat-form-field [style.width.px]=230>
-                                                    <input matInput type="number" class="form-control"
-                                                        formControlName="scoreQA" id="scoreQA" placeholder="Score">
+                                        <div formArrayName="qualityAttributes">
+                                            <div *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
+                                                <mat-grid-list cols="4" gutterSize="2px" rowHeight="80px">
+                                                    <div formGroupName="{{iqa}}">
+                                                        <mat-grid-tile></mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <mat-form-field [style.width.px]=230>
+                                                                <input [readonly]="true" matInput class="form-control" formControlName="qualityAttribute" id="qualityAttribute" placeholder="Quality Attribute">
 
-                                                </mat-form-field>
-                                            </mat-grid-tile>
-                                            <mat-grid-tile></mat-grid-tile>
+                                                            </mat-form-field>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <mat-form-field [style.width.px]=230>
+                                                                <input matInput type="number" class="form-control" formControlName="scoreQA" id="scoreQA" placeholder="Score">
 
+                                                            </mat-form-field>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile></mat-grid-tile>
+
+                                                    </div>
+
+                                                </mat-grid-list>
+
+
+                                            </div>
                                         </div>
-
-                                    </mat-grid-list>
-
-
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+                <div class="example-container-three">
+                    <button align="center" type="submit" mat-raised-button color="primary">Submit</button>
+                </div>
+            </form>
+        </mat-grid-tile>
+    </mat-grid-list>
 
-            </div>
-        </div>
-    </div>
-    <div class="example-container-three">
-        <button align="center" type="submit" mat-raised-button color="primary">Submit</button>
-    </div>
-</form>
+</div>
