@@ -1,51 +1,21 @@
-.example-container {
+.container-three {
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-.example-container>* {
-    width: 70%;
+.container-three>* {
+    width: 180px;
 }
 
-.example-container-two {
+.container-80 {
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-.example-container-two>* {
-    width: 90%;
-}
-
-.example-container-three {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.example-container-three>* {
-    width: 20%;
-}
-
-.example-container-four {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.example-container-four>* {
-    width: 70%;
-}
-
-.example-container-five {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.example-container-five>* {
-    width: 10%;
+.container-80>* {
+    width: 100%;
 }
 
 .container-fluid {
@@ -427,4 +397,20 @@ col-md-12 {
 .mat-button {
     background-color: #00205b;
     color: white;
+}
+
+.assessment-input-form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.assessment-field {
+    width: 100%;
+}
+
+.quality-attr-container {
+    display: block;
+    width: 100%;
 }

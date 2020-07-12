@@ -239,7 +239,7 @@ export class ResultsAddComponent implements OnInit {
           this.openSnackBar('Quality assessment added successfully', null);
           this.ngZone.run(() => this.router.navigateByUrl('/results-list'));
         }, (error) => {
-          alert('An error ocurred when trying to input results. Please try again');
+          alert('An error ocurred when trying to input the results. Please try again.');
         });
 
     }

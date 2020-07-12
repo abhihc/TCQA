@@ -26,75 +26,80 @@
     </div>
 </div>
 
+<div class="assessment-input-form" *ngIf="show">
+    <mat-card style="width:500px; margin-top: 10px;">
+        <mat-card-content style="padding-bottom: 0px">
+            <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)">
+                <br>
+                <input type="hidden" class="form-control" id="_id">
 
-<form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)" *ngIf="show">
-    <br>
-    <input type="hidden" class="form-control" id="_id">
+                <div class="container-three">
+                    <mat-form-field [style.width.px]=260>
+                        <input matInput type="text" placeholder="Execution Name" class="form-control" formControlName="executionName" id="executionName">
+                    </mat-form-field>
+                </div>
+                <div formArrayName="QualityCharacteristics" class="container-80">
+                    <div *ngFor="let item of addResultForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
 
-    <div class="example-container-three">
-        <mat-form-field [style.width.px]=260>
-            <input matInput type="text" placeholder="Execution Name" class="form-control" formControlName="executionName" id="executionName">
-        </mat-form-field>
-    </div>
-    <div formArrayName="QualityCharacteristics">
-        <div *ngFor="let item of addResultForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
-
-            <div formGroupName="{{iqc}}">
-                <mat-form-field [hidden]="true">
-                    <mat-select matInput placeholder="Quality Characteristic" formControlName="qualityCharacteristic">
-                        <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
-                            {{qc}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <div formArrayName="qualitySubCharacteristics">
-                    <div *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
-                        <div formGroupName="{{iqsc}}">
+                        <div formGroupName="{{iqc}}">
                             <mat-form-field [hidden]="true">
-                                <mat-select matInput placeholder="Quality Sub Characteristic" formControlName="qualitySubCharacteristic">
-                                    <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
-                                        <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
-                                            {{qualitySC}}
-                                        </mat-option>
-                                    </mat-optgroup>
+                                <mat-select matInput placeholder="Quality Characteristic" formControlName="qualityCharacteristic">
+                                    <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
+                                        {{qc}}
+                                    </mat-option>
                                 </mat-select>
                             </mat-form-field>
 
-                            <div formArrayName="qualityAttributes">
-                                <div *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
-                                    <mat-grid-list cols="4" gutterSize="2px" rowHeight="80px">
-                                        <div formGroupName="{{iqa}}">
-                                            <mat-grid-tile></mat-grid-tile>
-                                            <mat-grid-tile>
-                                                <mat-form-field [style.width.px]=260>
-                                                    <input [readonly]="true" matInput class="form-control" formControlName="qualityAttribute" id="qualityAttribute" placeholder="Quality Attribute">
+                            <div formArrayName="qualitySubCharacteristics">
+                                <div *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
+                                    <div formGroupName="{{iqsc}}">
+                                        <mat-form-field [hidden]="true">
+                                            <mat-select matInput placeholder="Quality Sub Characteristic" formControlName="qualitySubCharacteristic">
+                                                <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
+                                                    <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
+                                                        {{qualitySC}}
+                                                    </mat-option>
+                                                </mat-optgroup>
+                                            </mat-select>
+                                        </mat-form-field>
 
-                                                </mat-form-field>
-                                            </mat-grid-tile>
-                                            <mat-grid-tile>
-                                                <mat-form-field [style.width.px]=140>
-                                                    <input matInput type="number" class="form-control" formControlName="scoreQA" id="scoreQA" placeholder="Score">
+                                        <div formArrayName="qualityAttributes" class="quality-attr-container">
+                                            <div *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
+                                                <mat-grid-list cols="2" gutterSize="2px" rowHeight="80px">
+                                                    <div formGroupName="{{iqa}}">
 
-                                                </mat-form-field>
-                                            </mat-grid-tile>
-                                            <mat-grid-tile></mat-grid-tile>
+                                                        <mat-grid-tile class="assessment-field">
+                                                            <mat-form-field [style.width.px]=320>
+                                                                <input [readonly]="true" matInput class="form-control" formControlName="qualityAttribute" id="qualityAttribute" placeholder="Quality Attribute">
 
+                                                            </mat-form-field>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile class="assessment-field">
+                                                            <mat-form-field [style.width.px]=140>
+                                                                <input matInput type="number" class="form-control" formControlName="scoreQA" id="scoreQA" placeholder="Score">
+
+                                                            </mat-form-field>
+                                                        </mat-grid-tile>
+
+
+                                                    </div>
+
+                                                </mat-grid-list>
+
+
+                                            </div>
                                         </div>
-
-                                    </mat-grid-list>
-
-
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="example-container-three">
-        <button align="center" type="submit" mat-button>Save Assessment</button>
-    </div>
-</form>
+                <div class="container-three">
+                    <button align="center" type="submit" mat-button>Save Assessment</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
