@@ -36,7 +36,7 @@
               <div class="col-md-12">
                   <div class="card">
                     <div class="card-header card-header-danger">
-                      <h4 class="card-title" align="center">Specific Quality Plan Executions</h4>
+                      <h4 class="card-title" align="center">Selected Quality Plan Executions</h4>
                   </div>
                           <div class="table-responsive">
                               <table class="table">
@@ -46,11 +46,11 @@
                                   </thead>
                                   <tbody>
                                     <tr *ngFor="let executionResult of results; let i = index">
-                                      <th scope="row"><a class="primary" [routerLink]="['/view-result/', executionResult._id]">{{executionResult.name}}</a></th>
-                                      <td class="text-center edit-block">
-                                        <span class="delete" (click)="deleteResult(executionResult, i)">
-                                          <button mat-raised-button type="button" >Delete</button>
-                                        </span>
+                                      <th scope="row"><a class="primary1" [routerLink]="['/view-result/', executionResult._id]">{{executionResult.name}}</a></th>
+                                      <td >
+                                        <button mat-icon-button (click)="deleteResult(executionResult, i)">
+                                          <mat-icon>delete</mat-icon>
+                                      </button>
                                       </td>
                                     </tr>
                                   </tbody>

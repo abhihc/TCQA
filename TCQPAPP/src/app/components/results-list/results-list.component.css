@@ -250,11 +250,36 @@
 
         .primary{
           color: #00205b;
-          text-decoration: underline;
+          font: 400;
+
         }
         .primary:hover {
           color:#f1971b;
+          cursor: pointer;
      }
+
+
+     .primary1{
+      color: #00205b;
+      font-weight: 400;
+
+    }
+    .primary1:hover {
+      color:#f1971b;
+      cursor: pointer;
+ }
      .mat-raised-button{
       background-color: gray;
     }
+
+    .mat-icon-button {
+      color: #00205b;
+  }
+  
+  .mat-icon-button:hover {
+      color: #f1971b;
+  }
+
+  .change-color{
+    color: #f1971b;
+  }

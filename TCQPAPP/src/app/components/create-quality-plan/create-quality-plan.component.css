@@ -147,3 +147,11 @@
     float: right;
     margin-right: 20px;
 }
+/* 
+.mat-card-content{
+    padding-top: 50px;
+} */
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: #00205b; 
+ }
