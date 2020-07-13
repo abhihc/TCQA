@@ -13,7 +13,6 @@ export class QualityPlan {
     QualityCharacteristics: Array<QualityCharacteristic>;
     measurementArray: Array<Measurement>;
     qualityPlanName: string;
-    thresholdValue: number;
 }
 
 export class Goal {
@@ -53,6 +52,7 @@ export class Measurement {
     scaleType: string;
     scaleRange: string;
     interpretation: string;
+    thresholdValue: number;
 }
 
 export class QualityPlanAttribute {

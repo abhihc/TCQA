@@ -167,7 +167,7 @@
     filter: blur(12px);
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 50%;
     background-size: cover;
     z-index: -1;
     -webkit-transition: opacity .45s;
@@ -231,7 +231,7 @@
 .card.bg-danger,
 .card.card-rotate.bg-danger .front,
 .card.card-rotate.bg-danger .back {
-    background: linear-gradient(60deg, #3F51B5, #3F51B5);
+    background: linear-gradient(60deg, #00205b, #00205b);
 }
 
 .card .card-header-rose .card-icon,
@@ -373,4 +373,14 @@
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
+}
+
+.container-fluid {
+    width: 60%;
+
+}
+
+
+.make-red{
+    background-color: red;
 }

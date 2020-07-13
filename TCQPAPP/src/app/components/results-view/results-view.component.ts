@@ -23,6 +23,8 @@ export class ResultsViewComponent implements OnInit {
   selectedTO: any;
   viewResultForm: FormGroup;
   show: boolean = false;
+  selectedThresholdScore = [];
+  selectedQAScore = [];
 
   public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';
@@ -68,14 +70,11 @@ export class ResultsViewComponent implements OnInit {
   }
 
   mainForm() {
-    this.viewResultForm = this.fb.group({
-      thresholdScore: null
-    });
+    
   }
 
   qualityPlanList() {
-
-    this.qualityPlanService.getQualityPlanList().subscribe((res) => {
+      this.qualityPlanService.getQualityPlanList().subscribe((res) => {
       this.qualityPlanService.qualityPlans = res as QualityPlan[];
       this.qualityPlanService.qualityPlans.forEach(element => {
         if (element.qualityPlanName == this.qpName) {
@@ -83,6 +82,9 @@ export class ResultsViewComponent implements OnInit {
           this.selectedTS = element.testSuite;
           this.selectedTO = element.testObject;
           this.selectedSTF = element.sourceTestingFramework;
+          element.measurementArray.forEach(element2 => {
+            this.selectedThresholdScore.push(element2.thresholdValue);
+          });
         }
       });
     });
@@ -150,9 +152,12 @@ export class ResultsViewComponent implements OnInit {
       self.dataChart2 = [...self.dataChart2];
       self.dataChart3 = [...self.dataChart3];
       this.qpName = this.resultData.qualityPlan;
-      console.log(this.qpName);
+      this.dataChart3.forEach(element => {
+        this.selectedQAScore.push(element.value);
+      });
 
     });
+    console.log(this.selectedQAScore);
   }
 
   decision() {

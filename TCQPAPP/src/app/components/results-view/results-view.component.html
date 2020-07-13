@@ -69,3 +69,29 @@
         </mat-grid-tile>
     </mat-grid-list>
 </div>
+
+<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title" align="center">Comparison of Assessment Result and Threshold value</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th scope="col">Quality Assessment Score</th>
+                        <th scope="col" class="text-center">Threshold Value</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of selectedQAScore; let j=index" [ngClass]="{'make-red': (item<selectedThresholdScore[j])}">
+                            <td >{{item}}</td>
+                            <td class="text-center">{{selectedThresholdScore[j]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>

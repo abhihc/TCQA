@@ -38,7 +38,6 @@ router.post('/', (req, res) => {
         QualityCharacteristics: req.body.QualityCharacteristics,
         measurementArray: req.body.measurementArray,
         qualityPlanName: req.body.qualityPlanName,   
-        thresholdValue: req.body.thresholdValue   
     });
     console.log(quality)
     quality.save((err, doc) => {
@@ -65,7 +64,6 @@ router.put('/:id', (req, res) => {
         QualityCharacteristics: req.body.QualityCharacteristics,
         measurementArray: req.body.measurementArray,
         qualityPlanName: req.body.qualityPlanName,
-        thresholdValue: req.body.thresholdValue 
     }
     QualityPlan.findByIdAndUpdate(req.params.id, { $set: quality }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }

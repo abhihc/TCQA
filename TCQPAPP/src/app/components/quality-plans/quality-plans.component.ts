@@ -49,7 +49,6 @@ export class QualityPlansComponent implements OnInit {
       sourceTestingFramework: [''],
       targetTestingFramework: [''],
       qualityPlanName: [''],
-      thresholdValue: null,
       goalArray: this.formbuilder.array([this.createGoal()]),
       questionArray: this.formbuilder.array([this.createQuestion()]),
       QualityCharacteristics: this.formbuilder.array([this.createQC()]),
@@ -101,7 +100,8 @@ export class QualityPlansComponent implements OnInit {
       measurementMethod: '',
       scaleType: '',
       scaleRange: '',
-      interpretation: ''
+      interpretation: '',
+      thresholdValue: null
     })
   }
 
@@ -122,9 +122,8 @@ export class QualityPlansComponent implements OnInit {
       questionArray: [],
       QualityCharacteristics: [],
       measurementArray: [],
-      qualityPlanName: "",
-      thresholdValue: null
-    }
+      qualityPlanName: ""
+        }
   }
 
   onSubmit(form: NgForm) {
@@ -158,8 +157,7 @@ export class QualityPlansComponent implements OnInit {
       developmentPhase: qp.developmentPhase,
       sourceTestingFramework: qp.sourceTestingFramework,
       targetTestingFramework: qp.targetTestingFramework,
-      qualityPlanName: qp.qualityPlanName,
-      thresholdValue: qp.thresholdValue
+      qualityPlanName: qp.qualityPlanName
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
@@ -247,7 +245,8 @@ export class QualityPlansComponent implements OnInit {
         measurementMethod: element.measurementMethod,
         scaleType: element.scaleType,
         scaleRange: element.scaleRange,
-        interpretation: element.interpretation
+        interpretation: element.interpretation,
+        thresholdValue: element.thresholdValue
       }));
     });
     return formArray;
@@ -263,8 +262,7 @@ export class QualityPlansComponent implements OnInit {
       developmentPhase: qp.developmentPhase,
       sourceTestingFramework: qp.sourceTestingFramework,
       targetTestingFramework: qp.targetTestingFramework,
-      qualityPlanName: qp.qualityPlanName,
-      thresholdValue: qp.thresholdValue
+      qualityPlanName: qp.qualityPlanName
     })
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
@@ -289,7 +287,6 @@ export class QualityPlansComponent implements OnInit {
     this.openSnackBar('Quality plan deleted successfully', null);
     this.qualityPlanList();
     this.reset();
-    location.reload();
   }
 
   qualityAspects: qualityAspect[] = [

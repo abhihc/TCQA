@@ -56,9 +56,6 @@
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:380px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <!-- <mat-card-title class="card-title" align="center">
-                        Characterization of Context
-                    </mat-card-title> -->
                     <mat-card-content>
                         <mat-grid-list cols="3" rowHeight="100px">
                             <mat-grid-tile>
@@ -141,9 +138,6 @@
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:400px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <!-- <mat-card-title class="card-title" align="center">
-                        Identification of Information Needs
-                    </mat-card-title> -->
                     <mat-card-content>
                         <div class="example-container-two" formArrayName="goalArray"
                             *ngFor="let item of editForm.get('goalArray').controls; let i=index;">
@@ -217,9 +211,6 @@
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:500px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <!-- <mat-card-title class="card-title" align="center">
-                        Definition of Quality Understanding
-                    </mat-card-title> -->
                     <mat-card-content>
 
 
@@ -283,32 +274,29 @@
         <div class="row">
             <div class="col-6">
                 <mat-card style="height:460px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                    <!-- <mat-card-title class="card-title" align="center">
-                        Definition of Measurements
-                    </mat-card-title> -->
                     <mat-card-content>
                         <div formArrayName="measurementArray" *ngFor="let item of editForm.get('measurementArray').controls; let i=index;">
-                            <div class="example-container-four" [formGroupName]="i">
+                            <div [formGroupName]="i">
+                                <mat-grid-list cols="3" rowHeight="100px">
+                                    
+                                    <mat-grid-tile>
                                 <mat-form-field>
                                     <input matInput class="form-control" formControlName="name" id="name" placeholder="Name">
                                 </mat-form-field>
-                                <br>
+                            </mat-grid-tile>
+
+                            <mat-grid-tile>
                                 <mat-form-field>
-                                    <input matInput class="form-control" formControlName="informalDefinition" id="informalDefinition"
-                                        placeholder="Informal Definition">
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <mat-select matInput placeholder="Measurement Type" class="form-control" id="measurementType"
+                                <mat-select matInput placeholder="Measurement Type" class="form-control" id="measurementType"
                                         formControlName="measurementType">
                                         <mat-option *ngFor="let mt of qpa.measurementTypeArray" value="{{mt}}">
                                             {{mt}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput class="form-control" formControlName="measurementMethod" id="measurementMethod"
-                                        placeholder="Measurement Method">
-                                </mat-form-field>
+                            </mat-grid-tile>
+
+                            <mat-grid-tile>
                                 <mat-form-field>
                                     <mat-select matInput placeholder="Scale Type" class="form-control" id="scaleType"
                                         formControlName="scaleType">
@@ -317,14 +305,40 @@
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
+                            </mat-grid-tile>
+
+                            <mat-grid-tile>
                                 <mat-form-field>
                                     <input matInput class="form-control" formControlName="scaleRange" id="scaleRange"
                                         placeholder="Scale Range">
                                 </mat-form-field>
+                            </mat-grid-tile>
+
+                            <mat-grid-tile>
+                                <mat-form-field>
+                                    <input matInput class="form-control" formControlName="thresholdValue" id="thresholdValue"
+                                        placeholder="Threshold Value">
+                                </mat-form-field>
+                            </mat-grid-tile>
+                                </mat-grid-list>
+
+                                <div class="example-container-four">
+                            <mat-form-field>
+                                 <input matInput class="form-control" formControlName="informalDefinition" id="informalDefinition"
+                                        placeholder="Informal Definition">
+                                </mat-form-field>
+                                
+                                <mat-form-field>
+                                    <input matInput class="form-control" formControlName="measurementMethod" id="measurementMethod"
+                                        placeholder="Measurement Method">
+                                </mat-form-field>
+                                
+                               
                                 <mat-form-field>
                                     <input matInput class="form-control" formControlName="interpretation" id="interpretation"
                                         placeholder="Interpretation">
                                 </mat-form-field>
+                                </div>
                             </div>
                         </div>
 

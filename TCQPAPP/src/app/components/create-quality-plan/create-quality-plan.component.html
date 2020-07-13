@@ -14,9 +14,6 @@
                 <div class="row">
                     <div class="col-6">
                         <mat-card style="height:320px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                            <!--  <mat-card-title class="card-title" align="left">
-                                Characterization of Context
-                            </mat-card-title> -->
                             <mat-card-content>
                                 <mat-grid-list cols="3" rowHeight="70px">
                                     <mat-grid-tile>
@@ -84,9 +81,6 @@
                 <div class="row">
                     <div class="col-6">
                         <mat-card style="height:490px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                            <!--  <mat-card-title class="card-title" align="left">
-                                Identification of Information Needs
-                            </mat-card-title> -->
                             <mat-card-content>
                                 <div formArrayName="goalArray" *ngFor="let item of qualityForm.get('goalArray').controls; let i=index;">
 
@@ -182,11 +176,8 @@
                 <div class="row">
                     <div class="col-6">
                         <mat-card style="height:500px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                            <!-- <mat-card-title class="card-title" align="left">
-                                Definition of Quality Understanding
-                            </mat-card-title> -->
                             <mat-card-content>
-                                <div *ngFor="let i of Count; let j = index">
+                                <!-- <div *ngFor="let i of Count; let j = index">
                                     <mat-grid-list cols="3" rowHeight="70px">
                                         <mat-grid-tile>
                                             <mat-form-field [style.width.px]=260 appearance="fill">
@@ -220,10 +211,10 @@
                                             </mat-form-field>
                                         </mat-grid-tile>
                                     </mat-grid-list>
-                                </div>
+                                </div> -->
 
 
-                                <!-- <div formArrayName="QualityCharacteristics">
+                                <div formArrayName="QualityCharacteristics">
                                   <div
                                       *ngFor="let item of qualityForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
                                       <div formGroupName="{{iqc}}" class="QualityCharacteristics">
@@ -309,7 +300,7 @@
 
 
                               </div>
-       -->
+      
                             </mat-card-content>
                         </mat-card>
                     </div>
@@ -326,11 +317,8 @@
                 <div class="row">
                     <div class="col-6">
                         <mat-card style="height:460px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
-                            <!-- <mat-card-title class="card-title" align="left">
-                                Definition of Measurements
-                            </mat-card-title> -->
                             <mat-card-content>
-                                <div *ngFor="let i of Count; let j = index">
+                                <!-- <div *ngFor="let i of Count; let j = index">
                                     <mat-grid-list cols="3" rowHeight="70px">
                                         <mat-grid-tile>
                                             <mat-form-field [style.width.px]=260 appearance="fill">
@@ -378,17 +366,14 @@
                                             <input matInput class="form-control" placeholder="Measurement Method">
                                         </mat-form-field>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
 
 
 
-
-
-
-                                <!-- <div formArrayName="measurementArray"
+                                <div formArrayName="measurementArray"
                                       *ngFor="let item of qualityForm.get('measurementArray').controls; let i=index;">
                                       <div [formGroupName]="i">
                                           <mat-grid-list cols="3" rowHeight="100px">
@@ -419,11 +404,20 @@
                                                   </mat-form-field>
 
                                               </mat-grid-tile>
+                                              <mat-grid-tile>
+                                                <mat-form-field [style.width.px]=260>
+                                                    <input matInput class="form-control" formControlName="scaleRange"
+                                                        id="scaleRange" placeholder="Scale Range">
+                                                </mat-form-field>
+                                              </mat-grid-tile>
+                                              <mat-grid-tile>
+                                                <mat-form-field [style.width.px]=260>
+                                                    <input matInput class="form-control" formControlName="thresholdValue"
+                                                        id="thresholdValue" placeholder="Threshold Value">
+                                                </mat-form-field>
+                                              </mat-grid-tile>
                                           </mat-grid-list>
-                                                  <mat-form-field [style.width.px]=260>
-                                                      <input matInput class="form-control" formControlName="scaleRange"
-                                                          id="scaleRange" placeholder="Scale Range">
-                                                  </mat-form-field>
+                                                 
 
 
                                           <div class="example-container-four">
@@ -456,7 +450,7 @@
                                           Measure</button>
                                       </mat-grid-tile>
                                       <mat-grid-tile></mat-grid-tile>
-                                  </mat-grid-list> -->
+                                  </mat-grid-list>
 
                             </mat-card-content>
                         </mat-card>

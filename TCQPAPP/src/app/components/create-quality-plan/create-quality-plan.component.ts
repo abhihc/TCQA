@@ -50,7 +50,6 @@ export class CreateQualityPlanComponent implements OnInit {
       sourceTestingFramework: [''],
       targetTestingFramework: [''],
       qualityPlanName: [''],
-      thresholdValue: null,
       goalArray: this.formbuilder.array([this.createGoal()]),
       questionArray: this.formbuilder.array([this.createQuestion()]),
       QualityCharacteristics: this.formbuilder.array([this.createQC()]),
@@ -102,7 +101,8 @@ export class CreateQualityPlanComponent implements OnInit {
       measurementMethod: '',
       scaleType: '',
       scaleRange: '',
-      interpretation: ''
+      interpretation: '',
+      thresholdValue: null
     })
   }
 
@@ -123,8 +123,7 @@ export class CreateQualityPlanComponent implements OnInit {
       questionArray: [],
       QualityCharacteristics: [],
       measurementArray: [],
-      qualityPlanName: "",
-      thresholdValue: null
+      qualityPlanName: ""
     }
   }
 
