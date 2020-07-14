@@ -382,5 +382,10 @@
 
 
 .make-red{
-    background-color: red;
+    color: red;
+    font-weight: 900;
+}
+
+.make-white{
+    color: white;
 }

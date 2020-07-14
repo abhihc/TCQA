@@ -79,13 +79,17 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <th scope="col">Quality Assessment Score</th>
+                        <th scope="col">Quality Attribute</th>
                         <th scope="col" class="text-center">Threshold Value</th>
+                        <th scope="col" class="text-center">Quality Assessment Score</th>                        
+                        <!-- <th></th> -->
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of selectedQAScore; let j=index" [ngClass]="{'make-red': (item<selectedThresholdScore[j])}">
-                            <td >{{item}}</td>
+                        <tr *ngFor="let item of selectedQAScore; let j=index" >
+                            <td>{{selectedQA[j]}} </td>
                             <td class="text-center">{{selectedThresholdScore[j]}}</td>
+                            <td class="text-center">{{item}} &nbsp;<a [ngClass]="(item<selectedThresholdScore[j]) ? 'make-red': 'make-white'">!</a></td>     
+                            <!-- <td [ngClass]="(item<selectedThresholdScore[j]) ? 'make-red': 'make-white'"></td> -->
                         </tr>
                     </tbody>
                 </table>

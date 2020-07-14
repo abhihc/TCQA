@@ -1,5 +1,6 @@
 <form [formGroup]="qualityForm" (ngSubmit)="onSubmit(qualityForm)">
 
+    <br>
     <div class="example-container-three">
         <mat-form-field [style.width.px]=400>
             <input type="text" class="form-control" id="qualityPlanName" formControlName="qualityPlanName" matInput placeholder="Quality Plan Name">
@@ -175,7 +176,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <mat-card style="height:500px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
+                        <mat-card style="height:200px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
                             <mat-card-content>
                                 <div *ngFor="let i of Count; let j = index">
                                     <mat-grid-list cols="3" rowHeight="70px">
@@ -316,7 +317,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <mat-card style="height:460px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
+                        <mat-card style="height:360px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
                             <mat-card-content>
                                 <div *ngFor="let i of Count; let j = index">
                                     <mat-grid-list cols="3" rowHeight="70px">
@@ -358,9 +359,9 @@
 
                                     </mat-grid-list>
                                     <div class="example-container-four">
-                                        <mat-form-field [style.width.px]=750>
+                                        <!-- <mat-form-field [style.width.px]=750>
                                             <input matInput class="form-control" placeholder="Informal Definition">
-                                        </mat-form-field>
+                                        </mat-form-field> -->
 
                                         <mat-form-field [style.width.px]=750>
                                             <input matInput class="form-control" placeholder="Measurement Method">

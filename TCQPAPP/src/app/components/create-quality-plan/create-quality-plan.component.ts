@@ -31,7 +31,7 @@ export class CreateQualityPlanComponent implements OnInit {
   qpa = new QualityPlanAttribute();
 
   constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) {
-    this.Count.length = 3;
+    this.Count.length = 1;
   }
 
 

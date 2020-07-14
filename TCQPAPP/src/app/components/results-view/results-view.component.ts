@@ -24,6 +24,7 @@ export class ResultsViewComponent implements OnInit {
   viewResultForm: FormGroup;
   show: boolean = false;
   selectedThresholdScore = [];
+  selectedQA = [];
   selectedQAScore = [];
 
   public showLegend = false;
@@ -153,11 +154,12 @@ export class ResultsViewComponent implements OnInit {
       self.dataChart3 = [...self.dataChart3];
       this.qpName = this.resultData.qualityPlan;
       this.dataChart3.forEach(element => {
+        this.selectedQA.push(element.name);
         this.selectedQAScore.push(element.value);
       });
 
     });
-    console.log(this.selectedQAScore);
+    console.log(this.selectedQA);
   }
 
   decision() {
