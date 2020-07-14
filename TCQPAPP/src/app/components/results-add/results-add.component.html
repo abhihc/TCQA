@@ -8,12 +8,12 @@
                 <table class="table">
                     <thead>
                         <th scope="col">Quality Plan Name</th>
-                        <th scope="col center">Operation</th>
+                        <th scope="col" class="text-center">Operation</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let qp of qualityPlanService.qualityPlans">
                             <td>{{qp.qualityPlanName}}</td>
-                            <td>
+                            <td class="text-center" >
                                 <button mat-icon-button color="primary" (click)="inputResults(qp)">
                                 <mat-icon>input</mat-icon>
                               </button>
