@@ -15,7 +15,7 @@
                               </thead>
                               <tbody>
                                 <tr *ngFor="let qualityPlan of qualityPlans; let i = index">
-                                  <td ><a class="primary" (click)="showQualityPlanResults(qualityPlan._id, content)">{{qualityPlan._id}}</a></td>
+                                  <td ><a class="primary" (click)="showQualityPlanResults(qualityPlan._id, content)" [ngClass]="{ 'selected': qualityPlan._id == selectedItem }">{{qualityPlan._id}}</a></td>
                                   <td class="text-center">{{qualityPlan.count}}</td>
                                 </tr>
                               </tbody>
@@ -42,12 +42,11 @@
                               <table class="table">
                                   <thead>
                                           <th scope="col">Execution Name</th>
-                                          <th scope="col center">Delete</th>
                                   </thead>
                                   <tbody>
                                     <tr *ngFor="let executionResult of results; let i = index">
                                       <th scope="row"><a class="primary1" [routerLink]="['/view-result/', executionResult._id]">{{executionResult.name}}</a></th>
-                                      <td >
+                                      <td class="text-center">
                                         <button mat-icon-button (click)="deleteResult(executionResult, i)">
                                           <mat-icon>delete</mat-icon>
                                       </button>

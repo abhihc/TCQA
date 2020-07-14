@@ -258,6 +258,10 @@
           cursor: pointer;
      }
 
+     .selected{
+       color: #f1971b;
+     }
+
 
      .primary1{
       color: #00205b;

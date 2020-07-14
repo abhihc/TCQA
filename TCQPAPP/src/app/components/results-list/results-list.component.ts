@@ -13,6 +13,7 @@ export class ResultsListComponent implements OnInit {
   results: any = [];
   show: boolean = false;
   qualityPlans: any = [];
+  selectedItem = null;
 
   constructor(private apiService: ApiService, private _snackBar: MatSnackBar) {
     this.getQualityPlans();
@@ -32,6 +33,7 @@ export class ResultsListComponent implements OnInit {
     this.apiService.getQualityPlanResults(qualityPlan).subscribe((data) => {
       this.results = data;
      });
+     this.selectedItem = qualityPlan;
      this.show = true;
   }
 
