@@ -3,22 +3,41 @@
     height: 90px;
 }
 
-.sicp-logo {
-    padding-top: 15px;
-    padding-left: 25px;
-    width: 40px;
-    height: 40px;
+.tcqa-logo {
+    padding: 10px;
+    display: block;
+    float: left;
+}
+
+.tcqa-text {
+    padding-top: 35px;
+    color: #00205B;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block;
+    float: left;
+}
+
+.tcqa-text span {
     display: block;
     float: left;
 }
 
 .sicp-text {
-    padding-top: 15px;
-    padding-right: 25px;
+    padding-right: 15px;
+    padding-top: 25px;
     color: #00205B;
     font-size: 1.25rem;
     font-weight: 500;
     text-transform: uppercase;
+    display: block;
+    float: right;
+}
+
+.sicp-logo {
+    padding-top: 15px;
+    padding-right: 15px;
     display: block;
     float: right;
 }
