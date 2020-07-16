@@ -22,7 +22,6 @@ export class ResultsListComponent implements OnInit {
   ngOnInit() {}
 
 
-
   getQualityPlans(){
     this.apiService.getQualityPlans().subscribe((data) => {
      this.qualityPlans = data;

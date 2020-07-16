@@ -67,28 +67,21 @@
                                             <div *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
                                                 <mat-grid-list cols="2" gutterSize="2px" rowHeight="80px">
                                                     <div formGroupName="{{iqa}}">
-
                                                         <mat-grid-tile class="assessment-field">
                                                             <mat-form-field [style.width.px]=320>
                                                                 <input [readonly]="true" matInput class="form-control" formControlName="qualityAttribute" id="qualityAttribute" placeholder="Quality Attribute">
-
                                                             </mat-form-field>
                                                         </mat-grid-tile>
                                                         <mat-grid-tile class="assessment-field">
                                                             <mat-form-field [style.width.px]=140>
                                                                 <input matInput type="number" class="form-control" formControlName="scoreQA" id="scoreQA" placeholder="Score">
-
                                                             </mat-form-field>
                                                         </mat-grid-tile>
-
-
                                                     </div>
-
                                                 </mat-grid-list>
-
-
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
