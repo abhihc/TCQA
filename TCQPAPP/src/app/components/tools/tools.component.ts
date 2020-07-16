@@ -12,6 +12,9 @@ import { map, startWith } from 'rxjs/operators';
 import { ToolDetail } from './../../common/toolDetail.model';
 import { ToolDetailService } from './../../common/toolDetail.service';
 
+import { QualityPlanService } from './../../common/quality-plan.service';
+import { QualityPlan } from './../../common/quality-plan.model';
+
 @Component({
   selector: 'app-tools',
   templateUrl: './tools.component.html',
@@ -27,7 +30,8 @@ export class ToolsComponent implements OnInit {
   qualityAttributeCtrl = new FormControl();
   filteredQualityAttributes: Observable<string[]>;
   qualityAttributes: string[] = [];
-  allQualityAttributes: string[] = ['Line Coverage', 'Bad Coding Style', 'Bug Detection']; // set of predefined quality attributes
+  allQualityAttributes: string[] = []; // set of quality attributes from quality plans created
+  qualtiyAttributesArray: string[] = [];
 
   @ViewChild('qualityAttributeInput') qualityAttributeInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -37,7 +41,7 @@ export class ToolsComponent implements OnInit {
   toolsList: ToolDetail[];
   isEditMode: boolean = false;
 
-  constructor(private toolDetailService: ToolDetailService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(private qualityPlanService: QualityPlanService, private toolDetailService: ToolDetailService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) {
     this.filteredQualityAttributes = this.qualityAttributeCtrl.valueChanges.pipe(
       startWith(null),
       map((qualityAttribute: string | null) => qualityAttribute ? this._filter(qualityAttribute) : this.allQualityAttributes.slice()));
@@ -45,6 +49,7 @@ export class ToolsComponent implements OnInit {
 
   ngOnInit() {
     this.getToolList();
+    this.getQAList();
     this.reset();
     this.toolForm = this.formbuilder.group({
       id: [''],
@@ -58,6 +63,36 @@ export class ToolsComponent implements OnInit {
     this.toolDetailService.getToolDetailList().subscribe((res) => {
       this.toolsList = res as ToolDetail[];
     });
+  }
+
+  getQAList(){
+    this.qualityPlanService.getQualityPlanList().subscribe((res) => {
+      this.qualityPlanService.qualityPlans = res as QualityPlan[];
+      this.qualityPlanService.qualityPlans.forEach(element => {
+        element.QualityCharacteristics.forEach(element2 => {
+          element2.qualitySubCharacteristics.forEach(element3 => {
+            element3.qualityAttributes.forEach(element4 => {
+              this.qualtiyAttributesArray.push(element4.qualityAttribute);
+            });
+          });
+        });
+      });
+      let flag = 0;
+      for (let i=0; i<this.qualtiyAttributesArray.length; i++){
+        flag = 0;
+        for ( let j=i+1; j<this.qualtiyAttributesArray.length; j++){
+          if(this.qualtiyAttributesArray[i] == this.qualtiyAttributesArray[j]){
+           flag = 1;
+        }
+         }
+         if(flag == 0 ){
+          this.allQualityAttributes.push(this.qualtiyAttributesArray[i]);
+        }
+      }
+    });
+
+    
+    
   }
 
   onEdit(t: ToolDetail) {
