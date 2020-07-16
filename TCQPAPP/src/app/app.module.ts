@@ -38,6 +38,10 @@ import { MainheaderComponent } from './components/mainheader/mainheader.componen
 import { MatTreeModule } from '@angular/material/tree';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
+
 
 
 
@@ -87,7 +91,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatPaginatorModule,
     MatTreeModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [QualityPlanService, ApiService],
   bootstrap: [AppComponent]

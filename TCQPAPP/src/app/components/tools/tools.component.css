@@ -39,7 +39,6 @@ col-md-12 {
     margin-top: 0.625rem;
 }
 
-
 .card .card-header {
     border-bottom: none;
     background: transparent;
@@ -75,4 +74,12 @@ mat-icon-button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.tool-input-form .mat-card {
+    width: 500px;
+}
+
+.quality-attributes-chip-list {
+    width: 90% !important;
 }

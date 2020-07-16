@@ -1,9 +1,16 @@
-import { ToolDetail } from './../../common/toolDetail.model';
-import { ToolDetailService } from './../../common/toolDetail.service';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { FormControl } from '@angular/forms';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+
+import { ToolDetail } from './../../common/toolDetail.model';
+import { ToolDetailService } from './../../common/toolDetail.service';
 
 @Component({
   selector: 'app-tools',
@@ -13,12 +20,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ToolsComponent implements OnInit {
 
+  visible = true;
+  selectable = true;
+  removable = true;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  qualityAttributeCtrl = new FormControl();
+  filteredQualityAttributes: Observable<string[]>;
+  qualityAttributes: string[] = ['Line Coverage'];
+  allQualityAttributes: string[] = ['Line Coverage', 'Bad Coding Style', 'Bug Detection'];
+
+  @ViewChild('qualityAttributeInput') qualityAttributeInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+
   toolForm: FormGroup;
   toolArray: FormArray;
   toolsList: ToolDetail[];
   isEditMode: boolean = false;
 
   constructor(private toolDetailService: ToolDetailService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) {
+    this.filteredQualityAttributes = this.qualityAttributeCtrl.valueChanges.pipe(
+      startWith(null),
+      map((qualityAttribute: string | null) => qualityAttribute ? this._filter(qualityAttribute) : this.allQualityAttributes.slice()));
   }
 
   ngOnInit() {
@@ -26,7 +48,7 @@ export class ToolsComponent implements OnInit {
     this.reset();
     this.toolForm = this.formbuilder.group({
       id: [''],
-      qualityAttribute: [''],
+      //qualityAttribute: [''],
       toolName: [''],
       toolInfo: ['']
     })
@@ -103,6 +125,41 @@ export class ToolsComponent implements OnInit {
     });
   }
 
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
 
+    // Add our qualityAttribute
+    if ((value || '').trim()) {
+      this.qualityAttributes.push(value.trim());
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+
+    this.qualityAttributeCtrl.setValue(null);
+  }
+
+  remove(qualityAttribute: string): void {
+    const index = this.qualityAttributes.indexOf(qualityAttribute);
+
+    if (index >= 0) {
+      this.qualityAttributes.splice(index, 1);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.qualityAttributes.push(event.option.viewValue);
+    this.qualityAttributeInput.nativeElement.value = '';
+    this.qualityAttributeCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allQualityAttributes.filter(qualityAttribute => qualityAttribute.toLowerCase().indexOf(filterValue) === 0);
+  }
 
 }
