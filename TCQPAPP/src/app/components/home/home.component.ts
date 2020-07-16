@@ -1,20 +1,19 @@
-import { Result } from './../../common/result';
-import { ApiService } from './../../common/api.service';
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { QualityPlanService } from './../../common/quality-plan.service';
+import { Result } from './../../common/result';
 import { QualityPlan } from './../../common/quality-plan.model';
 import { ToolDetail } from './../../common/toolDetail.model';
+import { ApiService } from './../../common/api.service';
+import { QualityPlanService } from './../../common/quality-plan.service';
 import { ToolDetailService } from './../../common/toolDetail.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [QualityPlanService,ToolDetailService]
+  providers: [QualityPlanService, ToolDetailService]
 })
 export class HomeComponent implements OnInit {
 
@@ -22,9 +21,9 @@ export class HomeComponent implements OnInit {
   viewResultForm: FormGroup;
   show: boolean = false;
   checkid: string;
-  noOfQPs : number = 0;
-  noOfExecutions : number = 0;
-  noofTools : number = 0;
+  noOfQPs: number = 0;
+  noOfExecutions: number = 0;
+  noofTools: number = 0;
 
   public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';
@@ -84,7 +83,6 @@ export class HomeComponent implements OnInit {
       this.toolDetailService.Tools = res as ToolDetail[];
       this.noofTools = this.toolDetailService.Tools.length;
     });
-
   }
 
   getID() {
@@ -92,15 +90,12 @@ export class HomeComponent implements OnInit {
     this.apiService.getResults().subscribe((res) => {
       this.apiService.results = res as Result[];
       this.noOfExecutions = this.apiService.results.length;
-      currentid = this.apiService.results[this.apiService.results.length-1]._id;
+      currentid = this.apiService.results[this.apiService.results.length - 1]._id;
       this.checkid = currentid;
       console.log(this.checkid);
       this.getResultData(currentid);
     });
-
   }
-
-
 
   getResultData(id) {
     const self = this;
@@ -129,7 +124,7 @@ export class HomeComponent implements OnInit {
                 parent: chart2D
               }
             };
-            self.customColors.push({name: chart3D.qualityAttribute, value: self.colorScheme[chart1Counter]});
+            self.customColors.push({ name: chart3D.qualityAttribute, value: self.colorScheme[chart1Counter] });
             chart2Children.push(chart3Record);
             self.dataChart3.push(chart3Record);
             chart3Counter++;
@@ -142,7 +137,7 @@ export class HomeComponent implements OnInit {
               children: [...chart2Children]
             }
           };
-          self.customColors.push({name: chart2D.qualitySubCharacteristic, value: self.colorScheme[chart1Counter]});
+          self.customColors.push({ name: chart2D.qualitySubCharacteristic, value: self.colorScheme[chart1Counter] });
           chart1Children.push(chart2Record);
           self.dataChart2.push(chart2Record);
           chart2Counter++;
@@ -154,7 +149,7 @@ export class HomeComponent implements OnInit {
             children: [...chart1Children]
           }
         };
-        self.customColors.push({name: chart1D.qualityCharacteristic, value: self.colorScheme[chart1Counter]});
+        self.customColors.push({ name: chart1D.qualityCharacteristic, value: self.colorScheme[chart1Counter] });
         self.dataChart1.push(chart1Record);
         chart1Counter++;
       });
@@ -163,7 +158,6 @@ export class HomeComponent implements OnInit {
       self.dataChart3 = [...self.dataChart3];
     });
   }
-
 
   public onInteractChart1(event): void {
     if (event && event.value && event.value.extra && event.value.extra.children && event.value.extra.children.length) {
