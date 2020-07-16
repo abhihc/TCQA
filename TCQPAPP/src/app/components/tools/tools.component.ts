@@ -26,8 +26,8 @@ export class ToolsComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   qualityAttributeCtrl = new FormControl();
   filteredQualityAttributes: Observable<string[]>;
-  qualityAttributes: string[] = ['Line Coverage'];
-  allQualityAttributes: string[] = ['Line Coverage', 'Bad Coding Style', 'Bug Detection'];
+  qualityAttributes: string[] = [];
+  allQualityAttributes: string[] = ['Line Coverage', 'Bad Coding Style', 'Bug Detection']; // set of predefined quality attributes
 
   @ViewChild('qualityAttributeInput') qualityAttributeInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -48,7 +48,7 @@ export class ToolsComponent implements OnInit {
     this.reset();
     this.toolForm = this.formbuilder.group({
       id: [''],
-      //qualityAttribute: [''],
+      qualityAttribute: [[]],
       toolName: [''],
       toolInfo: ['']
     })
@@ -67,6 +67,8 @@ export class ToolsComponent implements OnInit {
       toolName: t.toolName,
       toolInfo: t.toolInfo
     });
+    this.qualityAttributes = t.qualityAttribute;
+
     this.toolForm.setControl('id', this.formbuilder.control(t._id));
     this.toolForm.setControl('qualityAttribute', this.formbuilder.control(t.qualityAttribute));
     this.toolForm.setControl('toolName', this.formbuilder.control(t.toolName));
@@ -84,7 +86,7 @@ export class ToolsComponent implements OnInit {
   onSubmit(form: NgForm) {
 
     const toolData = {
-      qualityAttribute: form.value.qualityAttribute,
+      qualityAttribute: this.qualityAttributes,
       toolName: form.value.toolName,
       toolInfo: form.value.toolInfo
     } as ToolDetail;
@@ -109,9 +111,10 @@ export class ToolsComponent implements OnInit {
   reset(form?: NgForm) {
     if (form)
       form.reset();
+      this.qualityAttributes = [];
     this.toolDetailService.selectedTool = {
       _id: "",
-      qualityAttribute: "",
+      qualityAttribute: [],
       toolName: "",
       toolInfo: ""
     }

@@ -1,6 +1,6 @@
 export class ToolDetail{
     _id: string;
-    qualityAttribute: String;
+    qualityAttribute: string[];
     toolName: string;
     toolInfo: String;
 }

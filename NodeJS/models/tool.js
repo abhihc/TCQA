@@ -1,10 +1,9 @@
-const mongoose =  require('mongoose');
+const mongoose = require('mongoose');
 
-var Tool = mongoose.model('Tool',{
-    qualityAttribute: String,
+var Tool = mongoose.model('Tool', {
+    qualityAttribute: [],
     toolName: String,
     toolInfo: String
 });
 
 module.exports = { Tool };
-
