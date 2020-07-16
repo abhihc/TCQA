@@ -2,24 +2,41 @@
 
     <h2>The Test Case Quality Asessment Process</h2>
 
-    <img src="assets/images/processOverviewNew.PNG" alt="logo" class="process-overview shadow" />
+    <img src="assets/images/processOverviewNew.PNG" alt="logo" class="process-overview shadow" usemap="#main-process-map" />
+    <map name="main-process-map">
+      <area alt="Quality Plan Creation" title="Quality Plan Creation" href="documentation#qualityPlanCreation" coords="194,217,408,352" shape="rect">
+      <area alt="Quality Plan Execution" title="Quality Plan Execution" href="documentation#qualityPlanExecution" coords="768,352,555,219" shape="rect">
+      <area alt="Interpretation of Results" title="Interpretation of Results" href="documentation#interpretationOfResults" coords="916,218,1131,352" shape="rect">
+    </map>
+
 
     <p>The test case quality assessment approach in software migration projects helps in finding good quality test cases that should be migrated. The approach also helps in discovering test cases that should be improved before the actual migration process
         and test cases that should be excluded from the migration process.</p>
 
-    <h3>1. Quality Plan Creation</h3>
+    <h3 id="qualityPlanCreation">1. Quality Plan Creation</h3>
 
     <p>The systematic approach used for the creation of migration-specific quality plan is Test Case Quality Plan (TCQP)</p>
 
     <h4>Test Case Quality Plan Approach</h4>
-
-    <img src="assets/images/TCQPOverview.PNG" alt="logo" class="tcqp-overview shadow" />
-
     <p>TCQP is a generic approach that guides the process of quality plan creation based on the specific context. The TCQP approach considers the context of test cases as the basic entity to precisely define the quality plan.</p>
+
+    <img src="assets/images/TCQPOverview.PNG" alt="logo" class="tcqp-overview shadow" usemap="#tcqp-map" />
+
+    <map name="tcqp-map">
+      <area alt="Characterization of Context" title="Identification of Information Needs" href="documentation#context" coords="122,223,319,311" shape="rect">
+      <area alt="Identification of Information Needs" title="Identification of Information Needs" href="documentation#informationNeeds" coords="430,222,623,311" shape="rect">
+      <area alt="Definition of Quality Understanding" title="Definition of Quality Understanding" href="documentation#qualityUnderstanding" coords="736,222,931,311" shape="rect">
+      <area alt="Definition of Measurements" title="Definition of Measurements" href="documentation#measurements" coords="1042,223,1237,312" shape="rect">
+  </map>
+
+    <h5 id="context">Characterization of Context</h5>
+    <h5 id="informationNeeds">Identification of Information Needs</h5>
+    <h5 id="qualityUnderstanding">Definition of Quality Understanding</h5>
+    <h5 id="measurements">Definition of Measurements</h5>
 
     <h4>Test Case Quality Model</h4>
 
-    <div class="quality-model" shadow>
+    <div class="quality-model shadow">
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
             <!-- This is the tree node template for leaf nodes -->
             <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
@@ -47,14 +64,14 @@
     </div>
 
 
-    <h3>2. Quality Plan Execution</h3>
+    <h3 id="qualityPlanExecution">2. Quality Plan Execution</h3>
 
     <p>Once the creation of the quality plan specific to the migration context is completed, the quality plan (measurements) needs to be executed. To automate the process of quality plan execution, a set of existing tools are selected and configured in accordance
         with the measurements defined in the quality plan. Proper guidelines will be defined to assist the development of new tools with respect to the measurements in the quality plan.</p>
 
 
 
-    <h3>3. Interpretation of Results</h3>
+    <h3 id="interpretationOfResults">3. Interpretation of Results</h3>
 
     <p>The last step involves processing the data obtained from the quality assessment tool and transforming the numerical data into the graphical format. The visualization of results showcases all the quality aspects defined in the migration-specific quality
         plan.This visualization will facilitate the task of deciding which test cases should be migrated such that they are beneficial to the target environment.
