@@ -183,14 +183,6 @@ export class CreateQualityPlanComponent implements OnInit {
     control.removeAt(iqc);
   }
 
-  // removeQA(iqc,iqsc,iqa){
-  //   this.QualityCharacteristics[iqc].qualitySubCharacteristics[iqsc].qualityAttributes.removeAt(iqa);
-  // }
-
-  // removeQualityFactor(index) {
-  //   this.QualityCharacteristics.removeAt(index);
-  // }
-
   addMeasurement() {
     this.measurementArray = this.qualityForm.get('measurementArray') as FormArray;
     this.measurementArray.push(this.createMeasurement());

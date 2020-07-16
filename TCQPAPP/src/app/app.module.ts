@@ -31,7 +31,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { ToolsComponent } from './components/tools/tools.component';
-import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -55,7 +54,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HomeComponent,
     DocumentationComponent,
     ToolsComponent,
-    MainNavComponent,
     SidebarComponent,
     MainheaderComponent
   ],

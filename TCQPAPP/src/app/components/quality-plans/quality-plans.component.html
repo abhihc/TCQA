@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-danger">
+                    <div class="card-header card-header-color">
                         <h4 class="card-title" align="center">Quality Plans</h4>
                     </div>
                     <div class="table-responsive">
@@ -41,7 +41,7 @@
 <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
 
     <br>
-    <div class="example-container-three">
+    <div class="example-container-two">
         <mat-form-field [style.width.px]=400>
             <input [readonly]="isReadOnly" type="text" class="form-control" id="qualityPlanName"
                 formControlName="qualityPlanName" matInput placeholder="Quality Plan Name"
@@ -139,7 +139,7 @@
             <div class="col-6">
                 <mat-card style="height:400px; width:1100px; display: grid; margin:7px 0px 7px 0px !important;">
                     <mat-card-content>
-                        <div class="example-container-two" formArrayName="goalArray"
+                        <div class="example-container" formArrayName="goalArray"
                             *ngFor="let item of editForm.get('goalArray').controls; let i=index;">
 
 
@@ -187,7 +187,7 @@
                         </div>
 
                         <div formArrayName="questionArray" *ngFor="let item of editForm.get('questionArray').controls; let i=index;">
-                            <div class="example-container-four" [formGroupName]="i">
+                            <div class="example-container-three" [formGroupName]="i">
                                 <mat-form-field >
                                     <input matInput placeholder="Question {{i+1}}" class="form-control" formControlName="question" id="question">
                                 </mat-form-field>
@@ -322,7 +322,7 @@
                             </mat-grid-tile>
                                 </mat-grid-list>
 
-                                <div class="example-container-four">
+                                <div class="example-container-three">
                             <mat-form-field>
                                  <input matInput class="form-control" formControlName="informalDefinition" id="informalDefinition"
                                         placeholder="Informal Definition">
@@ -381,7 +381,7 @@
 
 <!-- <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
     <br>
-    <div class="example-container-three">
+    <div class="example-container-two">
         <mat-form-field>
             <input [readonly]="isReadOnly" type="text" class="form-control" id="qualityPlanName"
                 formControlName="qualityPlanName" matInput placeholder="Quality Plan Name"
@@ -485,7 +485,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-    <div class="example-container-two" formArrayName="goalArray"
+    <div class="example-container" formArrayName="goalArray"
         *ngFor="let item of editForm.get('goalArray').controls; let i=index;">
 
         <mat-grid-list cols="6" rowHeight="100px">
@@ -536,7 +536,7 @@
 
 
     <div formArrayName="questionArray" *ngFor="let item of editForm.get('questionArray').controls; let i=index;">
-        <div class="example-container-four" [formGroupName]="i">
+        <div class="example-container-three" [formGroupName]="i">
             <mat-form-field>
                 <input matInput placeholder="Question {{i+1}}" class="form-control" formControlName="question" id="question">
 
@@ -615,7 +615,7 @@
   </mat-expansion-panel-header>
 
   <br>
-    <div class="example-container-three">
+    <div class="example-container-two">
         <mat-form-field>
             <input [readonly]="isReadOnly" type="text" class="form-control" id="thresholdValue"
                 formControlName="thresholdValue" matInput placeholder="Threshold Score"
@@ -626,7 +626,7 @@
     <br>
 
     <div formArrayName="measurementArray" *ngFor="let item of editForm.get('measurementArray').controls; let i=index;">
-        <div class="example-container-four" [formGroupName]="i">
+        <div class="example-container-three" [formGroupName]="i">
             <mat-form-field>
                 <input matInput class="form-control" formControlName="name" id="name" placeholder="Name">
             </mat-form-field>
@@ -679,7 +679,7 @@
 
     <br>
     <br>
-    <div class="example-container-three">
+    <div class="example-container-two">
 
         <button [disabled]="buttonDisable" mat-raised-button color="primary" type="submit">Save Plan</button>
     </div>

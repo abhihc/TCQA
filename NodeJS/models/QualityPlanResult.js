@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Define collection and schema
 let QualityPlanResult = new Schema({
    name: {
-      type: String //name of the JSON file
+      type: String //name of the execution
    },
    qualityPlan: {
       type: String //name of the quality plan
