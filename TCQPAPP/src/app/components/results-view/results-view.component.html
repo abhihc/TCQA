@@ -90,8 +90,11 @@
                             <td class="text-center">{{selectedThresholdScore[j]}}</td>
                             <td class="text-center">{{item}}</td>
                             <td class="text-center">
-                                <a *ngIf="item<selectedThresholdScore[j]">
-                                    <img src="assets/images/thresholdProblem.png" width="30" height="25" />
+                                <a title="Can be improved" *ngIf="item<selectedThresholdScore[j] && (selectedThresholdScore[j]-item)<=20">
+                                    <img src="assets/images/improve.png" width="30" height="25" />
+                                </a>
+                                 <a title="Critical" *ngIf="item<selectedThresholdScore[j] && (selectedThresholdScore[j]-item)>20">
+                                    <img src="assets/images/criticalProblem.png" width="30" height="25" />
                                 </a>
                             </td>
                         </tr>
