@@ -24,14 +24,13 @@ export class CreateQualityPlanComponent implements OnInit {
   questionArray: FormArray;
   QualityCharacteristics: FormArray;
   measurementArray: FormArray;
-  Count = [];
+  questionCount = [1];
 
   isReadOnly = true;
 
   qpa = new QualityPlanAttribute();
 
   constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) {
-    this.Count.length = 1;
   }
 
 
@@ -145,11 +144,13 @@ export class CreateQualityPlanComponent implements OnInit {
   }
 
   addQuestion() {
+    this.questionCount.push(1);
     this.questionArray = this.qualityForm.get('questionArray') as FormArray;
     this.questionArray.push(this.createQuestion());
   }
 
   removeQuestion(index) {
+    this.questionCount.pop();
     this.questionArray.removeAt(index);
   }
 
