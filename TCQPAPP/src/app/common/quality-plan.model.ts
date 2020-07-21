@@ -29,16 +29,16 @@ export class Question {
 
 
 export class QualityCharacteristic {
-    qualityCharacteristic:string;
+    qualityCharacteristic: string;
     qualitySubCharacteristics: Array<QualitySubCharacteristic>;
 }
 
-export class QualitySubCharacteristic{
+export class QualitySubCharacteristic {
     qualitySubCharacteristic: string;
     qualityAttributes: Array<QualityAttribute>;
 }
 
-export class QualityAttribute{
+export class QualityAttribute {
     qualityAttribute: string;
 
 }
@@ -63,4 +63,43 @@ export class QualityPlanAttribute {
     QualityCharacteristics1: any = ['Test Effectivity', 'Reliability', 'Usability', 'Performance Efficiency', 'Security', 'Maintainability', 'Portability', 'Reusability'];
     measurementTypeArray: any = ['Subjective', 'Objective'];
     scaleTypeArray: any = ['Nominal', 'Ordinal', 'Absolute', 'Ratio'];
+    qualityAspects = [
+        {
+            qc: 'Test Effectivity',
+            qbc: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']
+    
+        },
+        {
+            qc: 'Reliability',
+            qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
+        },
+        {
+            qc: 'Usability',
+            qbc: ['Understandability', 'Learnability', 'Operability', 'Test Evaluability']
+        },
+        {
+            qc: 'Performance Efficiency',
+            qbc: ['Time Behaviour', 'Resource Utilization']
+        },
+        {
+            qc: 'Security',
+            qbc: ['Confidentiality', 'Accountability', 'Authenticity']
+        },
+        {
+            qc: 'Maintainability',
+            qbc: ['Analysability', 'Analysability', 'Stability', 'Complexity']
+        },
+        {
+            qc: 'Portability',
+            qbc: ['Adaptability', 'Installability']
+        },
+        {
+            qc: 'Reusability',
+            qbc: ['Coupling', 'Flexibility']
+        }
+    
+    ];  
 }
+
+
+

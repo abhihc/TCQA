@@ -255,7 +255,7 @@
                                                                 placeholder="Quality Sub Characteristic"
                                                                 formControlName="qualitySubCharacteristic">
                                                                 <mat-optgroup
-                                                                    *ngFor="let qualityaspect of qualityAspects"
+                                                                    *ngFor="let qualityaspect of qpa.qualityAspects"
                                                                     [label]="qualityaspect.qc">
                                                                     <mat-option
                                                                         *ngFor="let qualitySC of qualityaspect.qbc"
@@ -374,38 +374,30 @@
                                                 </mat-form-field>
                                             </mat-grid-tile>
                                         </mat-grid-list>
-
                                         <div class="example-container-two">
                                             <mat-form-field [style.width.px]=750>
                                                 <input matInput class="form-control"
                                                     formControlName="informalDefinition" id="informalDefinition"
                                                     placeholder="Informal Definition">
                                             </mat-form-field>
-
                                             <mat-form-field [style.width.px]=750>
                                                 <input matInput class="form-control" formControlName="measurementMethod"
                                                     id="measurementMethod" placeholder="Measurement Method">
                                             </mat-form-field>
-
                                             <mat-form-field [style.width.px]=750>
                                                 <input matInput class="form-control" formControlName="interpretation"
                                                     id="interpretation" placeholder="Interpretation">
                                             </mat-form-field>
                                         </div>
-
                                     </div>
                                 </div>
                             </mat-card-content>
                         </mat-card>
                     </div>
-
-
                 </div>
-
             </div>
         </mat-step>
     </mat-vertical-stepper>
-
     <div>
         <button mat-button class="main-save-btn" type="submit">Save Plan</button>
         <button mat-raised-button class="main-reset-btn" (click)="reset(qualityForm)">Reset</button>

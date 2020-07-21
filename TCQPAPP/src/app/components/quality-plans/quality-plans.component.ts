@@ -5,10 +5,6 @@ import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-interface qualityAspect {
-  qc: string;
-  qbc: string[];
-}
 
 @Component({
   selector: 'app-quality-plans',
@@ -288,43 +284,6 @@ export class QualityPlansComponent implements OnInit {
     this.qualityPlanList();
     this.reset();
   }
-
-  qualityAspects: qualityAspect[] = [
-    {
-      qc: 'Test Effectivity',
-      qbc: ['Test Coverage', 'Test Correctness', 'Fault-Revealing Capability', 'Test Confidence']
-
-    },
-    {
-      qc: 'Reliability',
-      qbc: ['Test Repeatability', 'Maturity', 'Fault Tolerance', 'Recoverability']
-    },
-    {
-      qc: 'Usability',
-      qbc: ['Understandability', 'Learnability', 'Operability', 'Test Evaluability']
-    },
-    {
-      qc: 'Performance Efficiency',
-      qbc: ['Time Behaviour', 'Resource Utilization']
-    },
-    {
-      qc: 'Security',
-      qbc: ['Confidentiality', 'Accountability', 'Authenticity']
-    },
-    {
-      qc: 'Maintainability',
-      qbc: ['Analysability', 'Analysability', 'Stability', 'Complexity']
-    },
-    {
-      qc: 'Portability',
-      qbc: ['Adaptability', 'Installability']
-    },
-    {
-      qc: 'Reusability',
-      qbc: ['Coupling', 'Flexibility']
-    }
-
-  ];
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

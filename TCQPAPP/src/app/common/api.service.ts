@@ -7,12 +7,12 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
 
   baseUri = 'http://localhost:3000/qualityPlanResults';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   results: Result[];
-
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +33,7 @@ export class ApiService {
   // Get all quality plans
   getQualityPlans() {
     const url = `${this.baseUri}/list-quality-plans`;
-    return this.http.get(url, {headers: this.headers}).pipe(
+    return this.http.get(url, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {};
       }),
@@ -43,7 +43,7 @@ export class ApiService {
 
   getQualityPlanResults(qualityPlanName) {
     const url = `${this.baseUri}/quality-plan-results?qualityPlan=${qualityPlanName}`;
-    return this.http.get(url, {headers: this.headers}).pipe(
+    return this.http.get(url, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {};
       }),
@@ -54,7 +54,7 @@ export class ApiService {
   // Get quality plan result
   getResult(id): Observable<any> {
     const url = `${this.baseUri}/result/${id}`;
-    return this.http.get(url, {headers: this.headers}).pipe(
+    return this.http.get(url, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {};
       }),

@@ -129,35 +129,6 @@ export class ResultsAddComponent implements OnInit {
     return formArray3;
   }
 
-  uploadFile(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    // File Preview
-    const reader = new FileReader();
-    reader.onload = () => {
-      const fileNameParts = file.name.split('.');
-
-      this.newResult.name = fileNameParts[0];
-
-      try {
-        JSON.parse(reader.result as string); //reading the JSON file
-        this.newResult.results = JSON.parse(reader.result as string);
-        this.addResultForm.get('file').updateValueAndValidity();
-      } catch (e) {
-        alert('Please input valid results.');
-        this.fileUploadElement.nativeElement.value = '';
-        this.addResultForm.get('file').reset();
-      }
-
-
-    };
-    reader.readAsText(file, 'UTF-8');
-  }
-
-  /*  // Getter to access form control
-   get myForm() {
-     return this.addResultForm.controls;
-   } */
-
   setValueQC(qcs) {
     for (var index in qcs) {
       qcs[index].scoreQC = this.setValueQSC(qcs[index].qualitySubCharacteristics);
