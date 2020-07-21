@@ -10,7 +10,7 @@ import { QualityPlan } from './../../common/quality-plan.model';
 @Component({
   selector: 'app-results-view',
   templateUrl: './results-view.component.html',
-  styleUrls: ['./results-view.component.css'],
+  styleUrls: ['./results-view.component.css','./../../components/style/style.component.css'],
   providers: [QualityPlanService]
 })
 export class ResultsViewComponent implements OnInit {

@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-results-add',
   templateUrl: './results-add.component.html',
-  styleUrls: ['./results-add.component.css'],
+  styleUrls: ['./results-add.component.css','./../../components/style/style.component.css'],
   providers: [QualityPlanService]
 })
 export class ResultsAddComponent implements OnInit {
@@ -92,19 +92,6 @@ export class ResultsAddComponent implements OnInit {
       qualityPlan: qp.qualityPlanName
     })
     this.addResultForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
-
-
-
-    // const control = <FormArray>this.addResultForm.controls['QualityAttributes'];
-    // qp.qualityFactorArray.forEach(x => {
-    //   control.push(this.fb.control(x.qualityAttribute))
-    // });
-
-    // console.log(control.value);
-
-
-    // this.addResultForm.setControl('QualityAttributes', this.setExistingQA(qp.QualityCharacteristics));
-    // this.addResultForm.setControl('QualitySubCharacteristics', this.setExistingQSC(qp.QualityCharacteristics));
   }
 
   setExistingQC(qcSet: any): FormArray {

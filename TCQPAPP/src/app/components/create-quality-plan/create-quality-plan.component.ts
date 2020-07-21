@@ -14,7 +14,7 @@ interface qualityAspect {
 @Component({
   selector: 'app-create-quality-plan',
   templateUrl: './create-quality-plan.component.html',
-  styleUrls: ['./create-quality-plan.component.css'],
+  styleUrls: ['./create-quality-plan.component.css','./../../components/style/style.component.css'],
   providers: [QualityPlanService]
 })
 export class CreateQualityPlanComponent implements OnInit {
@@ -147,6 +147,8 @@ export class CreateQualityPlanComponent implements OnInit {
     this.questionCount.push(1);
     this.questionArray = this.qualityForm.get('questionArray') as FormArray;
     this.questionArray.push(this.createQuestion());
+    this.measurementArray = this.qualityForm.get('measurementArray') as FormArray;
+    this.measurementArray.push(this.createMeasurement());
   }
 
   removeQuestion(index) {
@@ -182,15 +184,6 @@ export class CreateQualityPlanComponent implements OnInit {
   removeQC(iqc) {
     const control = <FormArray>this.qualityForm.controls['QualityCharacteristics'];
     control.removeAt(iqc);
-  }
-
-  addMeasurement() {
-    this.measurementArray = this.qualityForm.get('measurementArray') as FormArray;
-    this.measurementArray.push(this.createMeasurement());
-  }
-
-  removeMeasurement(index) {
-    this.measurementArray.removeAt(index);
   }
 
   qualityAspects: qualityAspect[] = [

@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-results-list',
   templateUrl: './results-list.component.html',
-  styleUrls: ['./results-list.component.css']
+  styleUrls: ['./results-list.component.css','./../../components/style/style.component.css']
 })
 export class ResultsListComponent implements OnInit {
 

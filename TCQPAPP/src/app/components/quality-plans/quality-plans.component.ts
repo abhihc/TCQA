@@ -13,7 +13,7 @@ interface qualityAspect {
 @Component({
   selector: 'app-quality-plans',
   templateUrl: './quality-plans.component.html',
-  styleUrls: ['./quality-plans.component.css'],
+  styleUrls: ['./quality-plans.component.css','./../../components/style/style.component.css'],
   providers: [QualityPlanService]
 })
 export class QualityPlansComponent implements OnInit {

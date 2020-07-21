@@ -1,48 +1,3 @@
-  .container-fluid {
-      width: 70%;
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-  }
-
-  col-md-12 {
-      -webkit-box-flex: 0;
-      -ms-flex: 0 0 40%;
-      flex: 0 0 40%;
-      max-width: 40%;
-  }
-
-  .card {
-      border: 0;
-      margin-bottom: 5px;
-      margin-top: 30px;
-      border-radius: 6px;
-      color: #333333;
-      background: #fff;
-      width: 100%;
-      -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  }
-
-  .card .card-title {
-    margin-top: 0.625rem;
-}
-
-
-.card .card-header {
-    border-bottom: none;
-    background: transparent;
-}
-
-.card .card-header-color {
-    background: linear-gradient(60deg, #00205b, #00205b);
-}
-
-.card-header {
-    color: #fff;
-}
-
   .primary {
       color: #00205b;
       font: 400;
@@ -65,18 +20,6 @@
   .primary1:hover {
       color: #f1971b;
       cursor: pointer;
-  }
-
-  .mat-raised-button {
-      background-color: gray;
-  }
-
-  .mat-icon-button {
-      color: #00205b;
-  }
-
-  .mat-icon-button:hover {
-      color: #f1971b;
   }
 
   .change-color {

@@ -18,7 +18,7 @@ import { QualityPlan } from './../../common/quality-plan.model';
 @Component({
   selector: 'app-tools',
   templateUrl: './tools.component.html',
-  styleUrls: ['./tools.component.css'],
+  styleUrls: ['./tools.component.css','./../../components/style/style.component.css'],
   providers: [ToolDetailService]
 })
 export class ToolsComponent implements OnInit {
