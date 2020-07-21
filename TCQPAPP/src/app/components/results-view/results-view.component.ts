@@ -89,8 +89,6 @@ export class ResultsViewComponent implements OnInit {
         }
       });
     });
-
-
   }
 
   getResultData(id) {
@@ -159,25 +157,6 @@ export class ResultsViewComponent implements OnInit {
       });
 
     });
-    console.log(this.selectedQA);
-  }
-
-  decision() {
-    this.show = true;
-    let count: number = 0;
-    let count2: number = 0;
-    this.dataChart1.forEach(element => {
-      count += 1;
-      if (element.value > 80) {
-        count2 += 1;
-      }
-    });
-    if (count == count2) {
-      console.log("Test Suite can be migrated");
-    } else {
-      console.log("Test Suite should not be migrated");
-    }
-
   }
 
   public onInteractChart1(event): void {

@@ -23,9 +23,6 @@ import { QualityPlan } from './../../common/quality-plan.model';
 })
 export class ToolsComponent implements OnInit {
 
-  visible = true;
-  selectable = true;
-  removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   qualityAttributeCtrl = new FormControl();
   filteredQualityAttributes: Observable<string[]>;

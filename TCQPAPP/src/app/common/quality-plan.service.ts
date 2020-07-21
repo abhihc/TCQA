@@ -13,7 +13,6 @@ export class QualityPlanService {
   constructor(private http: HttpClient) { }
 
   postQualityPlan(qp: QualityPlan) {
-    console.log(qp)
     return this.http.post(this.baseURL, qp);
   }
 

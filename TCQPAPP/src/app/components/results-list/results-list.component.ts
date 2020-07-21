@@ -9,7 +9,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ResultsListComponent implements OnInit {
 
-  closeResult: string;
   results: any = [];
   show: boolean = false;
   qualityPlans: any = [];

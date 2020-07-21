@@ -17,8 +17,6 @@ export class QualityPlansComponent implements OnInit {
   data = new QualityPlan();
 
   isReadOnly = true;
-  buttonDisable = true;
-  questionReadOnly = true;
 
   editForm: FormGroup;
   goalArray: FormArray;
@@ -39,9 +37,9 @@ export class QualityPlansComponent implements OnInit {
       testObject: [''],
       testItem: [''],
       testSuite: [''],
-      testLevels: [{ value: '', disabled: true }],
-      testCaseType: [{ value: '', disabled: true }],
-      developmentPhase: [{ value: '', disabled: true }],
+      testLevels: [''],
+      testCaseType: [''],
+      developmentPhase: [''],
       sourceTestingFramework: [''],
       targetTestingFramework: [''],
       qualityPlanName: [''],
@@ -124,16 +122,12 @@ export class QualityPlansComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     form.value._id = this.data._id;
-    // console.log(form.value);
     this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
       this.reset(form);
       this.qualityPlanList();
       this.openSnackBar('Qulity plan updates successfully', null);
     })
-
-
   }
-
 
   qualityPlanList() {
     this.qualityPlanService.getQualityPlanList().subscribe((res) => {
@@ -142,7 +136,6 @@ export class QualityPlansComponent implements OnInit {
   }
 
   onView(qp: QualityPlan) {
-    //console.log(qp);
     this.editForm.patchValue({
       _id: qp._id,
       testObject: qp.testObject,
@@ -159,19 +152,8 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
     this.editForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
     this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
-    //console.log(this.editForm.value);
     this.isReadOnly = true;
-    this.buttonDisable = true;
-    this.editForm.get('testLevels').disable();
-    this.editForm.get('testCaseType').disable();
-    this.editForm.get('developmentPhase').disable();
-    this.editForm.get('goalArray').disable();
-    this.editForm.get('questionArray').disable();
-    this.editForm.get('QualityCharacteristics').disable();
-    this.editForm.get('measurementArray').disable();
-    this.questionReadOnly = true;
     this.data = qp;
-    // console.log(this.data)
   }
 
   setExistingGoals(goalset: any): FormArray {
@@ -265,20 +247,10 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
     this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
     this.isReadOnly = false;
-    this.buttonDisable = false;
-    this.editForm.get('testLevels').enable();
-    this.editForm.get('testCaseType').enable();
-    this.editForm.get('developmentPhase').enable();
-    this.editForm.get('goalArray').enable();
-    this.editForm.get('questionArray').enable();
-    this.editForm.get('QualityCharacteristics').enable();
-    this.editForm.get('measurementArray').enable();
-    this.questionReadOnly = true;
     this.data = qp;
   }
 
   onDelete(_id: string) {
-    this.buttonDisable = true;
     this.qualityPlanService.deleteQualityPlan(_id).subscribe();
     this.openSnackBar('Quality plan deleted successfully', null);
     this.qualityPlanList();

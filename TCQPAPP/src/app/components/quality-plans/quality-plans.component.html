@@ -81,7 +81,7 @@
                                     </mat-grid-tile>
                                     <mat-grid-tile>
                                         <mat-form-field [style.width.px]=260>
-                                            <mat-select matInput placeholder="Test Level" id="testLevels"
+                                            <mat-select [disabled]="isReadOnly" matInput placeholder="Test Level" id="testLevels"
                                                 formControlName="testLevels" value="{{data.testLevels}}">
                                                 <mat-option *ngFor="let testLevel of qpa.testLevelsArray"
                                                     value="{{testLevel}}">
@@ -92,7 +92,7 @@
                                     </mat-grid-tile>
                                     <mat-grid-tile>
                                         <mat-form-field [style.width.px]=260>
-                                            <mat-select matInput placeholder="Test Case Type" id="testCaseType"
+                                            <mat-select [disabled]="isReadOnly" matInput placeholder="Test Case Type" id="testCaseType"
                                                 formControlName="testCaseType" value="{{data.testCaseType}}">
                                                 <mat-option *ngFor="let tct of qpa.testCaseTypeArray" value="{{tct}}">
                                                     {{tct}}
@@ -102,7 +102,7 @@
                                     </mat-grid-tile>
                                     <mat-grid-tile>
                                         <mat-form-field [style.width.px]=260>
-                                            <mat-select matInput placeholder="Development Phase" id="developmentPhase"
+                                            <mat-select [disabled]="isReadOnly" matInput placeholder="Development Phase" id="developmentPhase"
                                                 formControlName="developmentPhase" value="{{data.developmentPhase}}">
                                                 <mat-option *ngFor="let dpa of qpa.developmentPhaseArray"
                                                     value="{{dpa}}">
@@ -148,13 +148,13 @@
                                         <div [formGroupName]="i">
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <input matInput placeholder="Object of Study" class="form-control"
+                                                    <input [readonly]="isReadOnly" matInput placeholder="Object of Study" class="form-control"
                                                         formControlName="objectOfStudy" id="objectOfStudy">
                                                 </mat-form-field>
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <mat-select matInput placeholder="Purpose" id="purpose"
+                                                    <mat-select [disabled]="isReadOnly" matInput placeholder="Purpose" id="purpose"
                                                         formControlName="purpose">
                                                         <mat-option *ngFor="let pa of qpa.purposeArray" value="{{pa}}">
                                                             {{pa}}
@@ -164,19 +164,19 @@
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <input class="form-control" formControlName="qualityFocus"
+                                                    <input [readonly]="isReadOnly" class="form-control" formControlName="qualityFocus"
                                                         id="qualityFocus" matInput placeholder="Quality Focus">
                                                 </mat-form-field>
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <input class="form-control" formControlName="viewpoint"
+                                                    <input [readonly]="isReadOnly" class="form-control" formControlName="viewpoint"
                                                         id="viewpoint" matInput placeholder="Viewpoint">
                                                 </mat-form-field>
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <input class="form-control" formControlName="context" id="context"
+                                                    <input [readonly]="isReadOnly" class="form-control" formControlName="context" id="context"
                                                         matInput placeholder="Context">
                                                 </mat-form-field>
                                             </mat-grid-tile>
@@ -190,7 +190,7 @@
                                     *ngFor="let item of editForm.get('questionArray').controls; let i=index;">
                                     <div class="example-container-two" [formGroupName]="i">
                                         <mat-form-field>
-                                            <input matInput placeholder="Question {{i+1}}" class="form-control"
+                                            <input [readonly]="isReadOnly" matInput placeholder="Question {{i+1}}" class="form-control"
                                                 formControlName="question" id="question">
                                         </mat-form-field>
                                     </div>
@@ -218,7 +218,7 @@
                                         *ngFor="let item of editForm['controls'].QualityCharacteristics['controls']; let iqc=index;">
                                         <div formGroupName="{{iqc}}" class="QualityCharacteristics">
                                             <mat-form-field [style.width.px]=260>
-                                                <mat-select matInput placeholder="Quality Characteristic"
+                                                <mat-select [disabled]="isReadOnly" matInput placeholder="Quality Characteristic"
                                                     formControlName="qualityCharacteristic">
                                                     <mat-option *ngFor="let qc of qpa.QualityCharacteristics1"
                                                         value="{{qc}}">
@@ -231,7 +231,7 @@
                                                     *ngFor="let item2 of item['controls'].qualitySubCharacteristics['controls']; let iqsc=index">
                                                     <div formGroupName="{{iqsc}}" class="qualitySubCharacteristics">
                                                         <mat-form-field [style.width.px]=260>
-                                                            <mat-select matInput
+                                                            <mat-select [disabled]="isReadOnly" matInput
                                                                 placeholder="Quality Sub Characteristic"
                                                                 formControlName="qualitySubCharacteristic">
                                                                 <mat-optgroup
@@ -250,7 +250,7 @@
                                                                 *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
                                                                 <div formGroupName="{{iqa}}" class="qualityAttributes">
                                                                     <mat-form-field [style.width.px]=260>
-                                                                        <input matInput class="form-control"
+                                                                        <input [readonly]="isReadOnly" matInput class="form-control"
                                                                             formControlName="qualityAttribute"
                                                                             id="qualityAttribute"
                                                                             placeholder="Quality Attribute">
@@ -289,13 +289,13 @@
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <input matInput class="form-control" formControlName="name"
+                                                    <input [readonly]="isReadOnly" matInput class="form-control" formControlName="name"
                                                         id="name" placeholder="Name">
                                                 </mat-form-field>
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <mat-select matInput placeholder="Measurement Type"
+                                                    <mat-select [disabled]="isReadOnly" matInput placeholder="Measurement Type"
                                                         id="measurementType" formControlName="measurementType">
                                                         <mat-option *ngFor="let mt of qpa.measurementTypeArray"
                                                             value="{{mt}}">
@@ -306,7 +306,7 @@
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <mat-select matInput placeholder="Scale Type" id="scaleType"
+                                                    <mat-select [disabled]="isReadOnly" matInput placeholder="Scale Type" id="scaleType"
                                                         formControlName="scaleType">
                                                         <mat-option *ngFor="let st of qpa.scaleTypeArray"
                                                             value="{{st}}">
@@ -317,13 +317,13 @@
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <input matInput class="form-control" formControlName="scaleRange"
+                                                    <input [readonly]="isReadOnly" matInput class="form-control" formControlName="scaleRange"
                                                         id="scaleRange" placeholder="Scale Range">
                                                 </mat-form-field>
                                             </mat-grid-tile>
                                             <mat-grid-tile>
                                                 <mat-form-field [style.width.px]=260>
-                                                    <input matInput class="form-control"
+                                                    <input [readonly]="isReadOnly" matInput class="form-control"
                                                         formControlName="thresholdValue" id="thresholdValue"
                                                         placeholder="Threshold Value">
                                                 </mat-form-field>
@@ -331,16 +331,16 @@
                                         </mat-grid-list>
                                         <div class="example-container-two">
                                             <mat-form-field [style.width.px]=750>
-                                                <input matInput class="form-control"
+                                                <input [readonly]="isReadOnly" matInput class="form-control"
                                                     formControlName="informalDefinition" id="informalDefinition"
                                                     placeholder="Informal Definition">
                                             </mat-form-field>
                                             <mat-form-field [style.width.px]=750>
-                                                <input matInput class="form-control" formControlName="measurementMethod"
+                                                <input [readonly]="isReadOnly" matInput class="form-control" formControlName="measurementMethod"
                                                     id="measurementMethod" placeholder="Measurement Method">
                                             </mat-form-field>
                                             <mat-form-field [style.width.px]=750>
-                                                <input matInput class="form-control" formControlName="interpretation"
+                                                <input [readonly]="isReadOnly"  matInput class="form-control" formControlName="interpretation"
                                                     id="interpretation" placeholder="Interpretation">
                                             </mat-form-field>
                                         </div>
@@ -355,8 +355,8 @@
         </mat-step>
     </mat-vertical-stepper>
     <div>
-        <button mat-button class="main-save-btn" type="submit">Save Plan</button>
-        <button mat-raised-button class="main-reset-btn" (click)="reset(editForm)">Reset</button>
+        <button [disabled]="isReadOnly" mat-button class="main-save-btn" type="submit">Save Plan</button>
+        <button [disabled]="isReadOnly" mat-raised-button class="main-reset-btn" (click)="reset(editForm)">Reset</button>
     </div>
     <br>
     <br>

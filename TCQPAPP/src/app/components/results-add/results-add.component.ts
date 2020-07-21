@@ -23,8 +23,6 @@ export class ResultsAddComponent implements OnInit {
   isReadOnly = true;
   QualityCharacteristics: FormArray;
 
-  currentid: string = '';
-
   newResult = {
     name: '',
     results: null
@@ -86,7 +84,6 @@ export class ResultsAddComponent implements OnInit {
   }
 
   inputResults(qp: QualityPlan) {
-    //console.log(qp);
     this.show = true;
     this.addResultForm.patchValue({
       qualityPlan: qp.qualityPlanName

@@ -1,5 +1,4 @@
 <form [formGroup]="qualityForm" (ngSubmit)="onSubmit(qualityForm)">
-
     <br>
     <div class="example-container">
         <mat-form-field [style.width.px]=400>
@@ -8,7 +7,6 @@
 
         </mat-form-field>
     </div>
-
     <mat-vertical-stepper #stepper>
         <mat-step [stepControl]="true">
             <ng-template matStepLabel>Characterization of Context</ng-template>

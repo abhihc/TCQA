@@ -149,6 +149,7 @@ export class CreateQualityPlanComponent implements OnInit {
   removeQuestion(index) {
     this.questionCount.pop();
     this.questionArray.removeAt(index);
+    this.measurementArray.removeAt(index);
   }
 
   addQC() {

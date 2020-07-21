@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
   noOfExecutions: number = 0;
   noofTools: number = 0;
 
-  public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';
   public yAxisLabelAllCharts = 'Quality Score (%)';
   colorScheme = ['#336699', '#4C1C00', '#98DB92', '#2F4858', '	#FF0000', '#F1BB87', '#700353', '#320D6D'];
@@ -47,7 +46,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private apiService: ApiService, public fb: FormBuilder,
-    private actRoute: ActivatedRoute, private qualityPlanService: QualityPlanService, private toolDetailService: ToolDetailService) { }
+              private qualityPlanService: QualityPlanService, private toolDetailService: ToolDetailService) { }
 
   ngOnInit(): void {
     this.getID();
@@ -82,7 +81,6 @@ export class HomeComponent implements OnInit {
       this.noOfExecutions = this.apiService.results.length;
       currentid = this.apiService.results[this.apiService.results.length - 1]._id;
       this.checkid = currentid;
-      console.log(this.checkid);
       this.getResultData(currentid);
     });
   }

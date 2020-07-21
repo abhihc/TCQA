@@ -55,7 +55,7 @@
                                     <div formGroupName="{{iqsc}}">
                                         <mat-form-field [hidden]="true">
                                             <mat-select matInput placeholder="Quality Sub Characteristic" formControlName="qualitySubCharacteristic">
-                                                <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
+                                                <mat-optgroup *ngFor="let qualityaspect of qpa.qualityAspects" [label]="qualityaspect.qc">
                                                     <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
                                                         {{qualitySC}}
                                                     </mat-option>
