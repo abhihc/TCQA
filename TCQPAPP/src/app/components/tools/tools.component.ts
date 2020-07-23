@@ -18,7 +18,7 @@ import { QualityPlan } from './../../common/quality-plan.model';
 @Component({
   selector: 'app-tools',
   templateUrl: './tools.component.html',
-  styleUrls: ['./tools.component.css','./../../components/style/style.component.css'],
+  styleUrls: ['./tools.component.css', './../../components/style/style.component.css'],
   providers: [ToolDetailService]
 })
 export class ToolsComponent implements OnInit {
@@ -62,7 +62,8 @@ export class ToolsComponent implements OnInit {
     });
   }
 
-  getQAList(){
+  // Get list of all quality attributes defined in the quality plans
+  getQAList() {
     this.qualityPlanService.getQualityPlanList().subscribe((res) => {
       this.qualityPlanService.qualityPlans = res as QualityPlan[];
       this.qualityPlanService.qualityPlans.forEach(element => {
@@ -75,21 +76,21 @@ export class ToolsComponent implements OnInit {
         });
       });
       let flag = 0;
-      for (let i=0; i<this.qualtiyAttributesArray.length; i++){
+      for (let i = 0; i < this.qualtiyAttributesArray.length; i++) {
         flag = 0;
-        for ( let j=i+1; j<this.qualtiyAttributesArray.length; j++){
-          if(this.qualtiyAttributesArray[i] == this.qualtiyAttributesArray[j]){
-           flag = 1;
+        for (let j = i + 1; j < this.qualtiyAttributesArray.length; j++) {
+          if (this.qualtiyAttributesArray[i] == this.qualtiyAttributesArray[j]) {
+            flag = 1;
+          }
         }
-         }
-         if(flag == 0 ){
+        if (flag == 0) {
           this.allQualityAttributes.push(this.qualtiyAttributesArray[i]);
         }
       }
     });
 
-    
-    
+
+
   }
 
   onEdit(t: ToolDetail) {
@@ -115,6 +116,7 @@ export class ToolsComponent implements OnInit {
     })
   }
 
+  // Save tool information
   onSubmit(form: NgForm) {
 
     const toolData = {
@@ -143,7 +145,7 @@ export class ToolsComponent implements OnInit {
   reset(form?: NgForm) {
     if (form)
       form.reset();
-      this.qualityAttributes = [];
+    this.qualityAttributes = [];
     this.toolDetailService.selectedTool = {
       _id: "",
       qualityAttribute: [],

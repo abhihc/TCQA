@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private apiService: ApiService, public fb: FormBuilder,
-              private qualityPlanService: QualityPlanService, private toolDetailService: ToolDetailService) { }
+    private qualityPlanService: QualityPlanService, private toolDetailService: ToolDetailService) { }
 
   ngOnInit(): void {
     this.getID();
@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Get Quality Plans list
   qualityPlanList() {
     this.qualityPlanService.getQualityPlanList().subscribe((res) => {
       this.qualityPlanService.qualityPlans = res as QualityPlan[];
@@ -67,6 +68,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Get Tools list
   toolList() {
     this.toolDetailService.getToolDetailList().subscribe((res) => {
       this.toolDetailService.Tools = res as ToolDetail[];
@@ -74,6 +76,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Get assessment result id
   getID() {
     let currentid: string = "";
     this.apiService.getResults().subscribe((res) => {
@@ -85,6 +88,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Get assessment result
   getResultData(id) {
     const self = this;
     this.apiService.getResult(id).subscribe(data => {

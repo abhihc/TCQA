@@ -6,22 +6,24 @@ import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
+// Component to add quality assessment result
 @Component({
   selector: 'app-results-add',
   templateUrl: './results-add.component.html',
-  styleUrls: ['./results-add.component.css','./../../components/style/style.component.css'],
+  styleUrls: ['./results-add.component.css', './../../components/style/style.component.css'],
   providers: [QualityPlanService]
 })
 export class ResultsAddComponent implements OnInit {
   @ViewChild('nameInput', { static: false })
   fileUploadElement: ElementRef;
 
-  submitted = false;
+
   addResultForm: FormGroup;
+  QualityCharacteristics: FormArray;
+
+  submitted = false;
   show: boolean = false;
   isReadOnly = true;
-  QualityCharacteristics: FormArray;
 
   newResult = {
     name: '',
@@ -77,12 +79,14 @@ export class ResultsAddComponent implements OnInit {
     })
   }
 
+  // Get all Quality Plans list
   qualityPlanList() {
     this.qualityPlanService.getQualityPlanList().subscribe((res) => {
       this.qualityPlanService.qualityPlans = res as QualityPlan[];
     });
   }
 
+  // input quality assessment result
   inputResults(qp: QualityPlan) {
     this.show = true;
     this.addResultForm.patchValue({
@@ -159,6 +163,7 @@ export class ResultsAddComponent implements OnInit {
     return average;
   }
 
+  // Save quality assessment result of a specific quality plan
   onSubmit() {
     this.setValueQC(this.addResultForm.value['QualityCharacteristics']);
     this.submitted = true;

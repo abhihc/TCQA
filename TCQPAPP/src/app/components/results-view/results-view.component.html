@@ -38,30 +38,45 @@
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>
+        <!-- Quality Characteristics bar chart -->
         <mat-grid-tile>
             <mat-card style="height:400px; display: grid; width: 95%;">
                 <mat-card-content style="padding-bottom: 0px">
-                    <ngx-charts-bar-vertical [results]="dataChart1" [legend]="showLegend" [customColors]="customColors" [xAxis]="showXAxis" [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart1" [yAxisLabel]="yAxisLabelAllCharts" [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis"
-                        [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks" [activeEntries]="highlightedChart1" (activate)="onInteractChart1($event)" (deactivate)="onDeactivate($event)">
+                    <ngx-charts-bar-vertical [results]="dataChart1" [legend]="showLegend" [customColors]="customColors"
+                        [xAxis]="showXAxis" [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart1"
+                        [yAxisLabel]="yAxisLabelAllCharts" [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis"
+                        [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks"
+                        [activeEntries]="highlightedChart1" (activate)="onInteractChart1($event)"
+                        (deactivate)="onDeactivate($event)">
                     </ngx-charts-bar-vertical>
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>
+        <!-- Quality Sub-characteristics bar chart -->
         <mat-grid-tile>
             <mat-card style="height:400px; display: grid; width: 95%;">
                 <mat-card-content style="padding-bottom: 0px">
 
-                    <ngx-charts-bar-vertical [results]="dataChart2" [legend]="showLegend" [customColors]="customColors" [xAxis]="showXAxis" [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart2" [yAxisLabel]="yAxisLabelAllCharts" [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis"
-                        [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks" [activeEntries]="highlightedChart2" (activate)="onInteractChart2($event)" (deactivate)="onDeactivate($event)">
+                    <ngx-charts-bar-vertical [results]="dataChart2" [legend]="showLegend" [customColors]="customColors"
+                        [xAxis]="showXAxis" [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart2"
+                        [yAxisLabel]="yAxisLabelAllCharts" [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis"
+                        [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks"
+                        [activeEntries]="highlightedChart2" (activate)="onInteractChart2($event)"
+                        (deactivate)="onDeactivate($event)">
                     </ngx-charts-bar-vertical>
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>
+        <!-- Quality Attributes bar chart -->
         <mat-grid-tile>
             <mat-card style="height:400px; display: grid; width: 95%;">
                 <mat-card-content style="padding-bottom: 0px">
-                    <ngx-charts-bar-vertical [results]="dataChart3" [legend]="showLegend" [customColors]="customColors" [xAxis]="showXAxis" [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart3" [yAxisLabel]="yAxisLabelAllCharts" [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis"
-                        [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks" [activeEntries]="highlightedChart3" (activate)="onInteractChart3($event)" (deactivate)="onDeactivate($event)">
+                    <ngx-charts-bar-vertical [results]="dataChart3" [legend]="showLegend" [customColors]="customColors"
+                        [xAxis]="showXAxis" [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart3"
+                        [yAxisLabel]="yAxisLabelAllCharts" [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis"
+                        [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks"
+                        [activeEntries]="highlightedChart3" (activate)="onInteractChart3($event)"
+                        (deactivate)="onDeactivate($event)">
                     </ngx-charts-bar-vertical>
                 </mat-card-content>
 
@@ -70,6 +85,7 @@
     </mat-grid-list>
 </div>
 
+<!-- Comparison table -->
 <div class="container-fluid">
     <div class="col-md-12">
         <div class="card">
@@ -90,10 +106,12 @@
                             <td class="text-center">{{selectedThresholdScore[j]}}</td>
                             <td class="text-center">{{item}}</td>
                             <td class="text-center">
-                                <a title="Can be improved" *ngIf="item<selectedThresholdScore[j] && (selectedThresholdScore[j]-item)<=20">
+                                <a title="Can be improved"
+                                    *ngIf="item<selectedThresholdScore[j] && (selectedThresholdScore[j]-item)<=20">
                                     <img src="assets/images/improve.png" width="30" height="25" />
                                 </a>
-                                 <a title="Critical" *ngIf="item<selectedThresholdScore[j] && (selectedThresholdScore[j]-item)>20">
+                                <a title="Critical"
+                                    *ngIf="item<selectedThresholdScore[j] && (selectedThresholdScore[j]-item)>20">
                                     <img src="assets/images/criticalProblem.png" width="30" height="25" />
                                 </a>
                             </td>

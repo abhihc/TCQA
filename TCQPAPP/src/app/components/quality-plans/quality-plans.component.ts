@@ -9,14 +9,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-quality-plans',
   templateUrl: './quality-plans.component.html',
-  styleUrls: ['./quality-plans.component.css','./../../components/style/style.component.css'],
+  styleUrls: ['./quality-plans.component.css', './../../components/style/style.component.css'],
   providers: [QualityPlanService]
 })
 export class QualityPlansComponent implements OnInit {
-
-  data = new QualityPlan();
-
-  isReadOnly = true;
 
   editForm: FormGroup;
   goalArray: FormArray;
@@ -24,6 +20,8 @@ export class QualityPlansComponent implements OnInit {
   QualityCharacteristics: FormArray;
   measurementArray: FormArray;
 
+  data = new QualityPlan();
+  isReadOnly = true;
   qpa = new QualityPlanAttribute();
 
   constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) { }
@@ -31,7 +29,6 @@ export class QualityPlansComponent implements OnInit {
   ngOnInit() {
     this.qualityPlanList();
     this.reset();
-
     this.editForm = this.formbuilder.group({
       _id: [''],
       testObject: [''],
@@ -99,6 +96,7 @@ export class QualityPlansComponent implements OnInit {
     })
   }
 
+  // Rest form
   reset(form?: NgForm) {
     if (form)
       form.reset();
@@ -117,24 +115,27 @@ export class QualityPlansComponent implements OnInit {
       QualityCharacteristics: [],
       measurementArray: [],
       qualityPlanName: ""
-        }
+    }
   }
 
+  // Upate Quality Plan
   onSubmit(form: NgForm) {
     form.value._id = this.data._id;
     this.qualityPlanService.putQualityPlan(form.value).subscribe((res) => {
       this.reset(form);
       this.qualityPlanList();
-      this.openSnackBar('Qulity plan updates successfully', null);
+      this.openSnackBar('Qulity plan updated successfully', null);
     })
   }
 
+  // Get Quality Plans list
   qualityPlanList() {
     this.qualityPlanService.getQualityPlanList().subscribe((res) => {
       this.qualityPlanService.qualityPlans = res as QualityPlan[];
     });
   }
 
+  // To view the specific quality plan
   onView(qp: QualityPlan) {
     this.editForm.patchValue({
       _id: qp._id,
@@ -230,6 +231,7 @@ export class QualityPlansComponent implements OnInit {
     return formArray;
   }
 
+  // TO edit the specific quality plan
   onEdit(qp: QualityPlan) {
     this.editForm.patchValue({
       testObject: qp.testObject,
@@ -250,6 +252,7 @@ export class QualityPlansComponent implements OnInit {
     this.data = qp;
   }
 
+  // To delete the specific quality plan
   onDelete(_id: string) {
     this.qualityPlanService.deleteQualityPlan(_id).subscribe();
     this.openSnackBar('Quality plan deleted successfully', null);

@@ -10,10 +10,12 @@ import { QualityPlan } from './../../common/quality-plan.model';
 @Component({
   selector: 'app-results-view',
   templateUrl: './results-view.component.html',
-  styleUrls: ['./results-view.component.css','./../../components/style/style.component.css'],
+  styleUrls: ['./results-view.component.css', './../../components/style/style.component.css'],
   providers: [QualityPlanService]
 })
 export class ResultsViewComponent implements OnInit {
+
+  viewResultForm: FormGroup;
 
   resultData: any;
   qpName: string;
@@ -21,7 +23,6 @@ export class ResultsViewComponent implements OnInit {
   selectedTS: any;
   selectedSTF: any;
   selectedTO: any;
-  viewResultForm: FormGroup;
   show: boolean = false;
   selectedThresholdScore = [];
   selectedQA = [];
@@ -71,11 +72,12 @@ export class ResultsViewComponent implements OnInit {
   }
 
   mainForm() {
-    
+
   }
 
+  // Get all threshold scores of selected quality plan
   qualityPlanList() {
-      this.qualityPlanService.getQualityPlanList().subscribe((res) => {
+    this.qualityPlanService.getQualityPlanList().subscribe((res) => {
       this.qualityPlanService.qualityPlans = res as QualityPlan[];
       this.qualityPlanService.qualityPlans.forEach(element => {
         if (element.qualityPlanName == this.qpName) {
@@ -91,6 +93,7 @@ export class ResultsViewComponent implements OnInit {
     });
   }
 
+  // Get assessment result of selected quality plan
   getResultData(id) {
     const self = this;
     this.apiService.getResult(id).subscribe(data => {

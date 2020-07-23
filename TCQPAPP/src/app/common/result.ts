@@ -1,5 +1,5 @@
 export class Result {
-    _id: "";
-    name: string;
-    qualityPlan: string;
+  _id: "";
+  name: string;
+  qualityPlan: string;
 }
