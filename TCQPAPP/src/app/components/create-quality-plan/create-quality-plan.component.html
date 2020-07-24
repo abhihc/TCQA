@@ -198,44 +198,41 @@
               <mat-card-content>
                 <!-- Please do not remove the below commented out code -->
 
-                <!-- <div *ngFor="let i of Count; let j = index">
-                                    <mat-grid-list cols="3" rowHeight="100px">
-                                        <mat-grid-tile>
-                                            <mat-form-field [style.width.px]=260 appearance="fill">
-                                                <input [readonly]="isReadOnly" matInput placeholder="Question {{j+1}}">
-                                            </mat-form-field>
-                                        </mat-grid-tile>
-                                        <mat-grid-tile>
-                                            <mat-form-field [style.width.px]=260>
-                                                <input matInput placeholder="Quality Attribute">
-                                            </mat-form-field>
-                                        </mat-grid-tile>
-                                        <mat-grid-tile>
-                                            <mat-form-field [style.width.px]=260>
-                                                <mat-select matInput placeholder="Quality Characteristic">
-                                                    <mat-option *ngFor="let qc of qpa.QualityCharacteristics1"
-                                                        value="{{qc}}">
-                                                        {{qc}}
-                                                    </mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
+                <!-- <div *ngFor="let i of questionCount; let j = index">
+                  <mat-grid-list cols="3" rowHeight="100px">
+                    <mat-grid-tile>
+                      <mat-form-field [style.width.px]=260 appearance="fill">
+                        <input [readonly]="isReadOnly" matInput placeholder="Question {{j+1}}">
+                      </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                      <mat-form-field [style.width.px]=260>
+                        <input matInput placeholder="Quality Attribute">
+                      </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                      <mat-form-field [style.width.px]=260>
+                        <mat-select matInput placeholder="Quality Characteristic">
+                          <mat-option *ngFor="let qc of qpa.QualityCharacteristics1" value="{{qc}}">
+                            {{qc}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
 
-                                        </mat-grid-tile>
-                                        <mat-grid-tile>
-                                            <mat-form-field [style.width.px]=260>
-                                                <mat-select matInput placeholder="Quality Sub Characteristic">
-                                                    <mat-optgroup *ngFor="let qualityaspect of qualityAspects"
-                                                        [label]="qualityaspect.qc">
-                                                        <mat-option *ngFor="let qualitySC of qualityaspect.qbc"
-                                                            value="{{qualitySC}}">
-                                                            {{qualitySC}}
-                                                        </mat-option>
-                                                    </mat-optgroup>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </mat-grid-tile>
-                                    </mat-grid-list>
-                                </div> -->
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                      <mat-form-field [style.width.px]=260>
+                        <mat-select matInput placeholder="Quality Sub Characteristic">
+                          <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
+                            <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
+                              {{qualitySC}}
+                            </mat-option>
+                          </mat-optgroup>
+                        </mat-select>
+                      </mat-form-field>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </div> -->
 
                 <div formArrayName="QualityCharacteristics">
                   <div *ngFor="
@@ -280,9 +277,9 @@
                                   let iqa = index
                                 ">
                                 <div formGroupName="{{ iqa }}" class="qualityAttributes">
-                                  <!-- <mat-form-field>
-                                    <input matInput placeholder="Question {{  }}" />
-                                  </mat-form-field> -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Question {{ iqa }}" />
+                                  </mat-form-field>
                                   <mat-form-field [style.width.px]="260">
                                     <input matInput class="form-control" formControlName="qualityAttribute"
                                       id="qualityAttribute" placeholder="Quality Attribute" />
