@@ -86,7 +86,8 @@ export class CreateQualityPlanComponent implements OnInit {
 
   createQA() {
     return this.formbuilder.group({
-      qualityAttribute: "",
+      questionNumber: "",
+      qualityAttribute: ""
     });
   }
 

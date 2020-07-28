@@ -39,6 +39,7 @@ export class QualitySubCharacteristic {
 
 export class QualityAttribute {
   qualityAttribute: string;
+  questionNumber: string;
 }
 
 export class Measurement {

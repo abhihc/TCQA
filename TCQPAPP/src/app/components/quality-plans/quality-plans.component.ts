@@ -79,7 +79,8 @@ export class QualityPlansComponent implements OnInit {
 
   createQA() {
     return this.formbuilder.group({
-      qualityAttribute: '',
+      questionNumber: '',
+      qualityAttribute: ''
     })
   }
 
@@ -208,6 +209,7 @@ export class QualityPlansComponent implements OnInit {
     const formArray3 = new FormArray([]);
     qaSet.forEach(element => {
       formArray3.push(this.formbuilder.group({
+        questionNumber: element.questionNumber,
         qualityAttribute: element.qualityAttribute
       }));
     });

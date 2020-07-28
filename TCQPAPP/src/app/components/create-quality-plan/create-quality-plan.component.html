@@ -277,8 +277,13 @@
                                   let iqa = index
                                 ">
                                 <div formGroupName="{{ iqa }}" class="qualityAttributes">
-                                  <mat-form-field>
-                                    <input matInput placeholder="Question {{ iqa }}" />
+                                  <mat-form-field [style.width.px]="260">
+                                    <mat-select matInput placeholder="Question" formControlName="questionNumber">
+                                      <mat-option *ngFor="let qcount of questionCount; let x = index"
+                                        value="Question {{x+1}}">
+                                        Question {{x+1}}
+                                      </mat-option>
+                                    </mat-select>
                                   </mat-form-field>
                                   <mat-form-field [style.width.px]="260">
                                     <input matInput class="form-control" formControlName="qualityAttribute"
