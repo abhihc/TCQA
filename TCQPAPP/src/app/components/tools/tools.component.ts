@@ -27,7 +27,7 @@ export class ToolsComponent implements OnInit {
   qualityAttributeCtrl = new FormControl();
   filteredQualityAttributes: Observable<string[]>;
   qualityAttributes: string[] = [];
-  allQualityAttributes: string[] = []; // set of quality attributes from quality plans created
+  allQualityAttributes: string[] = [];
   qualtiyAttributesArray: string[] = [];
 
   @ViewChild('qualityAttributeInput') qualityAttributeInput: ElementRef<HTMLInputElement>;
@@ -88,8 +88,6 @@ export class ToolsComponent implements OnInit {
         }
       }
     });
-
-
 
   }
 

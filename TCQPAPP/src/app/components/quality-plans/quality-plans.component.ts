@@ -20,7 +20,7 @@ export class QualityPlansComponent implements OnInit {
   QualityCharacteristics: FormArray;
   measurementArray: FormArray;
 
-  data = new QualityPlan();
+  data = new QualityPlan(); // Object for selected quality plan
   isReadOnly = true;
   qpa = new QualityPlanAttribute();
 
@@ -63,6 +63,7 @@ export class QualityPlansComponent implements OnInit {
     })
   }
 
+  // Form builder for Quality Characteristics
   createQC() {
     return this.formbuilder.group({
       qualityCharacteristic: '',
@@ -70,6 +71,7 @@ export class QualityPlansComponent implements OnInit {
     })
   }
 
+  // Form builder for Quality Sub-characteristics
   createQSC() {
     return this.formbuilder.group({
       qualitySubCharacteristic: '',
@@ -77,6 +79,7 @@ export class QualityPlansComponent implements OnInit {
     })
   }
 
+  // Form builder for Quality Attributes
   createQA() {
     return this.formbuilder.group({
       questionNumber: '',
@@ -153,15 +156,15 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
     this.editForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
-    this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
+    this.editForm.setControl('measurementArray', this.setExistingMeasurement(qp.measurementArray));
     this.isReadOnly = true;
     this.data = qp;
   }
 
   setExistingGoals(goalset: any): FormArray {
-    const formArray = new FormArray([]);
+    const existingGoalsArray = new FormArray([]);
     goalset.forEach(element => {
-      formArray.push(this.formbuilder.group({
+      existingGoalsArray.push(this.formbuilder.group({
         objectOfStudy: element.objectOfStudy,
         purpose: element.purpose,
         qualityFocus: element.qualityFocus,
@@ -170,56 +173,59 @@ export class QualityPlansComponent implements OnInit {
       }));
     });
 
-    return formArray;
+    return existingGoalsArray;
   }
 
   setExistingQuestions(questionset: any): FormArray {
-    const formArray = new FormArray([]);
+    const existingQuestionsArray = new FormArray([]);
     questionset.forEach(element => {
-      formArray.push(this.formbuilder.group({
+      existingQuestionsArray.push(this.formbuilder.group({
         question: element.question
       }));
     });
-    return formArray;
+    return existingQuestionsArray;
   }
 
+  // Set existing Quality Characteristics
   setExistingQC(qcSet: any): FormArray {
-    const formArray1 = new FormArray([]);
+    const existingQCArray = new FormArray([]);
     qcSet.forEach(element => {
-      formArray1.push(this.formbuilder.group({
+      existingQCArray.push(this.formbuilder.group({
         qualityCharacteristic: element.qualityCharacteristic,
-        qualitySubCharacteristics: this.setQBC(element.qualitySubCharacteristics)
+        qualitySubCharacteristics: this.setExistingQSC(element.qualitySubCharacteristics)
       }));
     });
-    return formArray1;
+    return existingQCArray;
   }
 
-  setQBC(qscSet: any): FormArray {
-    const formArray2 = new FormArray([]);
+  // Set existing Quality Sub-characteristics
+  setExistingQSC(qscSet: any): FormArray {
+    const existingQSCArray = new FormArray([]);
     qscSet.forEach(element => {
-      formArray2.push(this.formbuilder.group({
+      existingQSCArray.push(this.formbuilder.group({
         qualitySubCharacteristic: element.qualitySubCharacteristic,
-        qualityAttributes: this.setQA(element.qualityAttributes)
+        qualityAttributes: this.setExistingQA(element.qualityAttributes)
       }));
     });
-    return formArray2;
+    return existingQSCArray;
   }
 
-  setQA(qaSet: any): FormArray {
-    const formArray3 = new FormArray([]);
+  // Set existing Quality Attributes
+  setExistingQA(qaSet: any): FormArray {
+    const existingQAArray = new FormArray([]);
     qaSet.forEach(element => {
-      formArray3.push(this.formbuilder.group({
+      existingQAArray.push(this.formbuilder.group({
         questionNumber: element.questionNumber,
         qualityAttribute: element.qualityAttribute
       }));
     });
-    return formArray3;
+    return existingQAArray;
   }
 
-  setMeasurement(measurementSet: any): FormArray {
-    const formArray = new FormArray([]);
+  setExistingMeasurement(measurementSet: any): FormArray {
+    const existingMeasurementArray = new FormArray([]);
     measurementSet.forEach(element => {
-      formArray.push(this.formbuilder.group({
+      existingMeasurementArray.push(this.formbuilder.group({
         name: element.name,
         informalDefinition: element.informalDefinition,
         measurementType: element.measurementType,
@@ -230,7 +236,7 @@ export class QualityPlansComponent implements OnInit {
         thresholdValue: element.thresholdValue
       }));
     });
-    return formArray;
+    return existingMeasurementArray;
   }
 
   // TO edit the specific quality plan
@@ -249,7 +255,7 @@ export class QualityPlansComponent implements OnInit {
     this.editForm.setControl('goalArray', this.setExistingGoals(qp.goalArray));
     this.editForm.setControl('questionArray', this.setExistingQuestions(qp.questionArray));
     this.editForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
-    this.editForm.setControl('measurementArray', this.setMeasurement(qp.measurementArray));
+    this.editForm.setControl('measurementArray', this.setExistingMeasurement(qp.measurementArray));
     this.isReadOnly = false;
     this.data = qp;
   }

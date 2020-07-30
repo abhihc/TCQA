@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   viewResultForm: FormGroup;
   show: boolean = false;
   checkid: string;
-  noOfQPs: number = 0;
+  noOfQPs: number = 0; // Number of quality plans
   noOfExecutions: number = 0;
   noofTools: number = 0;
 

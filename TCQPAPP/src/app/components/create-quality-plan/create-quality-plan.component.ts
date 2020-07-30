@@ -70,6 +70,7 @@ export class CreateQualityPlanComponent implements OnInit {
     });
   }
 
+  // Form builder for Quality Characteristics
   createQC() {
     return this.formbuilder.group({
       qualityCharacteristic: "",
@@ -77,6 +78,7 @@ export class CreateQualityPlanComponent implements OnInit {
     });
   }
 
+  // Form builder for Quality Sub-characteristics
   createQSC() {
     return this.formbuilder.group({
       qualitySubCharacteristic: "",
@@ -84,6 +86,7 @@ export class CreateQualityPlanComponent implements OnInit {
     });
   }
 
+  // Form builder for Quality Attributes
   createQA() {
     return this.formbuilder.group({
       questionNumber: "",
@@ -158,6 +161,7 @@ export class CreateQualityPlanComponent implements OnInit {
     this.measurementArray.removeAt(index);
   }
 
+  // Add Quality Characteristics
   addQC() {
     const control = <FormArray>(
       this.qualityForm.controls["QualityCharacteristics"]
@@ -165,6 +169,7 @@ export class CreateQualityPlanComponent implements OnInit {
     control.push(this.createQC());
   }
 
+  // Add Quality Sub-characteristics
   addQSC(iqc) {
     const control = (<FormArray>(
       this.qualityForm.controls["QualityCharacteristics"]
@@ -174,6 +179,7 @@ export class CreateQualityPlanComponent implements OnInit {
     control.push(this.createQSC());
   }
 
+  // Add Quality Attributes
   addQA(iqc, iqsc) {
     const control = ((<FormArray>(
       this.qualityForm.controls["QualityCharacteristics"]
@@ -185,6 +191,7 @@ export class CreateQualityPlanComponent implements OnInit {
     control.push(this.createQA());
   }
 
+  // Remove Quality Attributes
   removeQA(iqc, iqsc) {
     const control = ((<FormArray>(
       this.qualityForm.controls["QualityCharacteristics"]
@@ -196,6 +203,7 @@ export class CreateQualityPlanComponent implements OnInit {
     control.removeAt(iqsc);
   }
 
+  // Remove Quality Sub-characteristics
   removeQSC(iqc) {
     const control = (<FormArray>(
       this.qualityForm.controls["QualityCharacteristics"]
@@ -205,6 +213,7 @@ export class CreateQualityPlanComponent implements OnInit {
     control.removeAt(iqc);
   }
 
+  // Remove Quality Characteristics
   removeQC(iqc) {
     const control = <FormArray>(
       this.qualityForm.controls["QualityCharacteristics"]

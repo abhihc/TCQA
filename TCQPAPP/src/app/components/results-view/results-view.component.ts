@@ -19,14 +19,14 @@ export class ResultsViewComponent implements OnInit {
 
   resultData: any;
   qpName: string;
-  selectedQPName: any;
-  selectedTS: any;
-  selectedSTF: any;
-  selectedTO: any;
+  selectedQPName: any;        // Selected Quality Plan Name
+  selectedTS: any;            // Selected Test Suite
+  selectedSTF: any;           // Selected Source Testing Framework
+  selectedTO: any;            // Selected Test Object
   show: boolean = false;
   selectedThresholdScore = [];
-  selectedQA = [];
-  selectedQAScore = [];
+  selectedQA = [];            // Selected Quality Attributes
+  selectedQAScore = [];       // Selected Quality Attribute Scores
 
   public showLegend = false;
   public xAxisLabelChart1 = 'Quality Characteristics';

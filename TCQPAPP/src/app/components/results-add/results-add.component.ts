@@ -56,6 +56,7 @@ export class ResultsAddComponent implements OnInit {
     });
   }
 
+  // Form builder for Quality Characteristics
   createQC() {
     return this.fb.group({
       qualityCharacteristic: '',
@@ -64,6 +65,7 @@ export class ResultsAddComponent implements OnInit {
     })
   }
 
+  // Form builder for Quality Sub-characteristics
   createQSC() {
     return this.fb.group({
       qualitySubCharacteristic: '',
@@ -72,6 +74,7 @@ export class ResultsAddComponent implements OnInit {
     })
   }
 
+  // Form builder for Quality Attributes
   createQA() {
     return this.fb.group({
       qualityAttribute: '',
@@ -95,50 +98,55 @@ export class ResultsAddComponent implements OnInit {
     this.addResultForm.setControl('QualityCharacteristics', this.setExistingQC(qp.QualityCharacteristics));
   }
 
+  // Set existing Quality Characteristics
   setExistingQC(qcSet: any): FormArray {
-    const formArray1 = new FormArray([]);
+    const existingQCArray = new FormArray([]);
     qcSet.forEach(element => {
-      formArray1.push(this.fb.group({
+      existingQCArray.push(this.fb.group({
         qualityCharacteristic: element.qualityCharacteristic,
         scoreQC: null,
-        qualitySubCharacteristics: this.setQBC(element.qualitySubCharacteristics)
+        qualitySubCharacteristics: this.setExistingQSC(element.qualitySubCharacteristics)
       }));
     });
-    return formArray1;
+    return existingQCArray;
   }
 
-  setQBC(qscSet: any): FormArray {
-    const formArray2 = new FormArray([]);
+  // Set existing Quality Sub-characteristics
+  setExistingQSC(qscSet: any): FormArray {
+    const existingQSCArray = new FormArray([]);
     qscSet.forEach(element => {
-      formArray2.push(this.fb.group({
+      existingQSCArray.push(this.fb.group({
         qualitySubCharacteristic: element.qualitySubCharacteristic,
         scoreQBC: null,
-        qualityAttributes: this.setQA(element.qualityAttributes)
+        qualityAttributes: this.setExistingQA(element.qualityAttributes)
       }));
     });
-    return formArray2;
+    return existingQSCArray;
   }
 
-  setQA(qaSet: any): FormArray {
-    const formArray3 = new FormArray([]);
+  // Set existing Quality Attributes
+  setExistingQA(qaSet: any): FormArray {
+    const existingQAArray = new FormArray([]);
     qaSet.forEach(element => {
-      formArray3.push(this.fb.group({
+      existingQAArray.push(this.fb.group({
         qualityAttribute: element.qualityAttribute,
         scoreQA: null
       }));
     });
-    return formArray3;
+    return existingQAArray;
   }
 
+  // Set score of Quality Characteristics
   setValueQC(qcs) {
     for (var index in qcs) {
-      qcs[index].scoreQC = this.setValueQSC(qcs[index].qualitySubCharacteristics);
+      qcs[index].scoreQC = this.averageQSC(qcs[index].qualitySubCharacteristics);
     }
   }
 
-  setValueQSC(qscs) {
+  // Average of Quality Sub-characteristics Score
+  averageQSC(qscs) {
     for (var index in qscs) {
-      qscs[index].scoreQBC = this.setValueFinal(qscs[index].qualityAttributes);
+      qscs[index].scoreQBC = this.averageQA(qscs[index].qualityAttributes);
     }
     let sum: number = 0;
     let count: number = 0;
@@ -151,7 +159,8 @@ export class ResultsAddComponent implements OnInit {
     return average;
   }
 
-  setValueFinal(qas) {
+  // Average of Quality Attributes Score
+  averageQA(qas) {
     let sum: number = 0;
     let count: number = 0;
     let average: number = 0;
