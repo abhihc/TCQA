@@ -223,9 +223,11 @@
                     <mat-grid-tile>
                       <mat-form-field [style.width.px]=260>
                         <mat-select matInput placeholder="Quality Sub Characteristic">
-                          <mat-optgroup *ngFor="let qualityaspect of qualityAspects" [label]="qualityaspect.qc">
-                            <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{qualitySC}}">
-                              {{qualitySC}}
+                          <mat-optgroup *ngFor="
+                              let qualityaspect of qpa.qualityAspects
+                            " [label]="qualityaspect.qc">
+                            <mat-option *ngFor="let qualitySC of qualityaspect.qbc" value="{{ qualitySC }}">
+                              {{ qualitySC }}
                             </mat-option>
                           </mat-optgroup>
                         </mat-select>
@@ -291,33 +293,34 @@
                                   </mat-form-field>
                                 </div>
                               </div>
-                              <button mat-raised-button class="btn btn-default" type="button"
-                                (click)="removeQA(iqc, iqsc)">
-                                Remove Quality Attribute
-                              </button>
-                              &nbsp;
-                              <button mat-button class="btn btn-default" type="button" (click)="addQA(iqc, iqsc)">
-                                Add Quality Attribute
-                              </button>
+                              <div align="center">
+                                <button mat-raised-button class="btn btn-default" type="button"
+                                  (click)="removeQA(iqc, iqsc)">
+                                  -QA
+                                </button>
+                                &nbsp;
+                                <button mat-button class="btn btn-default" type="button" (click)="addQA(iqc, iqsc)">
+                                  +QA
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
                         <br />
-                        <button mat-raised-button class="btn btn-default" type="button" (click)="removeQSC(iqc)">
-                          Remove Quality Sub Characteristic</button>&nbsp;
-                        <button mat-button class="btn btn-default" type="button" (click)="addQSC(iqc)">
-                          Add Quality Sub Characteristic
-                        </button>
+                        <div align="center">
+                          <button mat-raised-button class="btn btn-default" type="button" (click)="removeQSC(iqc)">
+                            -QSC</button>&nbsp;
+                          <button mat-button class="btn btn-default" type="button" (click)="addQSC(iqc)">
+                            +QSC
+                          </button>
+                        </div>
                       </div>
                       <br />
-                      <div class="row">
-                        <button mat-raised-button style="width: 20em;" type="button" (click)="removeQC(iqc)">
-                          Remove Quality Characteristic
-                        </button>
-                        &nbsp;
-
-                        <button mat-button style="width: 20em;" type="button" (click)="addQC()">
-                          Add Quality Characteristic
+                      <div align="center">
+                        <button mat-raised-button class="btn btn-default" type="button" (click)="removeQC(iqc)">
+                          -QC</button>&nbsp;
+                        <button mat-button class="btn btn-default" type="button" (click)="addQC()">
+                          +QC
                         </button>
                       </div>
                       <br />
@@ -414,4 +417,7 @@
     </button>
   </div>
   <br />
+
+  <br>
+  <br>
 </form>

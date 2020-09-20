@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
-import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
+import { QualityPlan, QualityPlanAttribute, QualityAttribute } from './../../common/quality-plan.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { ToolDetail } from './../../common/toolDetail.model';
+import { ToolDetailService } from './../../common/toolDetail.service';
 
 
 @Component({
   selector: 'app-quality-plans',
   templateUrl: './quality-plans.component.html',
   styleUrls: ['./quality-plans.component.css', './../../components/style/style.component.css'],
-  providers: [QualityPlanService]
+  providers: [QualityPlanService, ToolDetailService]
 })
 export class QualityPlansComponent implements OnInit {
 
@@ -23,10 +26,14 @@ export class QualityPlansComponent implements OnInit {
   data = new QualityPlan(); // Object for selected quality plan
   isReadOnly = true;
   qpa = new QualityPlanAttribute();
+  selectedQA = [];
+  toolsList: ToolDetail[];
 
-  constructor(private qualityPlanService: QualityPlanService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) { }
+  constructor(private qualityPlanService: QualityPlanService, private toolDetailService: ToolDetailService, public formbuilder: FormBuilder, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.selectedQA = [];
+    this.getToolList();
     this.qualityPlanList();
     this.reset();
     this.editForm = this.formbuilder.group({
@@ -141,6 +148,7 @@ export class QualityPlansComponent implements OnInit {
 
   // To view the specific quality plan
   onView(qp: QualityPlan) {
+    this.selectedQA = [];
     this.editForm.patchValue({
       _id: qp._id,
       testObject: qp.testObject,
@@ -218,6 +226,7 @@ export class QualityPlansComponent implements OnInit {
         questionNumber: element.questionNumber,
         qualityAttribute: element.qualityAttribute
       }));
+      this.selectedQA.push(element.qualityAttribute);
     });
     return existingQAArray;
   }
@@ -266,6 +275,12 @@ export class QualityPlansComponent implements OnInit {
     this.openSnackBar('Quality plan deleted successfully', null);
     this.qualityPlanList();
     this.reset();
+  }
+
+  getToolList() {
+    this.toolDetailService.getToolDetailList().subscribe((res) => {
+      this.toolsList = res as ToolDetail[];
+    });
   }
 
   openSnackBar(message: string, action: string) {

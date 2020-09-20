@@ -374,6 +374,38 @@
 
             </div>
         </mat-step>
+        <mat-step [stepControl]="true">
+            <ng-template matStepLabel>Existing Tool Suggestion</ng-template>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-card style="height:300px; width:700px; display: grid; margin:7px 0px 7px 0px !important;">
+                            <mat-card-content>
+                                <table class="table">
+                                    <thead>
+                                        <th scope="col">Quality Attribute</th>
+                                        <th scope="col">Suggested Measurement Tool</th>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let qa of selectedQA">
+                                            <tr *ngFor="let t of toolsList">
+                                                <td *ngIf="t.qualityAttribute == qa">
+                                                    {{t.qualityAttribute}}
+                                                </td>
+                                                <td *ngIf="t.qualityAttribute == qa">
+                                                    <a href="{{t.toolInfo}}" target="_blank"
+                                                        rel="noopener noreferrer">{{t.toolName}}</a></td>
+                                            </tr>
+
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
     </mat-vertical-stepper>
     <div>
         <button [disabled]="isReadOnly" mat-button class="main-save-btn" type="submit">Save Plan</button>
