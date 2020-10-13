@@ -1,0 +1,91 @@
+<div class="main-content">
+    <mat-grid-list cols="5" rowHeight="440px">
+        <mat-grid-tile colspan="2" rowspan="1">
+            <!-- Meta information regarding quality plans, assessment results and tools -->
+            <div style="display: flex; flex-direction: column !important">
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title><a class="card-title">Number of Quality Plans Created: {{noOfQPs}}</a>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions class="sicp-dark-blue">
+                        <button mat-button routerLink="/create-quality-plan" routerLinkActive="active">Create New
+                            Quality Plan&nbsp;<a class="fa fa-angle-right"></a></button>
+                    </mat-card-actions>
+                </mat-card>
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title><a class="card-title">Number of Quality Assessment Results Uploaded:
+                                {{noOfExecutions}}</a></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions class="sicp-orange">
+                        <button mat-button routerLink="/add-result" routerLinkActive="active">Add New Result&nbsp;<a
+                                class="fa fa-angle-right"></a></button>
+                    </mat-card-actions>
+                </mat-card>
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title><a class="card-title">Number of Tools: {{noofTools}}</a></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions class="sicp-light-blue">
+                        <button mat-button routerLink="/tools" routerLinkActive="active">Add New Tool&nbsp;<a
+                                class="fa fa-angle-right"></a></button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </mat-grid-tile>
+        <!-- Bar chart showcasing the quality characteristics of last uploaded quality assessment result -->
+        <mat-grid-tile colspan="3" rowspan="1">
+            <mat-card style="height:400px; width:95%; display: grid; margin-top: 10px;">
+                <mat-card-title-group>
+                    <span style="font-weight:bold">Recent Quality Assessment Result</span>
+                    <button mat-raised-button type="button" class="info-btn"
+                        [routerLink]="['/view-result/', checkid]">More Info</button>
+                </mat-card-title-group>
+                <mat-card-content style="padding-bottom: 0px">
+                    <ngx-charts-bar-vertical [results]="dataChart1" [customColors]="customColors" [xAxis]="showXAxis"
+                        [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelChart1" [yAxisLabel]="yAxisLabelAllCharts"
+                        [showXAxisLabel]="showXAxis" [showYAxisLabel]="showYAxis" [yScaleMin]="yScaleMin"
+                        [yScaleMax]="yScaleMax" [yAxisTicks]="yAxisTicks">
+                    </ngx-charts-bar-vertical>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <!-- Tool Information -->
+        <mat-grid-tile colspan="2" rowspan="1">
+            <mat-card style="min-height:400px; width:500px; max-height: 700px; display: grid; margin-top: 10px;">
+                <mat-card-content style="padding-bottom: 0px">
+                    <h4 class="card-title" align="center">Tools</h4>
+                    <table class="table">
+                        <thead>
+                            <th scope="col">Quality Attribute</th>
+                            <th scope="col">Tool</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let t of toolDetailService.Tools; let i = index">
+                                <td>{{t.qualityAttribute}}</td>
+                                <td><a href="{{t.toolInfo}}" target="_blank"
+                                        rel="noopener noreferrer">{{t.toolName}}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <!-- Test Case Quality Assessment Process Overview -->
+        <mat-grid-tile colspan="3" rowspan="1">
+            <mat-card style="height:400px; width:95%; display: grid; margin-top: 10px;">
+                <mat-card-title-group>
+                    <span style="font-weight:bold">Overview of the complete process</span>
+                    <button mat-raised-button type="button" class="info-btn" routerLink="/documentation"
+                        routerLinkActive="active">More Info</button>
+                </mat-card-title-group>
+                <mat-card-content style="padding-bottom: 0px">
+                    <a mat-button routerLink="/documentation" routerLinkActive="active">
+                        <img src="assets/images/processOverviewNew.PNG" alt="logo" class="process-overview shadow" />
+                    </a>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

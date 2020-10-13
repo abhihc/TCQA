@@ -1,0 +1,81 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-color">
+                        <h4 class="card-title" align="center">Tools</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table" style="table-layout: fixed; width: 100%;">
+                            <thead>
+                                <th scope="col" width="40%">Quality Attribute</th>
+                                <th scope="col" width="40%">Tool</th>
+                                <th scope="col" class="text-center">Operation</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let t of toolsList">
+                                    <td>{{t.qualityAttribute.join(', ')}}</td>
+                                    <td><a href="{{t.toolInfo}}" target="_blank"
+                                            rel="noopener noreferrer">{{t.toolName}}</a></td>
+                                    <td class="text-center">
+                                        <button mat-icon-button (click)="onEdit(t)" title="Edit">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <button mat-icon-button (click)="onDelete(t._id)" title="Delete">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tool-input-form">
+        <mat-card>
+            <mat-card-content style="padding-bottom: 0px">
+                <form [formGroup]="toolForm" (ngSubmit)="onSubmit(toolForm)">
+                    <input type="hidden" class="form-control" id="id" formControlName="id">
+                    <div class="new-tool-container">
+
+                        <mat-form-field [style.width.px]=300>
+                            <input matInput class="form-control" formControlName="toolName" id="toolName"
+                                placeholder="Tool Name">
+                        </mat-form-field>
+
+                        <mat-form-field [style.width.px]=300>
+                            <input matInput class="form-control" formControlName="toolInfo" id="toolInfo"
+                                placeholder="Tool Link">
+                        </mat-form-field>
+                        <mat-form-field class="quality-attributes-chip-list">
+                            <mat-chip-list #chipList aria-label="Fruit selection">
+                                <mat-chip *ngFor="let qualityAttribute of qualityAttributes" [selectable]="selectable"
+                                    [removable]="removable" (removed)="remove(qualityAttribute)">
+                                    {{qualityAttribute}}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input placeholder="Supported quality attributes" #qualityAttributeInput
+                                    [formControl]="qualityAttributeCtrl" [matAutocomplete]="auto"
+                                    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                <mat-option *ngFor="let qualityAttribute of filteredQualityAttributes | async"
+                                    [value]="qualityAttribute">
+                                    {{qualityAttribute}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="new-tool-container">
+                        <button mat-button type="submit">Save Tool</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+
+
+.new-tool-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-tool-container>* {
+    width: 20%;
+}
+
+.tool-input-form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tool-input-form .mat-card {
+    width: 500px;
+}
+
+.quality-attributes-chip-list {
+    width: 90% !important;
+}
+
+

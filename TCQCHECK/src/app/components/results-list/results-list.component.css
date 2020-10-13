@@ -1,0 +1,35 @@
+  .primary {
+      color: #00205b;
+      font: 400;
+  }
+
+  .primary:hover {
+      color: #f1971b;
+      cursor: pointer;
+  }
+
+  .selected {
+      color: #f1971b;
+  }
+
+  .primary1 {
+      color: #00205b;
+      font-weight: 400;
+  }
+
+  .primary1:hover {
+      color: #f1971b;
+      cursor: pointer;
+  }
+
+  .change-color {
+      color: #f1971b;
+  }
+
+  .container-fluid1 {
+    width: 30%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

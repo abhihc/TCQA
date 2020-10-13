@@ -1,0 +1,131 @@
+.main-content {
+    margin-top: 20px;
+}
+
+.container-fluid {
+    width: 40%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+col-md-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 40%;
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+
+.card {
+    border: 0;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    border-radius: 6px;
+    color: #333333;
+    background: #fff;
+    width: 100%;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card .card-title {
+  margin-top: 0.625rem;
+}
+
+.card .card-header {
+  border-bottom: none;
+  background: transparent;
+}
+
+.card .card-header-color {
+  background: linear-gradient(60deg, #00205b, #00205b);
+}
+
+.card-header {
+  color: #fff;
+}
+
+
+.example-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container-two {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container-two>* {
+    width: 70%;
+}
+
+
+.QualityCharacteristics {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: #00205b solid 1px;
+}
+
+.qualitySubCharacteristics {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: #00205b solid 1px;
+}
+
+.qualityAttributes {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: #00205b solid 1px;
+}
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.mat-card {
+    max-height: 10000px;
+    overflow-y: auto;
+}
+
+.mat-button {
+    background-color: #00205b;
+    color: white;
+}
+
+.mat-raised-button {
+    background-color: gray;
+}
+
+.mat-stepper-vertical {
+    margin: 20px !important;
+}
+
+.mat-icon-button {
+    color: #00205b;
+}
+
+.mat-icon-button:hover {
+    color: #f1971b;
+}
+
+.main-save-btn,
+.main-reset-btn {
+    width: 120px;
+    float: right;
+    margin-right: 20px;
+}
+

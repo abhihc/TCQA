@@ -1,0 +1,15 @@
+.active {
+    color: #f1971b;
+}
+
+.mat-list-item {
+    font-weight: 500;
+}
+
+.h2 {
+    font-weight: 100;
+}
+
+.sub-item {
+    margin-left: 15px;
+}
