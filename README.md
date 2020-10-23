@@ -4,13 +4,13 @@ This application can be used for the creation of a quality plan and visualizatio
 
 Test Case Quality Assessment Approach Overview:
 
-![](TCQPAPP/src/assets/images/processOverviewNew.PNG)
+![](TCQCHECK/src/assets/images/processOverviewNew.PNG)
 
 # Application Setup
 
 ## Frontend:
 
-	$ cd TCQPAPP
+	$ cd TCQCHECK
 	$ npm install
     $ ng serve
     $ Open `http://localhost:4200/` in Browser

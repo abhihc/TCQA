@@ -1,5 +1,5 @@
 <!-- List of quality plans created -->
-<div class="container-fluid">
+<div class="container-fluid2">
     <div class="col-md-12">
         <div class="card card-assessments">
             <div class="card-header card-header-color">
@@ -29,7 +29,7 @@
 
 <!-- To add quality assessment result of specific quality plan -->
 <div class="assessment-input-form" *ngIf="show">
-    <mat-card style="width:500px; margin-top: 10px;">
+    <mat-card style="width:800px; margin-top: 10px;">
         <mat-card-content style="padding-bottom: 0px">
             <form [formGroup]="addResultForm" (ngSubmit)="onSubmit(addResultForm)">
                 <br>
@@ -75,7 +75,7 @@
                                         <div formArrayName="qualityAttributes" class="quality-attr-container">
                                             <div
                                                 *ngFor="let item3 of item2['controls'].qualityAttributes['controls']; let iqa=index">
-                                                <mat-grid-list cols="2" gutterSize="2px" rowHeight="80px">
+                                                <mat-grid-list cols="3" gutterSize="2px" rowHeight="80px">
                                                     <div formGroupName="{{iqa}}">
                                                         <mat-grid-tile class="assessment-field">
                                                             <mat-form-field [style.width.px]=320>
@@ -90,6 +90,19 @@
                                                                 <input matInput type="number" class="form-control"
                                                                     formControlName="scoreQA" id="scoreQA"
                                                                     placeholder="Score">
+                                                            </mat-form-field>
+                                                        </mat-grid-tile>
+
+                                                        <mat-grid-tile class="assessment-field">
+                                                            <mat-form-field [style.width.px]=320>
+                                                                <mat-select matInput placeholder="Measurement Tool"
+                                                                    id="measurementTool" class="form-control"
+                                                                    formControlName="measurementTool">
+                                                                    <mat-option *ngFor="let tool of toolNames"
+                                                                        value="{{ tool }}">
+                                                                        {{ tool }}
+                                                                    </mat-option>
+                                                                </mat-select>
                                                             </mat-form-field>
                                                         </mat-grid-tile>
                                                     </div>

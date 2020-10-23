@@ -64,28 +64,6 @@ col-md-12 {
     width: 70%;
 }
 
-
-.QualityCharacteristics {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    border: #00205b solid 1px;
-}
-
-.qualitySubCharacteristics {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    border: #00205b solid 1px;
-}
-
-.qualityAttributes {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    border: #00205b solid 1px;
-}
-
 .row {
     display: -webkit-box;
     display: -ms-flexbox;

@@ -98,6 +98,7 @@ export class CreateQualityPlanComponent implements OnInit {
     return this.formbuilder.group({
       name: "",
       informalDefinition: "",
+      possibleAction: "",
       measurementType: "",
       measurementMethod: "",
       scaleType: "",

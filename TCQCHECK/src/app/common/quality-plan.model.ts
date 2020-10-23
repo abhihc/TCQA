@@ -45,6 +45,7 @@ export class QualityAttribute {
 export class Measurement {
   name: string;
   informalDefinition: string;
+  possibleAction: string;
   measurementType: string;
   measurementMethod: string;
   scaleType: string;

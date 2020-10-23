@@ -27,6 +27,8 @@ export class ResultsViewComponent implements OnInit {
   selectedThresholdScore = [];
   selectedQA = [];            // Selected Quality Attributes
   selectedQAScore = [];       // Selected Quality Attribute Scores
+  selectedTool = [];
+  selectedPossibleAction = [];
 
   newQAs = [];
 
@@ -42,7 +44,6 @@ export class ResultsViewComponent implements OnInit {
   yScaleMin = 0;
   yScaleMax = 100;
   yAxisTicks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-  // xAxisTicks = ["Line Coverage", "Bug Detection", "Proper Documentation", "Test Case Execution", "Conditional Test Logic", "External Data Dependency"];
   xAxisTicks = [];
   showXAxis = true;
   showYAxis = true;
@@ -78,39 +79,6 @@ export class ResultsViewComponent implements OnInit {
 
   }
 
-  // Get all threshold scores of selected quality plan
-  // qualityPlanList() {
-  //   this.qualityPlanService.getQualityPlanList().subscribe((res) => {
-  //     this.qualityPlanService.qualityPlans = res as QualityPlan[];
-  //     this.qualityPlanService.qualityPlans.forEach(element => {
-  //       if (element.qualityPlanName == this.qpName) {
-  //         this.selectedQPName = element.qualityPlanName;
-  //         this.selectedTS = element.testSuite;
-  //         this.selectedTO = element.testObject;
-  //         this.selectedSTF = element.sourceTestingFramework;
-  //         element.measurementArray.forEach(element2 => {
-  //           this.selectedThresholdScore.push(element2.thresholdValue);
-  //         });
-  //       }
-  //     });
-  //     this.demoCheck()
-  //   });
-  //   //console.log(this.selectedThresholdScore[0]);
-  // }
-
-  // demoCheck() {
-  // for (let index in this.selectedThresholdScore) {
-  //   if (this.selectedThresholdScore[index] > this.selectedQAScore[index]) {
-  //     this.newQAs[index] = "(!) " + this.newQAs[index];
-  //     this.dataChart3[index].name = '(!) ' + this.dataChart3[index].name;
-  //   }
-  //   console.log(this.dataChart3[index].name);
-  // }
-  // this.xAxisTicks = this.newQAs;
-
-
-  // }
-
   // Get assessment result of selected quality plan
   getResultData(id) {
 
@@ -137,6 +105,7 @@ export class ResultsViewComponent implements OnInit {
             chart3Record = {
               name: chart3D.qualityAttribute,
               value: chart3D.scoreQA,
+              toolName: chart3D.measurementTool,
               extra: {
                 parent: chart2D
               }
@@ -178,6 +147,7 @@ export class ResultsViewComponent implements OnInit {
       this.dataChart3.forEach(element => {
         this.selectedQA.push(element.name);
         this.selectedQAScore.push(element.value);
+        this.selectedTool.push(element.toolName);
       });
 
 
@@ -191,33 +161,16 @@ export class ResultsViewComponent implements OnInit {
             this.selectedSTF = element.sourceTestingFramework;
             element.measurementArray.forEach(element2 => {
               this.selectedThresholdScore.push(element2.thresholdValue);
+              this.selectedPossibleAction.push(element2.possibleAction);
             });
           }
         });
-        // this.democheck2()
       });
 
-
-      // this.democheck3()
     });
 
   }
 
-  // democheck2() {
-  //   for (let index in this.selectedThresholdScore) {
-  //     if (this.selectedThresholdScore[index] > this.selectedQAScore[index]) {
-  //       this.newQAs[index] = "(!) " + this.selectedQA[index];
-  //     } else {
-  //       this.newQAs[index] = this.selectedQA[index];
-  //     }
-  //   }
-  //   this.xAxisTicks = this.newQAs;
-  // }
-
-  // democheck3() {
-
-
-  // }
 
   public onInteractChart1(event): void {
     if (event && event.value && event.value.extra && event.value.extra.children && event.value.extra.children.length) {

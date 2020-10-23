@@ -5,13 +5,16 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { QualityPlanService } from './../../common/quality-plan.service';
 import { QualityPlan, QualityPlanAttribute } from './../../common/quality-plan.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToolDetail } from './../../common/toolDetail.model';
+import { ToolDetailService } from './../../common/toolDetail.service';
+
 
 // Component to add quality assessment result
 @Component({
   selector: 'app-results-add',
   templateUrl: './results-add.component.html',
   styleUrls: ['./results-add.component.css', './../../components/style/style.component.css'],
-  providers: [QualityPlanService]
+  providers: [QualityPlanService, ToolDetailService]
 })
 export class ResultsAddComponent implements OnInit {
   @ViewChild('nameInput', { static: false })
@@ -24,6 +27,7 @@ export class ResultsAddComponent implements OnInit {
   submitted = false;
   show: boolean = false;
   isReadOnly = true;
+  toolNames = [];
 
   newResult = {
     name: '',
@@ -38,6 +42,7 @@ export class ResultsAddComponent implements OnInit {
     private ngZone: NgZone,
     private apiService: ApiService,
     private qualityPlanService: QualityPlanService,
+    private toolDetailService: ToolDetailService,
     private _snackBar: MatSnackBar
   ) {
     this.mainForm();
@@ -45,6 +50,8 @@ export class ResultsAddComponent implements OnInit {
 
   ngOnInit() {
     this.qualityPlanList();
+    this.toolInfo();
+
   }
 
   mainForm() {
@@ -53,6 +60,15 @@ export class ResultsAddComponent implements OnInit {
       executionName: '',
       qualityPlan: '',
       QualityCharacteristics: this.fb.array([this.createQC()])
+    });
+  }
+
+  toolInfo() {
+    this.toolDetailService.getToolDetailList().subscribe((res) => {
+      this.toolDetailService.Tools = res as ToolDetail[];
+      this.toolDetailService.Tools.forEach(element => {
+        this.toolNames.push(element.toolName);
+      });
     });
   }
 
@@ -78,7 +94,8 @@ export class ResultsAddComponent implements OnInit {
   createQA() {
     return this.fb.group({
       qualityAttribute: '',
-      scoreQA: null
+      scoreQA: null,
+      measurementTool: ''
     })
   }
 
@@ -130,7 +147,8 @@ export class ResultsAddComponent implements OnInit {
     qaSet.forEach(element => {
       existingQAArray.push(this.fb.group({
         qualityAttribute: element.qualityAttribute,
-        scoreQA: null
+        scoreQA: null,
+        measurementTool: ''
       }));
     });
     return existingQAArray;

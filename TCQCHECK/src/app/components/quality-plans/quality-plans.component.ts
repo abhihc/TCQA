@@ -98,6 +98,7 @@ export class QualityPlansComponent implements OnInit {
     return this.formbuilder.group({
       name: '',
       informalDefinition: '',
+      possibleAction: '',
       measurementType: '',
       measurementMethod: '',
       scaleType: '',
@@ -237,6 +238,7 @@ export class QualityPlansComponent implements OnInit {
       existingMeasurementArray.push(this.formbuilder.group({
         name: element.name,
         informalDefinition: element.informalDefinition,
+        possibleAction: element.possibleAction,
         measurementType: element.measurementType,
         measurementMethod: element.measurementMethod,
         scaleType: element.scaleType,
